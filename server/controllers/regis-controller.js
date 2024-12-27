@@ -4,7 +4,7 @@ const regisData = require("../src/models/RegisSchema");
 const RegisController = async (req, res, next) => {
     try {
 
-        // email validation :-
+        // email && phone validation :-
         const { username, email, phone, password } = req.body;
 
 
@@ -13,25 +13,29 @@ const RegisController = async (req, res, next) => {
 
         if (emailExist || phoneExist) {
             const status = 400;
-            const msg = (emailExist)?"email already exist":"phone already exist"
+            const msg = (emailExist) ? "email already exist" : "phone already exist"
             const error = {
                 status,
                 msg
             }
             return next(error)
         }
+        const userData = new regisData({ username, email, phone, password });
 
-        // const saltround = 10;
-        // const bcryptPass = await bcrypt.hash(password,saltround);
-        
-
-        const userData = new regisData({ username, email, phone, password});
         await userData.save();
         console.log("data stored")
+
+        // generate user token :-
+        // this token store in localStorage or cookie not in db :-
+        const tokenGenerate = await userData.generateToken();
+
         res.status(200).json({
-            msg: "data stored",
-            userData
+            msg: "registration successful",
+            userData: userData,
+            user_id: userData._id.toString(),
+            token: tokenGenerate
         })
+
     } catch (error) {
         // console.log(error)
         const status = 400;
@@ -47,3 +51,4 @@ const RegisController = async (req, res, next) => {
 }
 
 module.exports = RegisController;
+

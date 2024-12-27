@@ -1,5 +1,7 @@
+const jwt = require("jsonwebtoken");
 const bcrypt = require("bcryptjs")
 const mongoose = require('mongoose');
+
 const userRegisSchema = new mongoose.Schema({
     username: {
         type: String,
@@ -33,11 +35,11 @@ const userRegisSchema = new mongoose.Schema({
 userRegisSchema.pre("save",async function(next){
     
         const userPass = this;
-        // console.log(userPass)
+        // console.log("userPass,",userPass)
         // const saltround = await bcrypt.genSalt(10);
         // const bcryptPass = await bcrypt.hash(userPass.password,saltround)
         // userPass.password = bcryptPass
-        // console.log(userPass)
+        // console.log(userPass);
         
         if(userPass.isModified('password')){ 
             try{
@@ -54,6 +56,40 @@ else{
 }
 })
 
+
+
+// compare the password (login pass validation) using instance method:-
+userRegisSchema.methods.comparePass = async function(pass){
+    try{
+        return bcrypt.compare(pass,this.password)
+    }catch(error){
+        console.log(error)
+    }
+}
+
+
+
+// generating token using instance method :-
+userRegisSchema.methods.generateToken = async function(){
+    try{
+        const tokenOfParticularUser = jwt.sign({
+            // creating the payload:-
+            userId : this._id.toString(),
+            email : this.email,
+            isAdmin : this.isAdmin
+        },
+
+          // creating the signature
+          process.env.secretKey,{
+            expiresIn : "30d"
+          });
+
+          return tokenOfParticularUser;
+
+    }catch(error){
+        console.log(error)
+    }
+}
 
 const RegisModel = new mongoose.model("registration", userRegisSchema);
 
