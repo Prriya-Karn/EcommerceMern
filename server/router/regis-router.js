@@ -2,8 +2,8 @@ const express = require('express');
 const RegisRouter = express.Router();
 const RegisController = require("../controllers/regis-controller")
 const validateMiddleware = require("../middleware/validate-middleware");
-const regisZodSchema = require("../validator/auth-validator");
+const ZodSchema = require("../validator/auth-validator");
 
-RegisRouter.route("/registration").post(validateMiddleware(regisZodSchema),RegisController)
+RegisRouter.route("/registration").post(validateMiddleware(ZodSchema.regisSchema),RegisController)
 
 module.exports = RegisRouter;

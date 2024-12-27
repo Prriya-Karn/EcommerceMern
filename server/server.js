@@ -5,11 +5,13 @@ const app = express();
 
 
 const regisRouter = require("./router/regis-router");
+const loginRouter = require("./router/login-router")
 const connection = require('./utils/db');
 const errorMiddleware = require("./middleware/error-middleware")
 
 app.use(express.json())
 app.use('/api',regisRouter);
+app.use('/api',loginRouter);
 
 // const PORT = 3000;
 // app.listen(PORT,()=>{

@@ -1,3 +1,4 @@
+const bcrypt = require("bcryptjs")
 const regisData = require("../src/models/RegisSchema");
 
 const RegisController = async (req, res, next) => {
@@ -5,6 +6,8 @@ const RegisController = async (req, res, next) => {
 
         // email validation :-
         const { username, email, phone, password } = req.body;
+
+
         const emailExist = await regisData.findOne({ email: email })
         const phoneExist = await regisData.findOne({ phone: phone })
 
@@ -18,11 +21,16 @@ const RegisController = async (req, res, next) => {
             return next(error)
         }
 
-        const fetchData = new regisData({ username, email, phone, password });
-        await fetchData.save();
+        // const saltround = 10;
+        // const bcryptPass = await bcrypt.hash(password,saltround);
+        
+
+        const userData = new regisData({ username, email, phone, password});
+        await userData.save();
         console.log("data stored")
         res.status(200).json({
-            msg: "data stored"
+            msg: "data stored",
+            userData
         })
     } catch (error) {
         // console.log(error)
