@@ -25,8 +25,24 @@ username : z
     .string({required_error:"password is required"})
     .min(7,{message : "Password must be at least of 7 character"})
     .max(20,{message:"Password must not be more 20 character"}),
+})
+
+const loginSchema = z.object({
+     email : z
+    .string({required_error:"email is required"})
+    .trim()
+    .email({message : "invalid email address"})
+    .min(3,{message : "email must be at least of 3 character"})
+    .max(255,{message:"email must not be more 255 character"}),
+    
+    password : z
+    .string({required_error:"password is required"})
+    .min(7,{message : "Password must be at least of 7 character"})
+    .max(20,{message:"Password must not be more 20 character"}),
 
 })
 
-module.exports = regisSchema;
+
+module.exports = {regisSchema,loginSchema};
+
 
