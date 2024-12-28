@@ -9,3 +9,5 @@ const loginRouter = express.Router();
 loginRouter.route("/login").get(validateMiddleware(SchemaZod.loginSchema),loginController)
 
 module.exports = loginRouter;
+
+

@@ -35,7 +35,6 @@ const RegisController = async (req, res, next) => {
             user_id: userData._id.toString(),
             token: tokenGenerate
         })
-
     } catch (error) {
         // console.log(error)
         const status = 400;
@@ -47,10 +46,7 @@ const RegisController = async (req, res, next) => {
             extradetails
         }
         next(err)
-    }
+    }  
 }
 
-module.exports = RegisController;
-
-// jhafjhjd
-
+module.exports = {RegisController}
