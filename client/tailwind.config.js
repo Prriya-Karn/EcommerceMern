@@ -16,9 +16,6 @@ export default {
           "6/2" : "6/5"
         },
         colors: {
-        primary: "#1D4ED8", // Custom primary color
-        secondary: "#9333EA", // Custom secondary color
-        accent: "#F59E0B", // Custom accent color
         bg : "#FF735C",
         bodyColor : "#F3F4F6"
         
