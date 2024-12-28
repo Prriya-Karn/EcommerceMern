@@ -2,6 +2,7 @@ import { Fragment } from "react";
 import img from "../../public/images/login.jpg"
 import Button from "../Components/UI/Button";
 const Login = () => {
+    
     return (
         <Fragment>
             <div className="lg:h-screen lg:flex lg:justify-center lg:items-center lg:gap-36">
