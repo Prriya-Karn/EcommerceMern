@@ -1,8 +1,13 @@
-import { Fragment, useState} from "react";
+import { Fragment, useContext, useState} from "react";
 import img from "../../public/images/login.jpg"
 import Button from "../Components/UI/Button";
 import { NavLink } from "react-router-dom";
+import { AuthContext } from "../tokenStore/Auth";
 const register = () => {
+
+    const {give} = useContext(AuthContext);
+    console.log(give())
+
 
     const [data,setData] = useState({
         firstName : "",

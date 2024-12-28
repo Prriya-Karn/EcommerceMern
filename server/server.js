@@ -1,6 +1,7 @@
 // creating own server:-
 require("dotenv").config();
 const express = require('express');
+const cors = require('cors');
 const app = express();
 
 
@@ -13,6 +14,19 @@ const delRouter = require("./router/admin-router/delete-router");
 const getUserRouter = require("./router/getUserById-router");
 const updateRouter = require("./router/admin-router/update-router");
 const userRouter = require("./router/user-router");
+
+// CORS POLICY :-
+
+const corsOption = {
+    origin : "http://localhost:5173",
+    methods: "GET,PUT,PATCH,DELETE,POST,HEAD",
+    credentials : true
+}
+app.use(cors(corsOption))
+
+
+
+
 
 app.use(express.json())
 app.use('/api',regisRouter);
