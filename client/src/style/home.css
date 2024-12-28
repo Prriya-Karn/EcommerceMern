@@ -1,0 +1,19 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+
+
+.centered-container {
+    @apply flex items-center justify-center h-screen;
+}
+
+.responsive-div{
+   @apply bg-orange-500 grid place-items-center w-6 h-6
+         sm:bg-black sm:w-10 sm:h-10
+         md:bg-pink-800 md:w-20 md:h-20
+         lg:bg-red-600 lg:w-32 lg:h-32
+         xl:bg-yellow-600 xl:w-36 xl:h-36
+         2xl:bg-green-700  2xl:w-1/2 2xl:h-36
+}
