@@ -6,8 +6,9 @@ const validateMiddleware = (zodSchema)=>async(req,res,next)=>{
         next();
     }catch(error){
         res.status(400).json({
-            msgZodError : error
+            msg: error.issues[0].message
         })
+        console.log(error)
     }
 }
 

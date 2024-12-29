@@ -1,12 +1,17 @@
-import { Fragment } from "react"
+import { Fragment, useContext } from "react"
 import "../../style/navbar.css";
 import Button from "../UI/Button";
 import {NavLink} from 'react-router-dom';
+import { AuthContext } from "../../tokenStore/Auth";
+import Logout from "../../Pages/Logout";
 
 const buttName = [
-    "login","register"
+    "Login","register","Logout"
 ]
 export const Navbar = () => {
+    const {getUserData} = useContext(AuthContext)
+    console.log(getUserData)
+    
     return (
         <Fragment>
             <div className="main-navbar flex bg-slate-800
@@ -24,11 +29,14 @@ export const Navbar = () => {
                 </ul>
                 <div className="lg:flex lg:mr-5">
             
-                <NavLink to="/login">
-                <Button
-                buttName = {buttName[0]}
-                />
-                </NavLink>
+                {
+                    getUserData==undefined?<NavLink to="/login">
+                    <Button buttName={buttName[0]}/>
+                    </NavLink>:
+                    <Logout/>
+                }
+
+                
                 
                 <h1 className="ml-5 mr-8">cart</h1>
                 </div>

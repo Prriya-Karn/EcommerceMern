@@ -6,7 +6,7 @@ const loginRouter = express.Router();
 
 
 
-loginRouter.route("/login").get(validateMiddleware(SchemaZod.loginSchema),loginController)
+loginRouter.route("/login").post(validateMiddleware(SchemaZod.loginSchema),loginController)
 
 module.exports = loginRouter;
 

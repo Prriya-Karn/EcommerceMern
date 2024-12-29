@@ -1,14 +1,17 @@
-import { Fragment, useState } from "react";
+import { Fragment, useContext, useState } from "react";
 import img from "../../public/images/login.jpg"
 import Button from "../Components/UI/Button";
-import { NavLink } from "react-router-dom";
+import {  NavLink, useNavigate } from "react-router-dom";
+import { AuthContext } from "../tokenStore/Auth";
 const Login = () => {
+    const navigate = useNavigate();
+    const {API} = useContext(AuthContext);
+    const {serverToken} = useContext(AuthContext)
     const [log,setLog] = useState({
         Email : "",
         Password : ""
     });
-    const [subLogData,setLogData] = useState({});
-
+    
     const logData = (event)=>{
         const name = event.target.name;
         const value = event.target.value;
@@ -20,10 +23,32 @@ const Login = () => {
         })
     }
 
-    const subLog = ()=>{
-        setLogData(log)
+    const subLog = async(e)=>{
+        try{
+            e.preventDefault()
+            const login = await fetch(`${API}/api/login`,{
+                method : "POST",
+                headers : {
+                    "Content-Type" : "application/json"
+                },
+                body : JSON.stringify(log)
+            })
+            const resLogin = await login.json();
+            console.log(resLogin)
+            if(login.status==200){
+                alert("login successfull");
+                serverToken(resLogin.token);
+                navigate("/");
+            }else{
+                alert("login not successfull")
+            }
+            
+            
+        }catch(error){
+            console.log(error);
+        }
     }
-    console.log(subLogData.email)
+ 
 
 
     return (

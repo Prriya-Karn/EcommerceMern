@@ -5,18 +5,18 @@ import { NavLink } from "react-router-dom";
 import { AuthContext } from "../tokenStore/Auth";
 const register = () => {
 
-    const {give} = useContext(AuthContext);
-    console.log(give())
+  const {API} = useContext(AuthContext);
+  const {serverToken} = useContext(AuthContext)
 
 
     const [data,setData] = useState({
-        firstName : "",
-        LastName : "",
+        fullName : "",
         Email : "",
+        Phone : "",
         Password : ""
     });
     
-    const [subData,setSub] = useState({})
+  
 
     const regisInput = (event)=>{
         const name = event.target.name;
@@ -30,12 +30,29 @@ const register = () => {
     }
 
 
-    const submitRegisData = ()=>{
-        setSub(data)
+    const submitRegisData = async(e)=>{
+        try{
+            e.preventDefault()
+            const submitData = await fetch(`${API}/api/registration`,{
+                method : "POST",
+                headers : {
+                    "Content-Type" : "application/json"
+                },
+                body : JSON.stringify(data)
+            })
+
+            const res = await submitData.json();
+            if(submitData.status==400){
+                alert(res.msg);
+            }else{
+                alert("registration successfull")
+                serverToken(res.token);
+                console.log(res)
+               } 
+        }catch(error){
+            console.log(error);
+        }
     }
-
-    console.log(subData.firstName)
-
 
 
 
@@ -56,23 +73,25 @@ const register = () => {
                     </div>
 
                     <div className="lg:w-96 lg:text-lg">
-                        <label className="lg:mb-10 lg:w-96">First Name</label>
+                        <label className="lg:mb-10 lg:w-96">Full Name</label>
                         <br></br>
-                        <input type="text" onChange={regisInput} name="firstName"
+                        <input type="text" onChange={regisInput} name="username"
                          className="lg:mt-1 lg:bg-bodyColor lg:w-5/6" />
                     </div>
-                    <div className="lg:w-96 lg:mt-1 lg:text-lg">
-                        <label className="lg:mb-10 lg:w-96">Last Name</label>
-                        <br></br>
-                        <input type="text"  onChange={regisInput} name = "lastName"
-                        className="lg:mt-1 lg:bg-bodyColor lg:w-5/6" />
-                    </div>
+                   
                     <div className="lg:w-96 lg:mt-1 lg:text-lg">
                     <label className="lg:mb-10 lg:w-96">Email</label>
                     <br></br>
                     <input type="email" onChange={regisInput} name = "email"
                      className="lg:mt-1 lg:bg-bodyColor lg:w-5/6" />
                 </div>
+
+                <div className="lg:w-96 lg:mt-1 lg:text-lg">
+                <label className="lg:mb-10 lg:w-96">Phone</label>
+                <br></br>
+                <input type="number" onChange={regisInput} name = "phone"
+                 className="lg:mt-1 lg:bg-bodyColor lg:w-5/6" />
+            </div>
                 <div className="lg:w-96 lg:mt-1 lg:text-lg">
                 <label className="lg:mb-10 lg:w-96">Password</label>
                 <br></br>

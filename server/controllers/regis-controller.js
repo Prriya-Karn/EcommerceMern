@@ -18,6 +18,7 @@ const RegisController = async (req, res, next) => {
                 status,
                 msg
             }
+           
             return next(error)
         }
         const userData = new regisData({ username, email, phone, password });
