@@ -5,6 +5,9 @@ const Auth = ({ children }) => {
     const [token, setToken] = useState(localStorage.getItem("authToken"))
    const [getUserData,setUserData] = useState();
 
+   // getuserData show on contact page:-
+   const [con,setCon] = useState();
+
 
     const API = import.meta.env.VITE_APP_URI_API
     const serverToken = (userToken) => {
@@ -29,7 +32,7 @@ const Auth = ({ children }) => {
             })
             const resToken = await tokenVerify.json();
             setUserData(resToken.msg.username)
-            
+            setCon(resToken.msg)
             console.log(resToken.msg.username)
          
         }catch(error){
@@ -59,7 +62,7 @@ verifyToken()
 
     return (
         <Fragment>
-            <AuthContext.Provider value={{API,serverToken,getUserData,removeToken}}>
+            <AuthContext.Provider value={{API,serverToken,getUserData,removeToken,con}}>
                 {children}
             </AuthContext.Provider>
         </Fragment>

@@ -11,7 +11,8 @@ const Login = () => {
         Email : "",
         Password : ""
     });
-    
+    const [hidePass,setHide] = useState(true)
+
     const logData = (event)=>{
         const name = event.target.name;
         const value = event.target.value;
@@ -48,7 +49,10 @@ const Login = () => {
             console.log(error);
         }
     }
- 
+
+    const showHidePass = ()=>{
+        setHide(!hidePass)
+    }
 
 
     return (
@@ -74,9 +78,10 @@ const Login = () => {
                     <div className="lg:w-96 lg:mt-1 lg:text-lg">
                         <label className="lg:mb-10 lg:w-96">Password</label>
                         <br></br>
-                        <input type="password"  name="password"
+                        <input type={(hidePass==true)?"Password":"text"}  name="password"
                         onChange={logData}
-                        className="lg:mt-1 lg:bg-bodyColor lg:w-5/6" />
+                        className="lg:mt-1 lg:bg-bodyColor lg:w-5/6"/>
+                        <button onClick={showHidePass}>👁️</button>
                     </div>
 
                     <div className="lg:mt-7">

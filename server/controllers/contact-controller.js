@@ -16,8 +16,7 @@ const contactController = async (req,res,next) => {
        await conData.save();
 
        return res.status(200).json({
-        msg : "data stored",
-        msg : conData
+        msg : "data stored"
        })
 
 
