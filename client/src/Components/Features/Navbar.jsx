@@ -33,7 +33,9 @@ export const Navbar = () => {
 
                     {
                         getUserData == undefined ? <NavLink to="/login">
-                            <Button buttName={buttName[0]} />
+                            <Button 
+                            buttName={buttName[0]}
+                            className="bg-bg lg:p-2"/>
                         </NavLink> :
                             <Logout />
                     }

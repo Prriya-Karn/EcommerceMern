@@ -1,10 +1,10 @@
 import { Fragment } from "react";
 
-const Button = ({buttName})=>{
+const Button = ({className,buttName,onClickFun})=>{
     return(
         <Fragment>
-        <button className="bg-bg lg:px-6 lg:py-1
-        place-items-center rounded text-white lg:pb-2">{buttName}</button>
+        <button className={className}
+        onClick={onClickFun}>{buttName}</button>
         </Fragment>
     )
 }

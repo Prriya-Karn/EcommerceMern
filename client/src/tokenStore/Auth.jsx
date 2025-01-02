@@ -4,7 +4,7 @@ const AuthContext = createContext();
 const Auth = ({ children }) => {
     const [token, setToken] = useState(localStorage.getItem("authToken"))
    const [getUserData,setUserData] = useState();
-
+   const [isAdmin,setIsAdmin] = useState();
    // getuserData show on contact page:-
    const [con,setCon] = useState();
 
@@ -32,9 +32,10 @@ const Auth = ({ children }) => {
             })
             const resToken = await tokenVerify.json();
             setUserData(resToken.msg.username)
-            setCon(resToken.msg)
-            console.log(resToken.msg.username)
-         
+            setCon(resToken.msg);
+            setIsAdmin(resToken.msg.isAdmin)
+            console.log(resToken.msg.isAdmin)
+    
         }catch(error){
             console.log(error)
         }
@@ -62,7 +63,7 @@ verifyToken()
 
     return (
         <Fragment>
-            <AuthContext.Provider value={{API,serverToken,getUserData,removeToken,con}}>
+            <AuthContext.Provider value={{API,serverToken,getUserData,removeToken,con,isAdmin}}>
                 {children}
             </AuthContext.Provider>
         </Fragment>
