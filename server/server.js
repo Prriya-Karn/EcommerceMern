@@ -14,6 +14,7 @@ const delRouter = require("./router/admin-router/delete-router");
 const getUserRouter = require("./router/getUserById-router");
 const updateRouter = require("./router/admin-router/update-router");
 const userRouter = require("./router/user-router");
+const AllUserRouter = require("./router/admin-router/getAllUserData-router");
 
 // CORS POLICY :-
 
@@ -32,10 +33,12 @@ app.use(express.json())
 app.use('/api',regisRouter);
 app.use('/api',loginRouter);
 app.use('/api',contactRouter);
-app.use('/api',delRouter);
 app.use('/api',getUserRouter);
-app.use("/api",updateRouter);
 app.use("/api",userRouter);
+app.use('/api/admin',delRouter);
+app.use("/api/admin",updateRouter);
+app.use('/api/admin',AllUserRouter);
+
 
 app.use(errorMiddleware)
 
