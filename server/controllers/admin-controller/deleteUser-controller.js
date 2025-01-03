@@ -7,7 +7,7 @@ const delController = async (req, res, next) => {
         res.status(200).json({
             msg: "deleted"
         })
-        console.log(delUser)
+        console.log("delUser",delUser)
     } catch (error) {
         res.status(400).json({
             msg: "not deleted"

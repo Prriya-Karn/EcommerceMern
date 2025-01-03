@@ -4,19 +4,19 @@ const AuthContext = createContext();
 const Auth = ({ children }) => {
     const API = import.meta.env.VITE_APP_URI_API
     const [token, setToken] = useState(localStorage.getItem("authToken"))
-    const [getUserData, setUserData] = useState();
-    const [isAdmin, setIsAdmin] = useState();
+    const [getUserData, setUserData] = useState("");
+    const [isAdmin, setIsAdmin] = useState("");
     // getuserData show on contact page:-
     const [con, setCon] = useState();
     // getAllUserData that was registered in my website (for admin only):-
     const [getData, setGetData] = useState([]);
    
 
-
     const serverToken = (userToken) => {
         setToken(userToken);
         return localStorage.setItem("authToken", userToken);
     }
+    
 
     // you can add a useEffect that listens to changes in the token state:
     useEffect(() => {
@@ -35,7 +35,8 @@ const Auth = ({ children }) => {
             })
 
             const resToken = await tokenVerify.json();
-            
+            console.log("resToken",resToken)
+
             setUserData(resToken.msg.username)
             setCon(resToken.msg);
             setIsAdmin(resToken.msg.isAdmin)
@@ -55,6 +56,7 @@ const Auth = ({ children }) => {
                         "Authorization" : `Bearer ${token}`
                     }
                 });
+
                 const dataJson = await data.json()
                 setGetData(dataJson);
                 // console.log(getData)

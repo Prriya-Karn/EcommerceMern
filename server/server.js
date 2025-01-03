@@ -10,11 +10,13 @@ const loginRouter = require("./router/login-router")
 const connection = require('./utils/db');
 const errorMiddleware = require("./middleware/error-middleware");
 const contactRouter = require("./router/contact-router");
-const delRouter = require("./router/admin-router/delete-router");
+const delRouter = require("./router/admin-router/deleteUser-router");
 const getUserRouter = require("./router/getUserById-router");
 const updateRouter = require("./router/admin-router/update-router");
 const userRouter = require("./router/user-router");
 const AllUserRouter = require("./router/admin-router/getAllUserData-router");
+const AllContactDataRouter = require("./router/admin-router/getAllContactData-router");
+const delConRouter = require("./router/admin-router/deleteContact-router");
 
 // CORS POLICY :-
 
@@ -36,14 +38,16 @@ app.use('/api',contactRouter);
 app.use('/api',getUserRouter);
 app.use("/api",userRouter);
 app.use('/api/admin',delRouter);
+app.use("/api/admin",delConRouter);
 app.use("/api/admin",updateRouter);
 app.use('/api/admin',AllUserRouter);
-
+app.use('/api/admin',AllContactDataRouter);
 
 app.use(errorMiddleware)
 
+
 connection().then(()=>{
-    const PORT = process.env.port || 3000;
+    const PORT = process.env.port || 3001;
     app.listen(PORT,()=>{
         console.log(`server is running at ${PORT}`)
     })

@@ -1,7 +1,7 @@
 const regisSchema = require("../src/models/RegisSchema");
 const userController = async(req,res)=>{
     try{
-        const data = req.body
+        const data = req.user
         res.status(200).json({
             msg : data
         })

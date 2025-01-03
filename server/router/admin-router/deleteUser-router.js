@@ -1,5 +1,5 @@
 const express = require('express');
-const delController = require('../../controllers/admin-controller/delete-controller');
+const delController = require('../../controllers/admin-controller/deleteUser-controller');
 const authMiddleware = require('../../middleware/auth-middleware');
 const adminMiddleware = require('../../middleware/admin-middleware');
 const delRouter = express.Router();

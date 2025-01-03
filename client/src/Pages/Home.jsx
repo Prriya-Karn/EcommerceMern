@@ -5,7 +5,7 @@ import { AuthContext } from "../tokenStore/Auth";
 const Home = ()=>{
     const {getUserData} = useContext(AuthContext);
     useEffect(() => {
-        console.log("Updated token:", getUserData);
+        console.log("userdata", getUserData);
     }, [getUserData]);
     return(
         <Fragment>

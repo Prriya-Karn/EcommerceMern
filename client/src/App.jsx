@@ -7,6 +7,9 @@ import Register from "./Pages/Register";
 import Contact from "./Pages/Contact";
 import AdminLayout from "./Components/layouts/AdminLayout";
 import Error from "./Pages/Error";
+import AllUserData from "./Pages/AdminPanel/AllUserData";
+import AllContactData from "./Pages/AdminPanel/AllContactData";
+import AllServiceData from "./Pages/AdminPanel/AllServiceData";
 
 
 const App = () => {
@@ -25,7 +28,14 @@ const App = () => {
 
 
           {/*-------------------route access by admin only----------------------*/}
-         <Route path="/admin" element={<AdminLayout />}/>
+         <Route path="/admin" element={<AdminLayout/>}>
+         <Route path="/admin/usersdata" element={<AllUserData/>}/>
+         <Route path="/admin/contactdata" element={<AllContactData/>}/>
+         <Route path="/admin/servicedata" element={<AllServiceData/>}/>
+         </Route>
+
+
+
          <Route path="*" element={<Error/>}/>
         </Routes>
       </BrowserRouter>
