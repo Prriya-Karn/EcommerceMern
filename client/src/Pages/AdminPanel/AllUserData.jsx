@@ -2,6 +2,7 @@ import {Fragment, useContext, useState } from "react";
 import { AuthContext } from "../../tokenStore/Auth";
 import { useNavigate } from "react-router-dom";
 import Delete from "./Delete";
+import Edit from "./Edit";
 
 
 const AllUserData = () => {
@@ -46,29 +47,6 @@ const AllUserData = () => {
 }
 
 
-    // -----------------------------------------edit data 
-    const editData = async(id)=>{
-        try{
-            const getUserById = await fetch(`${API}/api/getuserbyid/${id}`,{
-                method : "GET",
-                headers : {
-                    "Authorization" : `Bearer ${token}`
-                }
-            })
-            
-            const ediRes = await getUserById.json();
-            // console.log(ediRes.msg._id)
-            navigate("/admin/usersdata/updatedata", { state: {
-                id:ediRes.msg._id,
-                username:ediRes.msg.username,
-                email : ediRes.msg.email, 
-                phone : ediRes.msg.phone
-            }}); 
-            
-        }catch(error){
-            console.log(error)
-        }
-    }
 
 
     return (
@@ -96,7 +74,10 @@ const AllUserData = () => {
                            id = {e._id}
                            data = "regisData"/>
  
-                            <button className="bg-bg" onClick={() => editData(e._id)}>Edit</button>
+                            <Edit
+                            id = {e._id}
+                            route = "getuserbyid"
+                            />
                             <br></br>
                         </Fragment>
                     )

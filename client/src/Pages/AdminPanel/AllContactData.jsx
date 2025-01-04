@@ -1,6 +1,7 @@
 import { Fragment, useContext, useState } from "react";
 import { AuthContext } from "../../tokenStore/Auth";
 import Delete from "./Delete";
+import Edit from "./Edit";
 // import Delete from "./Delete";
 
 const AllContactData = () => {
@@ -39,7 +40,7 @@ const AllContactData = () => {
                 (showhide) ? con.map((e) => {
                     return (
                         <Fragment key={e._id}>
-                            <h1 className="mt-5">username:{e.username} email:{e.email} message:{e.message}</h1>
+                            <h1 className="mt-5">id : {e._id} username:{e.username} email:{e.email} message:{e.message}</h1>
                         
                                 <Delete
                                 data = "conData"
@@ -47,7 +48,10 @@ const AllContactData = () => {
                                 getAllData = {con}
                                 id = {e._id}/>
 
-                                <button className="bg-bg ml-5">Update</button>
+                               <Edit
+                               id = {e._id}
+                               route = "conbyid"
+                               />
                         </Fragment>
                     )
                 }) : ""

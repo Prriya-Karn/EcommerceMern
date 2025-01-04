@@ -17,6 +17,8 @@ const userRouter = require("./router/user-router");
 const AllUserRouter = require("./router/admin-router/getAllUserData-router");
 const AllContactDataRouter = require("./router/admin-router/getAllContactData-router");
 const delConRouter = require("./router/admin-router/deleteContact-router");
+const conDataByIdRouter = require("./router/admin-router/getConDataById-router");
+const updateConDataRouter = require("./router/admin-router/updateConDataRouter");
 
 // CORS POLICY :-
 
@@ -42,7 +44,8 @@ app.use("/api/admin",delConRouter);
 app.use("/api/admin",updateRouter);
 app.use('/api/admin',AllUserRouter);
 app.use('/api/admin',AllContactDataRouter);
-
+app.use("/api/admin",conDataByIdRouter);
+app.use("/api/admin",updateConDataRouter);
 app.use(errorMiddleware)
 
 

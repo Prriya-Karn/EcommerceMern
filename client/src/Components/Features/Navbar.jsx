@@ -7,8 +7,9 @@ import Logout from "../../Pages/Logout";
 
 const buttName = ["Login", "register", "Logout"];
 
-
 export const Navbar = () => {
+    const {isAdmin} = useContext(AuthContext);
+
     const { getUserData } = useContext(AuthContext)
     console.log(getUserData)
 
@@ -42,10 +43,17 @@ export const Navbar = () => {
                         </NavLink> :
                             <Logout />
                     }
-
-
-
-                    <h1 className="ml-5 mr-8">cart</h1>
+                    {
+                        isAdmin=="true"?
+                        <Fragment>
+                        <ul className="ml-5"><NavLink to="/admin"><li>Admin</li></NavLink></ul>
+                        </Fragment>:""
+                        
+                    }
+                    <ul>
+                   
+                    <li className="ml-5 mr-8">cart</li>
+                    </ul>
                 </div>
 
             </div>

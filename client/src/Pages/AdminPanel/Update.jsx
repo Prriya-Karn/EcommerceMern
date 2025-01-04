@@ -2,29 +2,30 @@ import { Fragment, useContext, useState } from "react";
 import { AuthContext } from "../../tokenStore/Auth";
 import { useLocation } from "react-router-dom";
 
-const Update = ()=>{
-   const location = useLocation();
-    const {API} = useContext(AuthContext);
+const Update = () => {
+    const location = useLocation();
+    const { API } = useContext(AuthContext);
     const ediRes = location.state;
-   
-    const {token} = useContext(AuthContext);
 
-  
-    const [userUp,setUserUp] = useState({
-        username : ediRes.username,
-        email : ediRes.email,
-        phone : ediRes.phone
+    const { token } = useContext(AuthContext);
+    console.log(ediRes.url)
+
+    const [userUp, setUserUp] = useState({
+        username: ediRes.username,
+        email: ediRes.email,
+        phone: ediRes.phone,
+        message : ediRes.message
     })
-    
+
     // console.log(ediRes)
-    const upUserInp = (event)=>{
+    const upUserInp = (event) => {
         const name = event.target.name;
         const value = event.target.value;
 
-        setUserUp((preVal)=>{
-            return{
+        setUserUp((preVal) => {
+            return {
                 ...preVal,
-                [name] : value
+                [name]: value
             }
         })
     }
@@ -34,7 +35,7 @@ const Update = ()=>{
     const updateData = async (e) => {
         e.preventDefault()
         try {
-            const update = await fetch(`${API}/api/admin/update/${ediRes.id}`, {
+            const update = await fetch(`${API}/api/admin/${ediRes.url}/${ediRes.id}`, {
                 method: "PATCH",
                 headers: {
                     "Authorization": `Bearer ${token}`,
@@ -45,50 +46,65 @@ const Update = ()=>{
 
             const upRes = await update.json()
 
-            if(upRes.msg.modifiedCount==0){
+            if (upRes.msg.modifiedCount == 0) {
                 alert("not change anything")
-            }else if(upRes.msg.modifiedCount>0){
+            } else if (upRes.msg.modifiedCount > 0) {
                 alert("updated Successfull")
             }
 
-        
-      
+
+
 
         } catch (error) {
             console.log(error)
         }
     }
 
- 
 
 
-    return(
+
+    return (
         <Fragment>
-      
-        <input onChange = {upUserInp}
-        type="text"
-        name = "username"
-        value={userUp.username}
-        placeholder="username"
-        />
-        <br></br><br></br>
-        <input onChange = {upUserInp}
-        type="email"
-        name = "email"
-        value={userUp.email}
-        placeholder="email"
-        />
-        <br></br><br></br>
-        <input onChange = {upUserInp}
-        type="number"
-        name = "phone"
-        value={userUp.phone}
-        placeholder="phone"
-        />
-        <br></br><br></br>
 
-        <button onClick={updateData}>Submit</button>
-      
+            <input onChange={upUserInp}
+                type="text"
+                name="username"
+                value={userUp.username}
+                placeholder="username"
+            />
+            <br></br><br></br>
+            <input onChange={upUserInp}
+                type="email"
+                name="email"
+                value={userUp.email}
+                placeholder="email"
+            />
+            <br></br><br></br>
+
+            {
+                ediRes.url == "update" ? <Fragment>
+                    <input onChange={upUserInp}
+                        type="number"
+                        name="phone"
+                        value={userUp.phone}
+                        placeholder="phone"
+                    />
+                </Fragment> :
+                    <Fragment>
+                        <input onChange={upUserInp}
+                            type="text"
+                            name="message"
+                            value={userUp.message}
+                            placeholder="message"
+                        />
+                    </Fragment>
+            }
+
+
+            <br></br><br></br>
+
+            <button onClick={updateData}>Submit</button>
+
         </Fragment>
     )
 }
