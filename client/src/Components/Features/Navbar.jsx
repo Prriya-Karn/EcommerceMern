@@ -21,7 +21,10 @@ export const Navbar = () => {
                 </div>
                 <ul className="flex lg:gap-7 
                    lg:ml-auto lg:mr-16 font-roboto">
-                    <li>Home</li>
+                   <NavLink to="/">
+                   <li>Home</li>
+                   </NavLink>
+                    
                     <li>About</li>
                     <NavLink to="/contact">
                     <li>Contact</li>

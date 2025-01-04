@@ -10,6 +10,7 @@ import Error from "./Pages/Error";
 import AllUserData from "./Pages/AdminPanel/AllUserData";
 import AllContactData from "./Pages/AdminPanel/AllContactData";
 import AllServiceData from "./Pages/AdminPanel/AllServiceData";
+import Update from "./Pages/AdminPanel/Update";
 
 
 const App = () => {
@@ -32,6 +33,7 @@ const App = () => {
          <Route path="/admin/usersdata" element={<AllUserData/>}/>
          <Route path="/admin/contactdata" element={<AllContactData/>}/>
          <Route path="/admin/servicedata" element={<AllServiceData/>}/>
+         <Route path="/admin/usersdata/updatedata" element={<Update/>}/>
          </Route>
 
 

@@ -1,41 +1,71 @@
-import { Fragment, useContext, useState } from "react";
+import {Fragment, useContext, useState } from "react";
 import { AuthContext } from "../../tokenStore/Auth";
 import { useNavigate } from "react-router-dom";
 import Delete from "./Delete";
 
+
 const AllUserData = () => {
     const { API } = useContext(AuthContext);
     const { isAdmin } = useContext(AuthContext);
-    const { getData } = useContext(AuthContext);
-    const { token } = useContext(AuthContext)
+    // const { getData } = useContext(AuthContext);
+    const { token } = useContext(AuthContext);
     const navigate = useNavigate();
-
-    const [getAllRegisData, setRegisData] = useState([]);
+    const [getData, setGetData] = useState([]);
+   
+    
+    // const [getAllRegisData, setRegisData] = useState([]);
     const [showhideuser,setshowhideuser] = useState(false);
+    
+    // console.log("getdata",getData)
 
-    const getAllUser = () => {
-        setRegisData(getData)
+    // console.log(getAllRegisData)
+    // const getAllUser = () => {
+    //     setRegisData(getData)
+    //     setshowhideuser(!showhideuser)
+    // }
+
+    
+  //-------------------------------- get all user data (for admin only) :-
+  const getAllUser = async () => {
+    try {
+        const data = await fetch(`${API}/api/admin/alluserdata`, {
+            method: "GET",
+            headers: {
+                "Authorization" : `Bearer ${token}`
+            }
+        });
+
+        const dataJson = await data.json()
+        
+        setGetData(dataJson);
+       
         setshowhideuser(!showhideuser)
+    } catch (error) {
+        console.log(error)
     }
+}
 
 
-
-    // update the user data (only for admin)
-
-    const updateData = async (id) => {
-        try {
-            const update = await fetch(`${API}/api/admin/update/${id}`, {
-                method: "PATCH",
-                headers: {
-                    "Authorization": `Bearer ${token}`,
-                    "Content-Type": "application/json"
-                },
-
-            });
-
-            console.log("update", update)
-
-        } catch (error) {
+    // -----------------------------------------edit data 
+    const editData = async(id)=>{
+        try{
+            const getUserById = await fetch(`${API}/api/getuserbyid/${id}`,{
+                method : "GET",
+                headers : {
+                    "Authorization" : `Bearer ${token}`
+                }
+            })
+            
+            const ediRes = await getUserById.json();
+            // console.log(ediRes.msg._id)
+            navigate("/admin/usersdata/updatedata", { state: {
+                id:ediRes.msg._id,
+                username:ediRes.msg.username,
+                email : ediRes.msg.email, 
+                phone : ediRes.msg.phone
+            }}); 
+            
+        }catch(error){
             console.log(error)
         }
     }
@@ -53,25 +83,30 @@ const AllUserData = () => {
             }
 
             {
-               (showhideuser)?getAllRegisData.map((e) => {
+               (showhideuser)?getData.map((e) => {
                     return (
                         <Fragment key={e._id}>
                             <br></br>
                             <h1>{e.username}</h1>
                             <p>Email:{e.email} phone:{e.phone} password:{e.password}</p>
-                           <Delete
-                           getAllData = {getAllRegisData}
-                           setData = {setRegisData}
-                           id = {e._id}
-                           data = "regisData"
-                           />
 
-                            <button className="bg-bg" onClick={() => updateData(e._id)}>Update</button>
+                           <Delete
+                           getAllData = {getData}
+                           setData = {setGetData}
+                           id = {e._id}
+                           data = "regisData"/>
+ 
+                            <button className="bg-bg" onClick={() => editData(e._id)}>Edit</button>
                             <br></br>
                         </Fragment>
                     )
                 }):""
             }
+
+          
+
+            
+            
         </Fragment>
 
     )

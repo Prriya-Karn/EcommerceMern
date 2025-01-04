@@ -45,8 +45,9 @@ const AllContactData = () => {
                                 data = "conData"
                                 setData = {setCon}
                                 getAllData = {con}
-                                id = {e._id}
-                                />
+                                id = {e._id}/>
+
+                                <button className="bg-bg ml-5">Update</button>
                         </Fragment>
                     )
                 }) : ""

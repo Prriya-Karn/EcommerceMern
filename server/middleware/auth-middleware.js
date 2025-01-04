@@ -23,7 +23,7 @@ const authMiddleware = async(req,res,next)=>{
         req.token = userToken;
         req.isAdmin = verifyToken.isAdmin
 
-        // console.log("req.user",req.user)
+       console.log("req.user",req.user)
         // console.log("req.token",req.token)
         // console.log("req.isAdmin",req.isAdmin)
         next();

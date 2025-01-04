@@ -1,13 +1,25 @@
-import { Fragment } from "react";
-import { Outlet, NavLink} from "react-router-dom";
+import { Fragment, useContext } from "react";
+import { Outlet, NavLink, useNavigate} from "react-router-dom";
+import { AuthContext } from "../../tokenStore/Auth";
 
 const AdminLayout = () => {
+    const {isAdmin} = useContext(AuthContext);
+    // console.log(typeof(isAdmin))
+    const navigate = useNavigate();
     return (
         <Fragment>
-        <NavLink to="/admin/usersdata">AllUsersData</NavLink><br></br>
+        {
+            isAdmin == "true"?
+            <Fragment>
+            <NavLink to="/admin/usersdata">AllUsersData</NavLink><br></br>
         <NavLink to="/admin/contactdata">AllContactData</NavLink><br></br>
         <NavLink to="/admin/servicedata">AllServiceData</NavLink><br></br>
             <Outlet />
+            </Fragment>:
+            navigate("/")
+            
+        }
+        
         </Fragment>
     )
 }

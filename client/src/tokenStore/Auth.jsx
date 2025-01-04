@@ -8,8 +8,6 @@ const Auth = ({ children }) => {
     const [isAdmin, setIsAdmin] = useState("");
     // getuserData show on contact page:-
     const [con, setCon] = useState();
-    // getAllUserData that was registered in my website (for admin only):-
-    const [getData, setGetData] = useState([]);
    
 
     const serverToken = (userToken) => {
@@ -47,25 +45,6 @@ const Auth = ({ children }) => {
         }
     }
 
-    //-------------------------------- get all user data (for admin only) :-
-    const getAllUser = async () => {
-            try {
-                const data = await fetch(`${API}/api/admin/alluserdata`, {
-                    method: "GET",
-                    headers: {
-                        "Authorization" : `Bearer ${token}`
-                    }
-                });
-
-                const dataJson = await data.json()
-                setGetData(dataJson);
-                // console.log(getData)
-            } catch (error) {
-                console.log(error)
-            }
-        }
-
-
     const removeToken = () => {
         setToken(null);
         return localStorage.removeItem("authToken", token)
@@ -74,7 +53,6 @@ const Auth = ({ children }) => {
 
     useEffect(() => {
         verifyToken();
-        getAllUser();
     }, [token])     // Run whenever the token changes
 
 
@@ -86,12 +64,12 @@ const Auth = ({ children }) => {
 
 
     console.log("check",isAdmin)
-    console.log("getData",getData)
+ 
     
 
     return (
         <Fragment>
-            <AuthContext.Provider value={{ API, serverToken, token, getUserData, removeToken, con, isAdmin, getData}}>
+            <AuthContext.Provider value={{ API, serverToken, token, getUserData, removeToken, con, isAdmin}}>
                 {children}
             </AuthContext.Provider>
         </Fragment>
@@ -100,4 +78,3 @@ const Auth = ({ children }) => {
 
 export default Auth;
 export { AuthContext }
-
