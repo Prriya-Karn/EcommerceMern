@@ -31,6 +31,8 @@ const UploadClothingImage = ()=>{
                 },
                 body: formData
             })
+
+            
             const imageData = await imgSave.json();
             console.log("imgSave",imageData)
             setNewImage(imageData)

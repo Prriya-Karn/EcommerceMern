@@ -1,6 +1,8 @@
 import { Fragment, useContext, useEffect, useState } from "react"
 import { AuthContext } from "../../tokenStore/Auth"
 
+import Delimage from "./Delimage";
+
 
 const AllImages = ({NewImgData}) => {
     const { token, API } = useContext(AuthContext)
@@ -16,6 +18,7 @@ const AllImages = ({NewImgData}) => {
             })
             
             const img = await getAllImages.json();
+
             setAllImg(img);
             console.log("img",img)
         } catch (error) {
@@ -38,6 +41,9 @@ console.log("allImg",allImg)
     useEffect(() => {
         getImage()
     }, [])
+
+
+
     return (
         <Fragment>
             <h1>all images</h1>
@@ -48,7 +54,11 @@ console.log("allImg",allImg)
                         <Fragment key={e._id}>
                         <img src={`../../../public/images/${e.filename}`} alt="Image" />
                         <button className="bg-bg">Edit</button>
-                        <button className="ml-5 bg-bg">Delete</button>
+                       <Delimage
+                       setAllImg = {setAllImg}
+                       allImg = {allImg}
+                       id = {e._id}
+                       />
                         </Fragment>
                     )
                 })
