@@ -28,6 +28,8 @@ const multerMiddleware = () => {
         fileFilter,
         limits: { fileSize: 5 * 1024 * 1024 }
     })
+    // because of instance here cannot send req.file or req.body we have to call or return:-
+    
     return upload;
 
 }

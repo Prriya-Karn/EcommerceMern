@@ -48,7 +48,7 @@ app.use('/api/admin',AllUserRouter);
 app.use('/api/admin',AllContactDataRouter);
 app.use("/api/admin",conDataByIdRouter);
 app.use("/api/admin",updateConDataRouter);
-app.use("/api",imageUploadRouter);
+app.use("/api/admin",imageUploadRouter);
 
 
 // Static folder to serve uploaded images
