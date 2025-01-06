@@ -1,18 +1,18 @@
 import { Fragment, useContext, useState } from "react"
 import { AuthContext } from "../../tokenStore/Auth";
+import AllImages from "./AllImages";
+
 
 const UploadClothingImage = ()=>{
     const {token,API} = useContext(AuthContext);
     const [img,setImg] = useState();
-
+    const [newImage,setNewImage] = useState(false);
     const selectImg = (event)=>{
         setImg(event.target.files[0])
         
     }
     // console.log(img.type)
     
-
-   
     const submitImage = async()=>{
         try{
             const formData = new FormData();
@@ -31,17 +31,25 @@ const UploadClothingImage = ()=>{
                 },
                 body: formData
             })
+            const imageData = await imgSave.json();
+            console.log("imgSave",imageData)
+            setNewImage(imageData)
             if(imgSave.status == 400) return alert("your file is not image file")
                 else return alert("successfully uploaded image")
         }catch(error){
             console.log(error)
         }
+
+        
     }
     return(
         <Fragment>
         <h1>All images</h1>
         <input className="mt-5" onChange={selectImg} type="file"/>
         <button onClick={submitImage} className="bg-bg">upload</button>
+
+        <AllImages
+        NewImgData = {newImage}/>
         </Fragment>
     )
 }

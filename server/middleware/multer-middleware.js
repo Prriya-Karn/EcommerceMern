@@ -6,8 +6,8 @@ const multerMiddleware = () => {
 
     const storage = multer.diskStorage({
         destination: (req, file, cb) => {
-            console.log(path.join(__dirname, "../uploads"))
-            cb(null, path.join(__dirname, "../uploads"))
+            console.log(path.join(__dirname, "../../client/public/images"))
+            cb(null, path.join(__dirname, "../../client/public/images"))
         },
         filename: (req, file, cb) => {
             cb(null, Date.now() + "-" + file.originalname)
@@ -26,6 +26,7 @@ const multerMiddleware = () => {
     const upload = multer({
         storage,
         fileFilter,
+        // filesize 5 mb
         limits: { fileSize: 5 * 1024 * 1024 }
     })
     

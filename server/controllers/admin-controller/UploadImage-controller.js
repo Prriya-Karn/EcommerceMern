@@ -6,12 +6,12 @@ const uploadImageController = async(req,res,next)=>{
         const imgSaveInDb = new dbImage(imgData);
         imgSaveInDb.save()
        res.status(200).json({
-        msg : imgSaveInDb
+        filename : imgSaveInDb.filename,
+        _id : imgSaveInDb.id
        })
        console.log(imgSaveInDb)
     }catch(error){
-       res.status(400).json(error)
-       
+       res.status(400).json(error)  
     }
 }
 
