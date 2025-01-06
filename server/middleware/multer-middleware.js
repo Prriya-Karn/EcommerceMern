@@ -22,7 +22,7 @@ const multerMiddleware = () => {
         }
     }
 
-
+// this is upload instance here
     const upload = multer({
         storage,
         fileFilter,

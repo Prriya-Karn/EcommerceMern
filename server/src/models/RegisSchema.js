@@ -78,7 +78,7 @@ userRegisSchema.methods.generateToken = async function(){
             email : this.email,
             isAdmin : this.isAdmin
         },
-
+        
           // creating the signature
           process.env.secretKey,{
             expiresIn : "30d"
