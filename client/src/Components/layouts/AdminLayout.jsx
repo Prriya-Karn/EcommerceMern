@@ -14,6 +14,7 @@ const AdminLayout = () => {
             <NavLink to="/admin/usersdata">AllUsersData</NavLink><br></br>
         <NavLink to="/admin/contactdata">AllContactData</NavLink><br></br>
         <NavLink to="/admin/servicedata">AllServiceData</NavLink><br></br>
+        <NavLink to="/admin/uploadimages">UploadImages</NavLink>
             <Outlet />
             </Fragment>:
             navigate("/")

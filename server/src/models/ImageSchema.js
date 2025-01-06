@@ -1,53 +1,12 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 
-const imageSchema = new mongoose.Schema({
-    fieldname : {
-        type : String,
-        required : true
-    },
-    originalname : {
-        type : String,
-        required : true
-    },
-    encoding : {
-        type : String,
-        required : true
-    },
+const ImageSchema = new mongoose.Schema({
+    filename: { type: String}, // Save the unique file name
+    filePath: { type: String }, // Save the full file path
+    mimetype:{type:String},
+    uploadedAt: { type: Date, default: Date.now } // Optional: timestamp
+});
 
-    mimetype : {
-        type : String,
-        required : true
-    },
+const ImageModel = mongoose.model("imagefile", ImageSchema);
 
-    destination:{
-        type : String,
-        required : true
-    },
-    
-    filename : {
-        type : String,
-        required : true
-    },
-
-    path: {
-        type: String,
-        required : true
-    },
-    
-    
-    size : {
-        type : Number,
-        required : true
-    },
-    
-    
-    
-    uploadedAt: {
-        type: Date,
-        default: Date.now
-    }
-})
-
-
-const imageModel = new mongoose.model("imageFile",imageSchema);
-module.exports = imageModel;
+module.exports = ImageModel;

@@ -11,6 +11,7 @@ import AllUserData from "./Pages/AdminPanel/AllUserData";
 import AllContactData from "./Pages/AdminPanel/AllContactData";
 import AllServiceData from "./Pages/AdminPanel/AllServiceData";
 import Update from "./Pages/AdminPanel/Update";
+import UploadClothingImage from "./Pages/AdminPanel/UploadClothingImage";
 
 
 const App = () => {
@@ -34,6 +35,7 @@ const App = () => {
          <Route path="/admin/contactdata" element={<AllContactData/>}/>
          <Route path="/admin/servicedata" element={<AllServiceData/>}/>
          <Route path="/admin/usersdata/updatedata" element={<Update/>}/>
+         <Route path="/admin/uploadimages" element={<UploadClothingImage/>}/>
          </Route>
 
 

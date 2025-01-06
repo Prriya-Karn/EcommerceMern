@@ -16,7 +16,7 @@ const multerMiddleware = () => {
 
     const fileFilter = (req, file, cb) => {
         if (file.mimetype.startsWith("image/")) {
-            cb(null, true)
+            cb(null, true);
         } else {
             cb(new Error("only image file will be allowed"), false)
         }
@@ -28,6 +28,7 @@ const multerMiddleware = () => {
         fileFilter,
         limits: { fileSize: 5 * 1024 * 1024 }
     })
+    
     // because of instance here cannot send req.file or req.body we have to call or return:-
     
     return upload;
