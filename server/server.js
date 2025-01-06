@@ -19,6 +19,8 @@ const AllContactDataRouter = require("./router/admin-router/getAllContactData-ro
 const delConRouter = require("./router/admin-router/deleteContact-router");
 const conDataByIdRouter = require("./router/admin-router/getConDataById-router");
 const updateConDataRouter = require("./router/admin-router/updateConDataRouter");
+const imageUploadRouter = require("./router/admin-router/UploadImage-router");
+const path = require('path');
 
 // CORS POLICY :-
 
@@ -46,6 +48,12 @@ app.use('/api/admin',AllUserRouter);
 app.use('/api/admin',AllContactDataRouter);
 app.use("/api/admin",conDataByIdRouter);
 app.use("/api/admin",updateConDataRouter);
+app.use("/api",imageUploadRouter);
+
+
+// Static folder to serve uploaded images
+app.use('/uploads', express.static(path.join(__dirname, '../uploads')));
+
 app.use(errorMiddleware)
 
 
