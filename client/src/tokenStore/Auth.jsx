@@ -4,8 +4,8 @@ const AuthContext = createContext();
 const Auth = ({ children }) => {
     const API = import.meta.env.VITE_APP_URI_API
     const [token, setToken] = useState(localStorage.getItem("authToken"))
-    const [getUserData, setUserData] = useState("");
-    const [isAdmin, setIsAdmin] = useState("");
+    const [getUserData, setUserData] = useState();
+    const [isAdmin, setIsAdmin] = useState();
     // getuserData show on contact page:-
     const [con, setCon] = useState();
    
@@ -44,6 +44,8 @@ const Auth = ({ children }) => {
             console.log(error)
         }
     }
+
+    console.log(getUserData)
 
     const removeToken = () => {
         setToken(null);

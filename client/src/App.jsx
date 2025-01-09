@@ -15,14 +15,14 @@ import UploadClothingImage from "./Pages/AdminPanel/UploadClothingImage";
 
 
 const App = () => {
- 
+
   return (
     <Fragment>
       <BrowserRouter>
         <Navbar />
         <Routes>
 
-        
+
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
@@ -30,17 +30,17 @@ const App = () => {
 
 
           {/*-------------------route access by admin only----------------------*/}
-         <Route path="/admin" element={<AdminLayout/>}>
-         <Route path="/admin/usersdata" element={<AllUserData/>}/>
-         <Route path="/admin/contactdata" element={<AllContactData/>}/>
-         <Route path="/admin/servicedata" element={<AllServiceData/>}/>
-         <Route path="/admin/usersdata/updatedata" element={<Update/>}/>
-         <Route path="/admin/uploadimages" element={<UploadClothingImage/>}/>
-         </Route>
+          <Route path="/admin" element={<AdminLayout />}>
+            <Route path="/admin/usersdata" element={<AllUserData />} />
+            <Route path="/admin/contactdata" element={<AllContactData />} />
+            <Route path="/admin/servicedata" element={<AllServiceData />} />
+            <Route path="/admin/usersdata/updatedata" element={<Update />} />
+            <Route path="/admin/uploadimages" element={<UploadClothingImage />} />
+          </Route>
 
 
 
-         <Route path="*" element={<Error/>}/>
+          <Route path="*" element={<Error />} />
         </Routes>
       </BrowserRouter>
     </Fragment>

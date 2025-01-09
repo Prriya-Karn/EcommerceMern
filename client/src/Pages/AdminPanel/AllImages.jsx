@@ -2,12 +2,15 @@ import { Fragment, useContext, useEffect, useState } from "react"
 import { AuthContext } from "../../tokenStore/Auth"
 
 import Delimage from "./Delimage";
+import UpdateImg from "./UpdateImg";
+import { useNavigate } from "react-router-dom";
 
 
 const AllImages = ({NewImgData}) => {
     const { token, API } = useContext(AuthContext)
     const [allImg, setAllImg] = useState([]);
-
+    const navigate = useNavigate()
+    
     const getImage = async () => {
         try {
             const getAllImages = await fetch(`${API}/api/admin/getimage`, {
@@ -43,6 +46,22 @@ console.log("allImg",allImg)
     }, [])
 
 
+    const editImg = async(id)=>{
+        try{
+            const getImgById = await fetch(`${API}/api/admin/getimgbyid/${id}`,{
+                method : "GET",
+                headers : {
+                    "Authorization" : `Bearer ${token}`
+                }
+            })
+
+            const getImg = await getImgById.json();
+            console.log(getImg)
+        }catch(error){
+            console.log(error)
+        }
+    }
+  
 
     return (
         <Fragment>
@@ -53,7 +72,7 @@ console.log("allImg",allImg)
                         
                         <Fragment key={e._id}>
                         <img src={`../../../public/images/${e.filename}`} alt="Image" />
-                        <button className="bg-bg">Edit</button>
+                        <button onClick={()=>editImg(e._id)}>edit</button>
                        <Delimage
                        setAllImg = {setAllImg}
                        allImg = {allImg}

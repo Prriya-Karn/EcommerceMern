@@ -23,6 +23,8 @@ const imageUploadRouter = require("./router/admin-router/UploadImage-router");
 const path = require('path');
 const getImageRouter = require("./router/admin-router/getImage-router");
 const delImgRouter = require("./router/admin-router/deleteImg-router");
+const updateImgRouter = require("./router/admin-router/updateImage-router");
+const getImgByIdRouter = require("./router/admin-router/getImageById-router");
 
 // CORS POLICY :-
 
@@ -53,6 +55,8 @@ app.use("/api/admin",updateConDataRouter);
 app.use("/api/admin",imageUploadRouter);
 app.use("/api/admin",getImageRouter);
 app.use("/api/admin",delImgRouter);
+app.use("/api/admin",updateImgRouter);
+app.use("/api/admin",getImgByIdRouter);
 
 
 
