@@ -6,9 +6,10 @@ const Update = () => {
     const location = useLocation();
     const { API } = useContext(AuthContext);
     const ediRes = location.state;
-
+  
     const { token } = useContext(AuthContext);
-    console.log(ediRes.url)
+
+//  console.log(ediRes.imgData._id)
 
     const [userUp, setUserUp] = useState({
         username: ediRes.username,
@@ -16,8 +17,13 @@ const Update = () => {
         phone: ediRes.phone,
         message : ediRes.message
     })
+    const [upImg,setUpImg] = useState();
 
-    // console.log(ediRes)
+    const updateImg = (event)=>{
+        setUpImg(event.target.files[0])
+    }
+
+    // console.log(upImg)
     const upUserInp = (event) => {
         const name = event.target.name;
         const value = event.target.value;
@@ -32,17 +38,41 @@ const Update = () => {
 
     // update the user data (only for admin)
 
-    const updateData = async (e) => {
-        e.preventDefault()
+    const updateData = async () => {
+       
+        const formData = new FormData();
+        formData.append('image',upImg);
+        
         try {
-            const update = await fetch(`${API}/api/admin/${ediRes.url}/${ediRes.id}`, {
+            if(ediRes.url == "updateimg"){
+            const update = await fetch(`${API}/api/admin/updateimg/${ediRes.imgData._id}`, {
                 method: "PATCH",
+                
                 headers: {
                     "Authorization": `Bearer ${token}`,
-                    "Content-Type": "application/json"
                 },
-                body: JSON.stringify(userUp)
+                
+                body : formData
             });
+            if(update.status==200){
+                alert("update successfull")
+            }else{
+                alert("not update")
+            }
+
+            
+        }else{
+            const update = await fetch(`${API}/api/admin/updateimg/${ediRes.id}`, {
+                method: "PATCH",
+                
+                headers: {
+                    "Authorization": `Bearer ${token}`,
+                    "Content-Type" : "application/json"
+                },
+                
+                body : JSON.stringify(userUp)
+            });
+            console.log(update)
 
             const upRes = await update.json()
 
@@ -51,8 +81,7 @@ const Update = () => {
             } else if (upRes.msg.modifiedCount > 0) {
                 alert("updated Successfull")
             }
-
-
+        }
 
 
         } catch (error) {
@@ -65,7 +94,13 @@ const Update = () => {
 
     return (
         <Fragment>
-
+        {
+            (ediRes.url == "updateimg")?
+            <Fragment>
+            <input type="file" onChange={updateImg}/>
+            
+            </Fragment>:
+            <Fragment>
             <input onChange={upUserInp}
                 type="text"
                 name="username"
@@ -99,6 +134,10 @@ const Update = () => {
                         />
                     </Fragment>
             }
+            </Fragment>
+        }
+       
+           
 
 
             <br></br><br></br>
@@ -110,3 +149,4 @@ const Update = () => {
 }
 
 export default Update;
+

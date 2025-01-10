@@ -17,7 +17,7 @@ const AllImages = ({NewImgData}) => {
                 method: "GET",
                 headers: {
                     "Authorization": `Bearer ${token}`
-                }
+                }   
             })
             
             const img = await getAllImages.json();
@@ -56,7 +56,16 @@ console.log("allImg",allImg)
             })
 
             const getImg = await getImgById.json();
-            console.log(getImg)
+            const imgData = getImg[0]
+            
+            navigate('/admin/usersdata/updatedata',{
+                state : {
+                    imgData : imgData,
+                    url : "updateimg",
+                }
+                
+            })
+            
         }catch(error){
             console.log(error)
         }
