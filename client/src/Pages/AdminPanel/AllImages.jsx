@@ -2,7 +2,6 @@ import { Fragment, useContext, useEffect, useState } from "react"
 import { AuthContext } from "../../tokenStore/Auth"
 
 import Delimage from "./Delimage";
-import UpdateImg from "./UpdateImg";
 import { useNavigate } from "react-router-dom";
 
 
@@ -57,11 +56,14 @@ console.log("allImg",allImg)
 
             const getImg = await getImgById.json();
             const imgData = getImg[0]
-            
+            // console.log(imgData)
             navigate('/admin/usersdata/updatedata',{
                 state : {
                     imgData : imgData,
                     url : "updateimg",
+                    productName : imgData.productName,
+                    price : imgData.price,
+                    filename : imgData.filename
                 }
                 
             })
@@ -81,6 +83,8 @@ console.log("allImg",allImg)
                         
                         <Fragment key={e._id}>
                         <img src={`../../../public/images/${e.filename}`} alt="Image" />
+                        <h1>product name: {e.productName}</h1>
+                        <p>price : {e.price}</p>
                         <button onClick={()=>editImg(e._id)}>edit</button>
                        <Delimage
                        setAllImg = {setAllImg}

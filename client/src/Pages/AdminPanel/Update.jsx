@@ -6,10 +6,10 @@ const Update = () => {
     const location = useLocation();
     const { API } = useContext(AuthContext);
     const ediRes = location.state;
-  
+
     const { token } = useContext(AuthContext);
 
-//  console.log(ediRes.imgData._id)
+//  console.log(ediRes.imgData.filename)
 
     const [userUp, setUserUp] = useState({
         username: ediRes.username,
@@ -17,13 +17,30 @@ const Update = () => {
         phone: ediRes.phone,
         message : ediRes.message
     })
-    const [upImg,setUpImg] = useState();
+    const [upImg,setUpImg] = useState(null);
+ 
+    const [productInfo,setProInfo] = useState({
+        productName : ediRes.imgData.productName,
+        price : ediRes.imgData.price
+    })
 
     const updateImg = (event)=>{
-        setUpImg(event.target.files[0])
+        setUpImg(event.target.files[0])  
     }
 
-    // console.log(upImg)
+    const products = (event)=>{
+        const name = event.target.name;
+        const value = event.target.value;
+        setProInfo((pre)=>{
+            return{
+                ...pre,
+                [name] : value
+            }
+        })
+    }
+
+
+
     const upUserInp = (event) => {
         const name = event.target.name;
         const value = event.target.value;
@@ -41,7 +58,14 @@ const Update = () => {
     const updateData = async () => {
        
         const formData = new FormData();
-        formData.append('image',upImg);
+        
+            formData.append('image',upImg);
+        
+        
+        formData.append('productName',productInfo.productName);
+        formData.append('price',productInfo.price);
+
+      console.log(formData)
         
         try {
             if(ediRes.url == "updateimg"){
@@ -54,6 +78,8 @@ const Update = () => {
                 
                 body : formData
             });
+            const upres = await update.json();
+            console.log(upres)
             if(update.status==200){
                 alert("update successfull")
             }else{
@@ -97,8 +123,24 @@ const Update = () => {
         {
             (ediRes.url == "updateimg")?
             <Fragment>
-            <input type="file" onChange={updateImg}/>
-            
+            <input
+             type="file" 
+           
+             onChange={updateImg}
+             name = "file"/>
+             <br></br><br></br>
+            <input type="text"
+            value = {productInfo.productName}
+            name = "productName"
+             onChange={products}
+              placeholder="product name"/>
+              <br></br><br></br>
+
+            <input type="number"
+            value={productInfo.price}
+            name = "price"
+             onChange={products} 
+             placeholder="price"/>
             </Fragment>:
             <Fragment>
             <input onChange={upUserInp}
@@ -136,10 +178,6 @@ const Update = () => {
             }
             </Fragment>
         }
-       
-           
-
-
             <br></br><br></br>
 
             <button onClick={updateData}>Submit</button>

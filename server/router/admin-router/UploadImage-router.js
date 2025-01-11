@@ -7,6 +7,6 @@ const adminMiddleware = require('../../middleware/admin-middleware');
 const imageUploadRouter = express.Router();
 
 imageUploadRouter.route("/upload").post(authMiddleware,adminMiddleware,
-    multerMiddleware().single("image"),uploadImageController)
+    multerMiddleware().single('image'),uploadImageController)
 
 module.exports = imageUploadRouter;
