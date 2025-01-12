@@ -6,8 +6,8 @@ import Auth from './tokenStore/Auth.jsx'
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-  <Auth>
-  <App />
-  </Auth>
-    </StrictMode>,
+    <Auth>
+      <App />
+    </Auth>
+  </StrictMode>,
 )

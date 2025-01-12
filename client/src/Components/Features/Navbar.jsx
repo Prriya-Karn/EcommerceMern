@@ -8,8 +8,9 @@ import Logout from "../../Pages/Logout";
 const buttName = ["Login", "register", "Logout"];
 
 export const Navbar = () => {
+   
     const {isAdmin} = useContext(AuthContext);
-
+  
     const { getUserData } = useContext(AuthContext)
     console.log(getUserData)
 
@@ -17,11 +18,13 @@ export const Navbar = () => {
         <Fragment>
             <div className="main-navbar flex bg-slate-800
         lg:h-16 lg:bg-bodyColor lg:place-items-center text-lg cursor-pointer">
-                <div className="logo  lg:ml-8">
-                    <h1 className="font-roboto">Priya Store</h1>
+                <div className="font-sans text-base gap-5 lg:ml-8 flex">
+                    <h1 className="">Shop by category</h1>
+                    <h1>Shop by collection</h1>
+                    <h1>Our Story</h1>
                 </div>
                 <ul className="flex lg:gap-7 
-                   lg:ml-auto lg:mr-16 font-roboto">
+                   lg:ml-auto lg:mr-16 font-roboto">    
                    <NavLink to="/">
                    <li>Home</li>
                    </NavLink>
@@ -52,10 +55,11 @@ export const Navbar = () => {
                     }
                     <ul>
                    
+                    <NavLink to="/cart">
                     <li className="ml-5 mr-8">cart</li>
+                    </NavLink>
                     </ul>
                 </div>
-
             </div>
         </Fragment>
     )

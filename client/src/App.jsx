@@ -1,4 +1,4 @@
-import { Fragment } from "react";
+import { Fragment, useState } from "react";
 import Home from "./Pages/Home";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { Navbar } from "./Components/Features/Navbar";
@@ -12,10 +12,12 @@ import AllContactData from "./Pages/AdminPanel/AllContactData";
 import AllServiceData from "./Pages/AdminPanel/AllServiceData";
 import Update from "./Pages/AdminPanel/Update";
 import UploadClothingImage from "./Pages/AdminPanel/UploadClothingImage";
+import AddToCart from "./Pages/AddToCart";
+import Cart from "./Pages/Cart";
 
 
 const App = () => {
-
+  const [cartQuants, setCartQuant] = useState(0);
   return (
     <Fragment>
       <BrowserRouter>
@@ -24,11 +26,22 @@ const App = () => {
 
 
           <Route path="/" element={<Home />} />
+       
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="/contact" element={<Contact />} />
-
-
+          <Route
+            path="/cart/:fileName/:price/:productName/:id"
+            element={<Cart
+               setCartQuant={setCartQuant}
+               cartQuants={cartQuants} />}
+          />
+          <Route
+            path="/products/:fileName/:price/:productName"
+            element={<AddToCart
+               setCartQuant={setCartQuant}
+               cartQuants={cartQuants} />}
+          />
           {/*-------------------route access by admin only----------------------*/}
           <Route path="/admin" element={<AdminLayout />}>
             <Route path="/admin/usersdata" element={<AllUserData />} />
