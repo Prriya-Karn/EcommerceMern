@@ -23,7 +23,9 @@ export default {
       fontFamily: {
         roboto: ['"Roboto"', 'sans-serif'],
       },
-        
+        screens: {
+        'xs': '260px', // Add a custom breakpoint
+      },
       },
     },
     plugins: [],

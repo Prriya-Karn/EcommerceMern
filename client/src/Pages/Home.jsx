@@ -3,6 +3,7 @@ import '../style/home.css';
 import { AuthContext } from "../tokenStore/Auth";
 import { GetAlImg } from "./GetAlImg";
 
+// include("../../public/image/img14.webp")
 const Home = ()=>{
     const {getUserData} = useContext(AuthContext);
     useEffect(() => {
@@ -10,7 +11,12 @@ const Home = ()=>{
     }, [getUserData]);
     return(
         <Fragment>
-        <nav className="main-nav">hi{getUserData}</nav>
+       {/* <nav className="main-nav">hi{getUserData}</nav> */}
+        { /* hero image */}
+       <div className="-mt-10 lg:block hidden">
+       <img src="../../public/image/img14.webp"/>
+       </div>
+
         <GetAlImg/>
         </Fragment>
     )

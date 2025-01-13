@@ -27,6 +27,11 @@ export const GetAlImg = () => {
     }, [])
     return (
         <Fragment>
+        <div className='lg:text-center mt-12'>
+        <h1 className='lg:text-5xl mb-5 font-medium'>HEAVY WEIGHT JACKETS</h1>
+        <p>270 GSM | ACID DISTRESSED</p>
+        </div>
+        
             {
 
                 imgData.map((e) => {
