@@ -11,7 +11,7 @@ const AllImages = ({NewImgData}) => {
     const navigate = useNavigate()
     
     const getImage = async () => {
-        try {
+        try {   
             const getAllImages = await fetch(`${API}/api/admin/getimage`, {
                 method: "GET",
                 headers: {
