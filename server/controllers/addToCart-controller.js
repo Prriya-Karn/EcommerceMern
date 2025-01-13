@@ -10,9 +10,10 @@ const addToCartController = async(req,res)=>{
             const saveInDb = new cartDb({
                 quantity:req.body.quantity,
                 price:priceRes,
-                productName:req.body.productName
-            });
-            saveInDb.save();
+                productName:req.body.productName,
+                productImage : req.body.productImage || "https://example.com/default-image.jpg",
+            })
+            await saveInDb.save();
         res.status(200).json({
             msg : saveInDb
         })
@@ -22,7 +23,7 @@ const addToCartController = async(req,res)=>{
             // updating existing data due to unique productName not throw error and updation on existing data
            findProductName.quantity+=req.body.quantity;
             findProductName.price+=(req.body.price * req.body.quantity);
-            findProductName.save()
+            await findProductName.save()
             res.status(200).json({
                
                 msg : findProductName

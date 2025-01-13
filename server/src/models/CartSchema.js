@@ -10,7 +10,13 @@ const CartSchema = new mongoose.Schema({
     productName : {
         type:String,
         unique:true
-    }
+    },
+    
+        productImage:{
+            type : String,
+            default: "https://example.com/default-image.jpg",
+        }
+    
 })
 
 const cartModel = mongoose.model("cartData",CartSchema);

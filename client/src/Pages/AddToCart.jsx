@@ -39,7 +39,9 @@ const AddToCart = ({ setCartQuant, cartQuants }) => {
                 body : JSON.stringify({
                     quantity,     
                     price : numericPrice,
-                    productName
+                    productName,
+                    productImage : fileName
+                    
                 })
             })
             

@@ -39,9 +39,11 @@ import { AuthContext } from '../tokenStore/Auth';
         cartData.map((e)=>{
             return(
                 <Fragment key={e._id}>
+                <img src={`/images/${e.productImage}`}/>
                 <h1>{e.price}</h1>
                 <h1>{e.quantity}</h1>
                 <h1>{e.productName}</h1>
+                
                 <br></br>
                 </Fragment>
             )
