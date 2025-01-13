@@ -7,12 +7,12 @@ import Logout from "../../Pages/Logout";
 
 const buttName = ["Login", "register", "Logout"];
 
-export const Navbar = () => {
+export const Navbar = ({totalItems}) => {
    
     const {isAdmin} = useContext(AuthContext);
   
     const { getUserData } = useContext(AuthContext)
-    console.log(getUserData)
+    console.log(getUserData);
 
     return (
         <Fragment>
@@ -55,9 +55,11 @@ export const Navbar = () => {
                     }
                     <ul>
                    
-                    <NavLink to="/cart">
-                    <li className="ml-5 mr-8">cart</li>
+                    <NavLink to="/cart/:fileName/:price/:productName/:id">
+                    <li className="ml-5 mr-8">cart : {totalItems}</li>
                     </NavLink>
+
+
                     </ul>
                 </div>
             </div>

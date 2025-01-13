@@ -18,10 +18,13 @@ import Cart from "./Pages/Cart";
 
 const App = () => {
   const [cartQuants, setCartQuant] = useState(0);
+  const [totalItems,setTotalItem] = useState(0);
+    
   return (
     <Fragment>
       <BrowserRouter>
-        <Navbar />
+        <Navbar
+        totalItems = {totalItems} />
         <Routes>
 
 
@@ -34,7 +37,9 @@ const App = () => {
             path="/cart/:fileName/:price/:productName/:id"
             element={<Cart
                setCartQuant={setCartQuant}
-               cartQuants={cartQuants} />}
+               cartQuants={cartQuants} 
+               setTotalItem = {setTotalItem}
+               totalItems = {totalItems}/>}
           />
           <Route
             path="/products/:fileName/:price/:productName"
@@ -42,6 +47,7 @@ const App = () => {
                setCartQuant={setCartQuant}
                cartQuants={cartQuants} />}
           />
+
           {/*-------------------route access by admin only----------------------*/}
           <Route path="/admin" element={<AdminLayout />}>
             <Route path="/admin/usersdata" element={<AllUserData />} />

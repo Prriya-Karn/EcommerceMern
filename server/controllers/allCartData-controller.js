@@ -6,6 +6,7 @@ const allCartDataController = async(req,res)=>{
         res.status(200).json({
             msg : getCartData
         })
+        console.log(getCartData)
     }catch(error){
         console.log(error)
     }
