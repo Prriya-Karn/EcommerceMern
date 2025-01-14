@@ -1,18 +1,15 @@
 import { Fragment, useContext } from "react"
 import "../../style/navbar.css";
-// import Button from "../UI/Button";
-// import { NavLink } from 'react-router-dom';
-// import { AuthContext } from "../../tokenStore/Auth";
-// import Logout from "../../Pages/Logout";
-
-// const buttName = ["Login", "register", "Logout"];
+import { NavLink } from 'react-router-dom';
+import { AuthContext } from "../../tokenStore/Auth";
+import Logout from "../../Pages/Logout";
 
 export const Navbar = ({totalItems}) => {
    
-    // const {isAdmin} = useContext(AuthContext);
+    const {isAdmin} = useContext(AuthContext);
   
-    // const { getUserData } = useContext(AuthContext)
-    // console.log(getUserData);
+    const { getUserData } = useContext(AuthContext)
+    console.log(getUserData);
 
 //     sm (640px ya usse above): Small devices, such as phones in portrait mode. (hamburger)
 // md (768px): Tablets and small devices in landscape mode.  (hamburger)
@@ -23,7 +20,6 @@ export const Navbar = ({totalItems}) => {
 
 // And if no prefix then they are  for mobile  (hamburger)
 
-// require("../../../public/image/shopping-bag.png")
 
     return (
         <Fragment>
@@ -70,12 +66,14 @@ export const Navbar = ({totalItems}) => {
     
         {/* Logo Section */}
         <div className="logo  lg:-ml-52 lg:flex lg:justify-center">
+        <NavLink to="/">
           <img
             src="../../../public/image/logo.png"
             alt="Logo"
             className="lg:w-20 lg:h-auto md:h-16 w-16 h-auto
             sm:w-16 sm:h-auto" 
           />
+          </NavLink>
         </div>
     
         {/* Cart Section */}
@@ -87,18 +85,42 @@ export const Navbar = ({totalItems}) => {
           />
 
           <div className="userCart flex md:gap-6 mr-10">
-          <img
+          {
+            getUserData == undefined ? 
+            <NavLink to="/login">
+            <img
             src="../../../public/image/people.png"
             alt="User"
             className="lg:w-7 lg:h-7 md:w-7 md:h-7 md:block
             hidden"
           />
-          <img
-            src="../../../public/image/shopping-bag.png"
-            alt="Cart"
-            className="lg:w-7 lg:h-7 md:w-7 md:h-7  w-6 h-6 
-            sm:w-7 sm:h-7"
-          />
+            </NavLink> :
+                <Logout />
+        }
+        {
+          isAdmin=="true"?
+          <Fragment>
+          <ul className="ml-5"><NavLink to="/admin">
+          <img className="lg:w-7 lg:h-7 md:w-7 md:h-7 md:block
+          hidden"
+           src="../../../public/image/administrator.png"/>
+          </NavLink></ul>
+          </Fragment>:""
+          
+      }
+
+      
+      <NavLink to="/cart/:fileName/:price/:productName/:id">
+      <div></div>
+      <img
+      src="../../../public/image/shopping-bag.png"
+      alt="Cart"
+      className="lg:w-7 lg:h-7 md:w-7 md:h-7  w-6 h-6 
+      sm:w-7 sm:h-7"
+    />
+      </NavLink>
+
+         
           </div>
 
         </div>
@@ -146,26 +168,26 @@ export const Navbar = ({totalItems}) => {
 //                 </ul>
 //                 <div className="lg:flex lg:mr-5">
 
-//                     {
-//                         getUserData == undefined ? <NavLink to="/login">
-//                             <Button 
-//                             buttName={buttName[0]}
-//                             className="bg-bg lg:p-2"/>
-//                         </NavLink> :
-//                             <Logout />
-//                     }
-//                     {
-//                         isAdmin=="true"?
-//                         <Fragment>
-//                         <ul className="ml-5"><NavLink to="/admin"><li>Admin</li></NavLink></ul>
-//                         </Fragment>:""
+                    // {
+                    //     getUserData == undefined ? <NavLink to="/login">
+                    //         <Button 
+                    //         buttName={buttName[0]}
+                    //         className="bg-bg lg:p-2"/>
+                    //     </NavLink> :
+                    //         <Logout />
+                    // }
+                    // {
+                    //     isAdmin=="true"?
+                    //     <Fragment>
+                    //     <ul className="ml-5"><NavLink to="/admin"><li>Admin</li></NavLink></ul>
+                    //     </Fragment>:""
                         
-//                     }
+                    // }
 //                     <ul>
                    
-//                     <NavLink to="/cart/:fileName/:price/:productName/:id">
-//                     <li className="ml-5 mr-8">cart : {totalItems}</li>
-//                     </NavLink>
+                    // <NavLink to="/cart/:fileName/:price/:productName/:id">
+                    // <li className="ml-5 mr-8">cart : {totalItems}</li>
+                    // </NavLink>
 
 
 //                     </ul>

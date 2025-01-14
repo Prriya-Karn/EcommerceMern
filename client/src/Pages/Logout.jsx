@@ -1,9 +1,9 @@
-import { Fragment, useContext, useEffect } from 'react';
-import Button from '../Components/UI/Button';
+import { Fragment, useContext} from 'react';
+
 import { AuthContext } from '../tokenStore/Auth';
 import { NavLink } from 'react-router-dom';
 import Login from './Login';
-const buttName = ["logout"]
+
 const Logout = ()=>{
 
     const rem = useContext(AuthContext);
@@ -17,7 +17,10 @@ const Logout = ()=>{
         <Fragment>
     {
         getUserData==undefined?<NavLink to="login"><Login/></NavLink>:
-        <button onClick={logout}>Logout</button>
+        <button onClick={logout}><img src='../../public/image/logout.png'
+        className="lg:w-6 lg:h-6 
+        md:w-7 md:h-7 md:block
+        hidden"/></button>
     }
         
         </Fragment>

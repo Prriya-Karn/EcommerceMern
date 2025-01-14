@@ -17,6 +17,10 @@ const Home = ()=>{
        <img src="../../public/image/img14.webp"/>
        </div>
 
+       <div className="sm:-mt-14 md:-mt-14 lg:hidden block bg-orange-400">
+       <img src="../../public/image/WhatsApp Image 2025-01-14 at 2.17.54 AM.jpeg"
+       className="w-full"/>
+       </div>
         <GetAlImg/>
         </Fragment>
     )

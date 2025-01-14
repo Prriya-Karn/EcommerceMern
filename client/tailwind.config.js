@@ -1,4 +1,6 @@
 /** @type {import('tailwindcss').Config} */
+import daisyui from "daisyui";
+
 export default {
     content: [
       "./index.html",
@@ -15,6 +17,9 @@ export default {
           "500" : "500",
           "6/2" : "6/5"
         },
+        height:{
+          "98" : "98"
+        },
         colors: {
         bg : "#FF735C",
         bodyColor : "#F3F4F6"
@@ -28,7 +33,10 @@ export default {
       },
       },
     },
-    plugins: [],
+    plugins: [daisyui], // Add DaisyUI as a plugin
+   daisyui: {
+  themes: ["light"], // Use the light theme only
+},
   }
   
   
