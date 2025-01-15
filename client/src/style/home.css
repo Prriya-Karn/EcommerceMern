@@ -4,7 +4,25 @@
 
 
 
+@layer utilities {
+    .animate-carousel {
+      animation: slide 9s infinite;
+    }
+  
+    @keyframes slide {
+      0%, 33% {
+        transform: translateX(0);
+      }
+      33.01%, 66% {
+        transform: translateX(-100%);
+      }
+      66.01%, 100% {
+        transform: translateX(-200%);
+      }
+    }
+  }
 
+  
 .centered-container {
     @apply flex items-center justify-center h-screen;
 }
