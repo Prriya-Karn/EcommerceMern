@@ -2,6 +2,7 @@ import  { Fragment, useContext, useEffect } from "react";
 import '../style/home.css';
 import { AuthContext } from "../tokenStore/Auth";
 import { GetAlImg } from "./GetAlImg";
+import { UniqueClothe } from "./UniqueClothe";
 
 // include("../../public/image/img14.webp")
 const Home = ()=>{
@@ -22,6 +23,7 @@ const Home = ()=>{
        className="w-full"/>
        </div>
         <GetAlImg/>
+        <UniqueClothe/>
         </Fragment>
     )
 }

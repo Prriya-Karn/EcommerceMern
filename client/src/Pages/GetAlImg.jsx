@@ -146,7 +146,7 @@ export const GetAlImg = () => {
           </div>
 
 
-          <div className="carousel flex mb-36 h-auto p-5">
+          <div className="carousel flex mb-6 h-auto p-5">
 
           {
 
