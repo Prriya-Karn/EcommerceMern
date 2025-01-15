@@ -1,5 +1,9 @@
 import { Fragment, useContext, useState } from "react"
 import { AuthContext } from "../tokenStore/Auth";
+import { Heading } from "../Components/UI/Heading";
+import Input from "../Components/UI/Input";
+import Button from "../Components/UI/Button";
+import { Textarea } from "../Components/UI/Textarea";
 
 const Contact = () => {
     const { API, con } = useContext(AuthContext);
@@ -29,6 +33,7 @@ const Contact = () => {
         setSub(false)
     }
 
+
     const handleSubmit = async(event) => {
         event.preventDefault()  // prevent from refreshing the page
         try {
@@ -54,19 +59,58 @@ const Contact = () => {
     }
     return (
         <Fragment>
+<div className="flex justify-center items-center">
+                <div className="md:w-full w-full lg:w-3/4 xl:w-1/2  rounded-lg p-8">
 
-            <form onSubmit={handleSubmit}>
-                <input type="text" placeholder="enter your name"
-                    name="username" value={contactData.username} onChange={handleInputChange} />
-                <input type="email" placeholder="enter your email"
-                    name="email" value={contactData.email} onChange={handleInputChange} />
-                <input type="text" placeholder="enter your message"
-                    name="message" value={contactData.message} 
-                    onChange={handleInputChange} />
+                    <Heading
+                    head = "CONTACT US"/>
+
+            <form className="flex flex-col items-center" onSubmit={handleSubmit}>
+            
+            <div className="w-80 sm:w-80  justify-center   flex items-center 
+                     md:w-2/3
+                     lg:w-2/3">
+                     
+                    <Input
+                        logData={handleInputChange}
+                        type="text"
+                        name="username" 
+                        value={contactData.username}
+                        placeholder="enter your name" />
+                        </div>
+
+                        <div className="w-80 sm:w-80   justify-center   flex items-center 
+                        md:w-2/3
+                        lg:w-2/3">
+                        
+                       <Input
+                           logData={handleInputChange}
+                           type="email"
+                           name="email" 
+                           value={contactData.email}
+                           placeholder="enter your email" />
+                           </div>
 
 
-                <button type="submit">Submit</button>
+                           <div className="w-80 sm:w-80  justify-center   flex items-center 
+                        md:w-2/3
+                        lg:w-2/3">
+                        
+                       <Textarea
+                           logData={handleInputChange}
+                           type="text"
+                           name="message" 
+                           value={contactData.message}
+                           placeholder="enter your message" />
+                           </div>
+
+                           <Button
+                           onClickFun={handleSubmit}
+                           buttName="Submit"
+                           className="loginButt" />
             </form>
+            </div>
+            </div>
         </Fragment>
     )
 }

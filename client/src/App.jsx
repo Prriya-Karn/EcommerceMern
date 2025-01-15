@@ -14,6 +14,7 @@ import Update from "./Pages/AdminPanel/Update";
 import UploadClothingImage from "./Pages/AdminPanel/UploadClothingImage";
 import AddToCart from "./Pages/AddToCart";
 import Cart from "./Pages/Cart";
+import { Footer } from "./Components/Features/Footer";
 
 
 const App = () => {
@@ -61,6 +62,7 @@ const App = () => {
 
           <Route path="*" element={<Error />} />
         </Routes>
+        <Footer/>
       </BrowserRouter>
     </Fragment>
   )

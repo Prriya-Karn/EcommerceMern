@@ -1,10 +1,10 @@
 import { Fragment, useContext, useState } from "react";
-import img from "../../public/images/login.jpg"
 
 import { NavLink, useNavigate } from "react-router-dom";
 import { AuthContext } from "../tokenStore/Auth";
 import Input from "../Components/UI/Input";
 import Button from "../Components/UI/Button";
+import { Heading } from "../Components/UI/Heading";
 
 
 const Login = () => {
@@ -62,17 +62,12 @@ const Login = () => {
     return (
         <Fragment>
             <div className="flex justify-center items-center">
-
-
-
                 <div className="md:w-full w-full lg:w-3/4 xl:w-1/2  rounded-lg p-8">
-                    <div className="mb-10">
-                        <h1 className="text-center font-semibold text-black
-                        md:text-5xl lg:text-5xl sm:text-3xl text-3xl
-                        ">Login</h1>
-                        <p className="text-center sm:text-sm md:text-xl lg:text-xl md:mt-5 sm:mt-2 mt-2 text-black">
-                        Please enter your e-mail and password:</p>
-                    </div>
+
+                    <Heading
+                    head = "Login"
+                    subHead = "Please enter your e-mail and password:"
+                    />
 
                     <form className="flex flex-col items-center">
 
@@ -129,39 +124,3 @@ const Login = () => {
 }
 
 export default Login;
-
-
-
-// <Input
-// logData={logData}
-// type="email"
-// name="email"
-// value={log.Email}
-// placeholder="email"/>
-
-// <Input logData={logData}
-// type={(hidePass == true) ? "Password" : "text"}
-// name="password"
-// value={log.Password}
-// placeholder="password"/>
-
-// <Button
-// buttName="👁️"
-// onClickFun={showHidePass}
-// className="bg-none" />
-
-// <div className="mt-6">
-// <Button
-//     onClickFun={subLog}
-//     buttName="click"
-//     className="bg-bg" />
-// </div>
-
-// <div className="lg:mt-5">
-// <h4>New Customer?
-//     <NavLink to="/register">
-//         <span className="lg:ml-2 underline underline-offset-4 text-bg">
-//             Create an account
-//         </span>
-//     </NavLink></h4>
-// </div>
