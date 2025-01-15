@@ -11,7 +11,8 @@ export const Navbar = ({totalItems}) => {
     const { getUserData } = useContext(AuthContext)
     console.log(getUserData);
 
-//     sm (640px ya usse above): Small devices, such as phones in portrait mode. (hamburger)
+
+// sm (640px ya usse above): Small devices, such as phones in portrait mode. (hamburger)
 // md (768px): Tablets and small devices in landscape mode.  (hamburger)
 
 // lg (1024px): Laptops and medium-sized devices. 
@@ -111,13 +112,20 @@ export const Navbar = ({totalItems}) => {
 
       
       <NavLink to="/cart/:fileName/:price/:productName/:id">
-      <div></div>
+      <div className="flex">
       <img
       src="../../../public/image/shopping-bag.png"
       alt="Cart"
       className="lg:w-7 lg:h-7 md:w-7 md:h-7  w-6 h-6 
       sm:w-7 sm:h-7"
     />
+    <div className="circle bg-black 
+     text-white rounded-full border-2 
+     h-7 w-7 -ml-3 -mt-2">
+      <h1 className="text-xs font-bold text-center mt-1">{totalItems}</h1>
+      </div>
+      </div>
+      
       </NavLink>
 
          
