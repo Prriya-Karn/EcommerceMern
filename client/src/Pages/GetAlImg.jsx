@@ -64,7 +64,7 @@ export const GetAlImg = () => {
                 {/* Added background color and padding to card-body */}
                 <div className="bg-white rounded-b-lg 
                 p-1
-                lg:p-4
+                lg:p-4a
                  md:p-2">
                   <h2 className="text-center md:text-base text-sm font-medium">{e.productName}</h2>
                   <p className='text-center mt-1'>{e.price}</p>

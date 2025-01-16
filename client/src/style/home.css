@@ -22,7 +22,29 @@
     }
   }
 
+
   
+  @layer utilities {
+    /* Hide scrollbar for Chrome, Safari and Opera */
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+    /* Hide scrollbar for IE, Edge and Firefox */
+  .no-scrollbar {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+  }
+  /* Show scrollbar */
+  .scrollbar::-webkit-scrollbar {
+    display: block;
+  }
+  .scrollbar {
+    -ms-overflow-style: auto;  /* IE and Edge */
+    scrollbar-width: auto;  /* Firefox */
+  }
+}
+
+
 .centered-container {
     @apply flex items-center justify-center h-screen;
 }
@@ -35,3 +57,4 @@
          xl:bg-yellow-600 xl:w-36 xl:h-36
          2xl:bg-green-700  2xl:w-1/2 2xl:h-36
 }
+
