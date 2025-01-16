@@ -3,69 +3,88 @@ import '../style/home.css';
 import { AuthContext } from "../tokenStore/Auth";
 import { GetAlImg } from "./GetAlImg";
 import { UniqueClothe } from "./UniqueClothe";
-import 'flowbite';
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+import Slider from "react-slick";
+import "../style/home.css";
+
 
 const Home = ()=>{
     const {getUserData} = useContext(AuthContext);
     useEffect(() => {
         console.log("userdata", getUserData);
     }, [getUserData]);
+
+    // React Slick settings
+    const settings = {
+        dots: true, // Display dots for navigation
+        infinite: true, // Infinite scrolling
+        speed: 200, // Transition speed
+        slidesToShow: 1, // Number of slides to show
+        slidesToScroll: 1, // Number of slides to scroll
+        autoplay: true, // Enable autoplay
+        autoplaySpeed: 2000, // Time between slides in autoplay
+        arrows: true, // Show navigation arrows
+        pauseOnHover: false,
+        dotsClass: "slick-dots slick-dots-numbered", 
+    };
+
+  
     return(
         <Fragment>
-       {/* <nav className="main-nav">hi{getUserData}</nav> */}
-        { /* hero image */}
-        
-      { /*<div className="-mt-10 lg:block hidden">
-       <img src="../../public/image/img14.webp"/>
-       </div>*/}
 
        <div className="sm:-mt-14 md:-mt-14 lg:hidden block bg-orange-400">
        <img src="../../public/image/WhatsApp Image 2025-01-14 at 2.17.54 AM.jpeg"
        className="w-full"/>
        </div>
 
-       <div className="relative lg:block hidden w-full -mt-10" data-carousel="slide">
-      <div className="relative h-[900px] overflow-hidden rounded-lg">
-        
-        <div className="hidden duration-700 -mt-36 ease-in-out" data-carousel-item>
-          <img
-            src="../../public/image/Feel_the_Luxury_of_Rabari_Desktop.webp"
-            className="absolute block w-full object-cover -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2"
-            alt="Slide 2"
-          />
-        </div>
-        <div className="hidden duration-700 -mt-36 ease-in-out" data-carousel-item>
-          <img
-            src="../../public/image/The_Urban_Fade_Desktop_Banner__2.webp"
-            className="absolute block w-full object-cover -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2"
-            alt="Slide 3"
-          />
-        </div>
-        <div className="hidden duration-700 -mt-36 ease-in-out" data-carousel-item>
-          <img
-            src="../../public/image/Feel_the_Luxury_of_Rabari_Desktop.webp"
-            className="absolute block w-full object-cover -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2"
-            alt="Slide 4"
-          />
-        </div>
-        <div className="hidden duration-700 -mt-36 ease-in-out" data-carousel-item>
-          <img
-            src="../../public/image/img14.webp"
-            className="absolute block w-full object-cover -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2"
-            alt="Slide 5"
-          />
-        </div>
-        <div className="hidden duration-700 -mt-36 ease-in-out" data-carousel-item>
-          <img
-            src="../../public/image/The_Urban_Fade_Desktop_Banner__2.webp"
-            className="absolute block w-full object-cover -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2"
-            alt="Slide 3"
-          />
-        </div>
-      </div>
-     
-    </div>
 
+       {/*carousel effect */}
+
+
+
+         {/* React Slick Carousel */}
+<div className="-mt-10 overflow-hidden lg:block hidden">
+<Slider {...settings}>
+    <div className="">
+        <img
+            src="../../public/image/Feel_the_Luxury_of_Rabari_Desktop.webp"
+            className="w-full h-auto object-cover"
+            alt="Slide 1"
+        />
+    </div>
+    <div>
+        <img
+            src="../../public/image/The_Urban_Fade_Desktop_Banner__2.webp"
+            className="w-full h-auto object-cover"
+            alt="Slide 2"
+        />
+    </div>
+    <div>
+        <img
+            src="../../public/image/Feel_the_Luxury_of_Rabari_Desktop.webp"
+            className="w-full h-auto object-cover"
+            alt="Slide 3"
+        />
+    </div>
+    <div>
+        <img
+            src="../../public/image/img14.webp"
+            className="w-full h-auto object-cover"
+            alt="Slide 4"
+        />
+    </div>
+    <div>
+        <img
+            src="../../public/image/The_Urban_Fade_Desktop_Banner__2.webp"
+            className="w-full h-auto object-cover"
+            alt="Slide 5"
+        />
+    </div>
+</Slider>
+</div>
+
+    
 
 
         <GetAlImg/>

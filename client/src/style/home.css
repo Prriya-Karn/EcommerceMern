@@ -23,7 +23,30 @@
   }
 
 
+  .slick-dots-numbered {
+    display: flex;
+    position: relative;
+    justify-content: center; /* Center dots horizontally */
+    top: 40rem; /* Adjust based on carousel height */
+    list-style: none;
+    gap: 1rem; /* Add spacing between dots */
+    padding: 0.5rem 1rem; /* Add padding around dots */
+}
+
+.slick-dots-numbered li {
+    width: 20rem; /* Increase circle size */
+    height: 20rem;
+   
   
+    cursor: pointer;
+    background-color: none; /* No fill color inside the circle */
+    transition: transform 0.3s ease, background-color 0.3s ease; /* Smooth transition */
+}
+
+
+
+
+
   @layer utilities {
     /* Hide scrollbar for Chrome, Safari and Opera */
     .no-scrollbar::-webkit-scrollbar {
