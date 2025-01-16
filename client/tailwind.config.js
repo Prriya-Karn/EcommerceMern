@@ -27,6 +27,7 @@ export default {
         },
         colors: {
         bg : "#FF735C",
+        footerBg:"#F2F2F2",
         bodyColor : "#F3F4F6"
         
       },

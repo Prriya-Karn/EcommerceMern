@@ -4,7 +4,7 @@ import { NavLink } from 'react-router-dom'
 export const Footer = () => {
     return (
         <Fragment>
-            <div className='bg-slate-200 w-full lg:mt-10 lg:h-full md:mt-32 sm:mt-36 h-30 mt-20'>
+            <div className='bg-footerBg w-full lg:mt-10 lg:h-full md:mt-32 sm:mt-36 h-30 mt-20'>
             <div className='flex justify-center'>
             
             <div className='sm:mt-5 mb-2 mt-5 md:h-80 h-36  sm:w-1/2 w-56 p-3'>

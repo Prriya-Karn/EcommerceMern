@@ -69,7 +69,7 @@ const Login = () => {
                     subHead = "Please enter your e-mail and password:"
                     />
 
-                    <form className="flex flex-col items-center">
+                    <div className="flex flex-col items-center">
 
                     <div className="w-80 sm:w-80   justify-center   flex items-center 
                      md:w-2/3
@@ -81,7 +81,7 @@ const Login = () => {
                         value={log.Email}
                         placeholder="E-mail" />
                         </div>
-
+                        
 
                        
                     <div className="flex  items-center justify-center w-80 sm:w-80 md:w-2/3 lg:w-2/3 mb-5">
@@ -98,14 +98,15 @@ const Login = () => {
                             onClickFun={showHidePass}
                             className="bg-bg"/>
                             </div>
+                            </div>
 
-
+                            <div className="flex flex-col items-center">
                     <Button
                         onClickFun={subLog}
                         buttName="Login"
                         className="loginButt" />
 
-                        </form>
+                        </div>
 
                     <div className="text-center text-sm md:text-base lg:text-base">
                         <h4>New Customer?
