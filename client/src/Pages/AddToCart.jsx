@@ -75,7 +75,7 @@ const AddToCart = ({ setCartQuant, cartQuants }) => {
 
 
                     {/*------images--------*/}
-                    <div className='lg:h-1/2 lg:w-2/3 lg:ml-28 lg:mr-10
+                    <div className='lg:h-1/2 lg:w-[60vw] xl:w-[50vw] 2xl:w-[50vw] xl:ml-56 lg:ml-20 lg:mr-10
                             md:ml-32 md:mr-32 md:w-2/3
                              sm:ml-20 sm:w-3/4 sm:mr-20 
                              w-full
@@ -83,7 +83,7 @@ const AddToCart = ({ setCartQuant, cartQuants }) => {
 
 
                         <div className="mt-0 mr-3 hidden sm:flex sm:flex-col h-[100vh]
-                             sm:h-[105vh] md:h-[118vh] gap-2 overflow-x-auto no-scrollbar">
+                             sm:h-[105vh] md:h-[118vh] lg:h-[90vh] gap-2 overflow-x-auto no-scrollbar">
 
                             <div className="cursor-pointer rounded-md">
                                 <img

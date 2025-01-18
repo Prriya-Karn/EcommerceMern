@@ -19,34 +19,37 @@ import { Footer } from "./Components/Features/Footer";
 
 const App = () => {
   const [cartQuants, setCartQuant] = useState(0);
-  const [totalItems,setTotalItem] = useState(0);
-    
+  const [totalItems, setTotalItem] = useState(0);
+
   return (
     <Fragment>
       <BrowserRouter>
         <Navbar
-        totalItems = {totalItems} />
+          totalItems={totalItems} />
         <Routes>
 
 
           <Route path="/" element={<Home />} />
-       
+
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="/contact" element={<Contact />} />
           <Route
             path="/cart/:fileName/:price/:productName/:id"
-            element={<Cart
-               setCartQuant={setCartQuant}
-               cartQuants={cartQuants} 
-               setTotalItem = {setTotalItem}
-               totalItems = {totalItems}/>}
+            element={
+              <Cart
+                setCartQuant={setCartQuant}
+                cartQuants={cartQuants}
+                setTotalItem={setTotalItem}  // Ensure this is passed correctly
+                totalItems={totalItems}
+              />
+            }
           />
           <Route
             path="/products/:fileName/:price/:productName"
             element={<AddToCart
-               setCartQuant={setCartQuant}
-               cartQuants={cartQuants} />}
+              setCartQuant={setCartQuant}
+              cartQuants={cartQuants} />}
           />
 
           {/*-------------------route access by admin only----------------------*/}
@@ -62,7 +65,7 @@ const App = () => {
 
           <Route path="*" element={<Error />} />
         </Routes>
-        <Footer/>
+        <Footer />
       </BrowserRouter>
     </Fragment>
   )

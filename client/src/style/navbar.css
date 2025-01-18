@@ -6,3 +6,25 @@
 /* .main-navbar{
     @apply flex bg-slate-800 text-white
 } */
+
+.side-modal {
+    position: fixed;
+    top: 0;
+
+  box-shadow: -4px 0px 10px rgba(0, 0, 0, 0.2);
+  
+  transition: transform 0.5s ease-in-out;
+  z-index: 9999;
+  }
+
+  /* CSS for the overlay */
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Light transparent black */
+    z-index: 999; /* Make sure the overlay stays behind the modal */
+  }
+  

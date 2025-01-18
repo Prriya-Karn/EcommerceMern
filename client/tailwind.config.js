@@ -1,8 +1,5 @@
 /** @type {import('tailwindcss').Config} */
 import daisyui from "daisyui";
-import flowbite from 'flowbite/plugin';
-import scrollbarHide from 'tailwind-scrollbar-hide'; // Import the plugin
-
 
 export default {
     content: [
@@ -39,7 +36,7 @@ export default {
       },
       },
     },
-    plugins: [daisyui, flowbite,scrollbarHide], // Add DaisyUI as a plugin
+    plugins: [daisyui], // Add DaisyUI as a plugin
 
    daisyui: {
   themes: ["light"], // Use the light theme only
