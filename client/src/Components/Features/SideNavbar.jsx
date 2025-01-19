@@ -1,7 +1,8 @@
 import { Fragment, useState } from "react";
 import '../../style/navbar.css';
+import { NavLink } from "react-router-dom";
 
-const SideNavbar = ({ sideNav, crossNav }) => {
+const SideNavbar = ({ sideNav, crossNav, setSideNav }) => {
     const [moreItems, setMoreItems] = useState(false);
     const [moreInner, setMoreInner] = useState(false);
 
@@ -13,6 +14,20 @@ const SideNavbar = ({ sideNav, crossNav }) => {
     const moreInnerItems = () => {
         setMoreInner(!moreInner)
     }
+
+    const clickLogin = ()=>{
+        setSideNav(false)
+    }
+
+    if(sideNav==true){
+        document.body.style.overflow = 'hidden';
+        document.body.style.background = "rgba(0, 0, 0, 0.2)"
+    } else {
+        document.body.style.overflow = 'auto';
+        document.body.style.background = "initial"
+    }
+
+
     return (
         <Fragment>
             {
@@ -104,12 +119,14 @@ const SideNavbar = ({ sideNav, crossNav }) => {
 
 
                             </div>
-                            <div className="side-nav-footer bg-orange-400">
-                                <div className="nav-plus nav-acc bg-purple-400">
+                            <NavLink to="/login" onClick={clickLogin}>
+                            <div className="side-nav-footer">
+                                <div className="nav-plus nav-acc">
                                     <img src="../../../public/image/people.png" />
                                 </div>
                                 <h2>Account</h2>
                             </div>
+                            </NavLink>
 
                         </div>
 

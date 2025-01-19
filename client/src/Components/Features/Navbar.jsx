@@ -108,7 +108,6 @@ export const Navbar = ({ totalItems }) => {
 
   // sm (640px ya usse above): Small devices, such as phones in portrait mode. (hamburger)
   // md (768px): Tablets and small devices in landscape mode.  (hamburger)
-
   // lg (1024px): Laptops and medium-sized devices. 
   // xl (1280px): Desktops and larger screens. 
   // 2xl (1536px): Extra-large desktop screens or wide monitors. 
@@ -168,7 +167,7 @@ export const Navbar = ({ totalItems }) => {
         sm:w-7 sm:h-7
         md:w-7 md:h-7"/>
             </div>
-            <SideNavbar sideNav = {sideNav} 
+            <SideNavbar sideNav = {sideNav} setSideNav = {setSideNav}
             crossNav = {crossNav}/>
 
             <div className="search">

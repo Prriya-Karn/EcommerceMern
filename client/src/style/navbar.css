@@ -4,23 +4,23 @@
 
 
 .side-navbar {
-  @apply z-50 md:w-96 overflow-y-scroll h-full fixed top-0 left-0 bg-white overflow-hidden drop-shadow-2xl;
+  @apply z-50 sm:w-96 w-72 overflow-y-scroll h-full fixed top-0 left-0 bg-white overflow-hidden drop-shadow-2xl;
 }
 
 .side-nav-head {
-  @apply mt-5 ml-10 w-full;
+  @apply mt-5 sm:ml-10 ml-5 w-full;
 }
 
 .nav-cross {
-  @apply md:w-6 md:h-6;
+  @apply w-6 h-6;
 }
 
 .side-nav-menus{
-  @apply md:w-72 h-full  mt-5 ml-10;
+  @apply sm:w-72 h-auto mt-5 sm:ml-10 ml-5 sm:mr-0 mr-5;
 }
 
 .side-nav-links{
-  @apply flex justify-start  items-center md:text-xl mb-0 capitalize py-5;
+  @apply flex justify-start  items-center md:text-xl text-base mb-0 capitalize py-5;
 }
 
 .side-plus-nav{
@@ -31,7 +31,7 @@
 }
 
 .nav-plus img{
-  @apply md:w-6 md:h-6;
+  @apply w-6 h-6;
 }
 
 .nav-bottom{
@@ -43,21 +43,22 @@
 
 
 .inner-navlink{
-  @apply md:text-sm;
+  @apply text-sm ;
 }
 .more-side-items{
-  @apply h-10 mb-2;
+  @apply h-10 mb-2 ;
 }
 
 .side-inner-items{
-  @apply h-10 flex md:px-4 capitalize md:text-sm; 
+  @apply h-8 flex sm:px-4 capitalize sm:text-sm text-xs py-2 px-5; 
+  border-left: 1px solid gray;
 }
 .nav-inner-all-items{
   @apply mt-2;
 }
 
 .side-nav-footer{
-   @apply bg-red-500 px-10 md:text-lg gap-2 h-12 -mt-28 py-2 flex justify-start;
+   @apply sm:px-10 px-5 md:text-lg gap-4 h-16 mt-64 py-2 flex items-center justify-start;
    border-top: 1px solid gray;
 }
 .nav-acc{
