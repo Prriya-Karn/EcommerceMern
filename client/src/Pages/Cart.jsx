@@ -4,9 +4,22 @@ import '../style/navbar.css';
 
 
 const Cart = ({ cartModal, closeButt }) => {
+    
+    const [isClosing, setIsClosing] = useState(false);
+
     const { API } = useContext(AuthContext);
     const [cartData, setCartData] = useState([]);
     const [totalItems, setTotalItem] = useState(0);
+
+
+    const handleClose = () => {
+        setIsClosing(true);
+        setTimeout(() => {
+             closeButt()
+          setIsClosing(false);
+        }, 500);
+      };
+
 
     // Fetch cart data logic here
     const getAllCartData = async () => {
@@ -63,12 +76,12 @@ const Cart = ({ cartModal, closeButt }) => {
                     <div className="overlay"></div>
 
                     {/* Modal Structure */}
-                    <div className="side-modal bg-white h-full overflow-y-scroll overflow-x-hidden p-5
+                    <div className={`side-modal bg-white h-full overflow-y-scroll overflow-x-hidden p-5
                      xl:-right-10
                      lg:-right-2
                      md:-right-14
                      sm:-right-2
-                     -right-0">
+                     -right-0  ${cartModal ? "open" : ""} ${isClosing ? "close" : ""}`}>
 
                         {/**------------------- close button start------------------- */}
                         <div className="flex justify-between md:w-5/6 lg:w-[42vw] xl:w-[34vw]  sm:w-72 w-72 lg:ml-5">
@@ -83,7 +96,7 @@ const Cart = ({ cartModal, closeButt }) => {
 
                             <button
                                 className="close-btn sm:h-12 sm:w-6 h-10 w-5 items-center"
-                                onClick={closeButt}>
+                                onClick={handleClose}>
                                 <img src="../../../public/image/close.png" alt="Close" />
                             </button>
                         </div>

@@ -22,6 +22,9 @@
     }
   }
 
+  .hero-carousel{
+    @apply -z-10 relative;
+  }
 
   .slick-dots-numbered {
     display: flex;
@@ -36,8 +39,6 @@
 .slick-dots-numbered li {
     width: 20rem; /* Increase circle size */
     height: 20rem;
-   
-  
     cursor: pointer;
     background-color: none; /* No fill color inside the circle */
     transition: transform 0.3s ease, background-color 0.3s ease; /* Smooth transition */

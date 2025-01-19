@@ -3,18 +3,111 @@
 @tailwind utilities;
 
 
-/* .main-navbar{
-    @apply flex bg-slate-800 text-white
-} */
+@keyframes moveTopToBottom {
+  from {
+    transform: translateY(-30%);
+    opacity: 0;
+    height: 0;
+    visibility: hidden;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+    height: auto;
+    visibility: visible;
+  }
+}
+
+@keyframes moveBottomToTop {
+  from {
+    transform: translateY(0);
+    opacity: 1;
+    height: auto;
+  }
+  to {
+    transform: translateY(-30%);
+    opacity: 0;
+    height: 0;
+    visibility: hidden;
+  }
+}
+
+
+.navbar-menus{
+  @apply z-50 fixed top-32 left-0 right-0 bg-white overflow-hidden drop-shadow-2xl;
+  animation: moveTopToBottom 0.5s ease-in-out forwards;
+}
+
+.navbar-menus.hidden-custom {
+  @apply z-50 fixed top-32 left-0 right-0 overflow-hidden;
+  animation: moveBottomToTop 0.5s ease-in-out forwards;
+}
+
+
+  .navbar-menu-inside {
+    @apply h-72 relative
+  }
+  .menu-inside{
+    @apply flex gap-24 ml-10 py-10;
+  }
+  .navbar-menu-inside .menus-head{
+    @apply text-base  text-red-500 hover:text-red-300 cursor-pointer uppercase font-mono font-bold;
+  }
+  .navbar-menu-inside h2{
+    @apply flex items-start capitalize mb-2 text-sm py-1 hover:text-gray-500 cursor-pointer;
+  }
+
+
+
+
+
+
+/* Animation for opening the modal (from left to center) */
+@keyframes moveFromLeftToRight {
+  0% {
+    transform: translateX(100%); /* Start off-screen on the left */
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0); /* Slide to the center */
+    opacity: 1;
+  }
+}
+
+/* Animation for closing the modal (from center to right) */
+@keyframes moveFromCenterToRight {
+  0% {
+    transform: translateX(0); /* Start at the center */
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(100%); /* Slide off-screen to the right */
+    opacity: 0;
+  }
+}
+
+
 
 .side-modal {
     position: fixed;
     top: 0;
+    z-index: 9999;
+    transform: translateX(-100%); /* Off-screen by default */
+  opacity: 0;
+  visibility: hidden;
+  transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
+  background-color: white; /* Background color of the modal */
+    overflow-y: auto;
+  }
 
-  box-shadow: -4px 0px 10px rgba(0, 0, 0, 0.2);
-  
-  transition: transform 0.5s ease-in-out;
-  z-index: 9999;
+  .side-modal.open {
+    visibility: visible;
+  opacity: 1;
+  animation: moveFromLeftToRight 0.5s ease-in-out forwards;
+  }
+
+  .side-modal.close {
+    animation: moveFromCenterToRight 0.5s ease-in-out forwards; /* Apply close animation */
   }
 
   /* CSS for the overlay */
@@ -26,5 +119,11 @@
     height: 100%;
     background-color: rgba(0, 0, 0, 0.5); /* Light transparent black */
     z-index: 999; /* Make sure the overlay stays behind the modal */
+  }
+
+  .close-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
   }
   
