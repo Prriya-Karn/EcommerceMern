@@ -13,9 +13,7 @@ const Menus = ({ menus, menuItems }) => {
     }
 
 
-    console.log(menuItems)
 
-    //   
     return (
         <Fragment>
 
@@ -31,7 +29,6 @@ const Menus = ({ menus, menuItems }) => {
 
                                         {
                                             e.categories.map((e) => {
-                                            console.log(e.items.length)
                                                 return (
                                                     <Fragment key="">
                                                         <div className=''>

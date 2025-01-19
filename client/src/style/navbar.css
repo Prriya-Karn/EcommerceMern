@@ -3,6 +3,67 @@
 @tailwind utilities;
 
 
+.side-navbar {
+  @apply z-50 md:w-96 overflow-y-scroll h-full fixed top-0 left-0 bg-white overflow-hidden drop-shadow-2xl;
+}
+
+.side-nav-head {
+  @apply mt-5 ml-10 w-full;
+}
+
+.nav-cross {
+  @apply md:w-6 md:h-6;
+}
+
+.side-nav-menus{
+  @apply md:w-72 h-full  mt-5 ml-10;
+}
+
+.side-nav-links{
+  @apply flex justify-start  items-center md:text-xl mb-0 capitalize py-5;
+}
+
+.side-plus-nav{
+  @apply flex justify-between;
+}
+.nav-plus{
+  @apply  flex justify-center items-center py-5 mb-0;
+}
+
+.nav-plus img{
+  @apply md:w-6 md:h-6;
+}
+
+.nav-bottom{
+  border-bottom: 1px solid gray;
+}
+.nav-bottom-hidden{
+  border-bottom: none;
+}
+
+
+.inner-navlink{
+  @apply md:text-sm;
+}
+.more-side-items{
+  @apply h-10 mb-2;
+}
+
+.side-inner-items{
+  @apply h-10 flex md:px-4 capitalize md:text-sm; 
+}
+.nav-inner-all-items{
+  @apply mt-2;
+}
+
+.side-nav-footer{
+   @apply bg-red-500 px-10 md:text-lg gap-2 h-12 -mt-28 py-2 flex justify-start;
+   border-top: 1px solid gray;
+}
+.nav-acc{
+  @apply flex items-center;
+}
+
 @keyframes moveTopToBottom {
   from {
     transform: translateY(-30%);
@@ -10,6 +71,7 @@
     height: 0;
     visibility: hidden;
   }
+
   to {
     transform: translateY(0);
     opacity: 1;
@@ -24,6 +86,7 @@
     opacity: 1;
     height: auto;
   }
+
   to {
     transform: translateY(-30%);
     opacity: 0;
@@ -33,7 +96,7 @@
 }
 
 
-.navbar-menus{
+.navbar-menus {
   @apply z-50 fixed top-32 left-0 right-0 bg-white overflow-hidden drop-shadow-2xl;
   animation: moveTopToBottom 0.5s ease-in-out forwards;
 }
@@ -44,18 +107,21 @@
 }
 
 
-  .navbar-menu-inside {
-    @apply h-72 relative
-  }
-  .menu-inside{
-    @apply flex gap-24 ml-10 py-10;
-  }
-  .navbar-menu-inside .menus-head{
-    @apply text-base  text-red-500 hover:text-red-300 cursor-pointer uppercase font-mono font-bold;
-  }
-  .navbar-menu-inside h2{
-    @apply flex items-start capitalize mb-2 text-sm py-1 hover:text-gray-500 cursor-pointer;
-  }
+.navbar-menu-inside {
+  @apply lg:h-72 relative
+}
+
+.menu-inside {
+  @apply flex xl:gap-24 lg:gap-16 lg:mr-10 xl:mr-0 ml-10 xl:py-10 lg:py-5;
+}
+
+.navbar-menu-inside .menus-head {
+  @apply text-base text-red-500 hover:text-red-300 cursor-pointer uppercase font-mono font-bold;
+}
+
+.navbar-menu-inside h2 {
+  @apply flex items-start capitalize mb-2 xl:text-sm py-1 hover:text-gray-500 cursor-pointer;
+}
 
 
 
@@ -65,11 +131,14 @@
 /* Animation for opening the modal (from left to center) */
 @keyframes moveFromLeftToRight {
   0% {
-    transform: translateX(100%); /* Start off-screen on the left */
+    transform: translateX(100%);
+    /* Start off-screen on the left */
     opacity: 0;
   }
+
   100% {
-    transform: translateX(0); /* Slide to the center */
+    transform: translateX(0);
+    /* Slide to the center */
     opacity: 1;
   }
 }
@@ -77,11 +146,14 @@
 /* Animation for closing the modal (from center to right) */
 @keyframes moveFromCenterToRight {
   0% {
-    transform: translateX(0); /* Start at the center */
+    transform: translateX(0);
+    /* Start at the center */
     opacity: 1;
   }
+
   100% {
-    transform: translateX(100%); /* Slide off-screen to the right */
+    transform: translateX(100%);
+    /* Slide off-screen to the right */
     opacity: 0;
   }
 }
@@ -89,41 +161,45 @@
 
 
 .side-modal {
-    position: fixed;
-    top: 0;
-    z-index: 9999;
-    transform: translateX(-100%); /* Off-screen by default */
+  position: fixed;
+  top: 0;
+  z-index: 9999;
+  transform: translateX(-100%);
+  /* Off-screen by default */
   opacity: 0;
   visibility: hidden;
   transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
-  background-color: white; /* Background color of the modal */
-    overflow-y: auto;
-  }
+  background-color: white;
+  /* Background color of the modal */
+  overflow-y: auto;
+}
 
-  .side-modal.open {
-    visibility: visible;
+.side-modal.open {
+  visibility: visible;
   opacity: 1;
   animation: moveFromLeftToRight 0.5s ease-in-out forwards;
-  }
+}
 
-  .side-modal.close {
-    animation: moveFromCenterToRight 0.5s ease-in-out forwards; /* Apply close animation */
-  }
+.side-modal.close {
+  animation: moveFromCenterToRight 0.5s ease-in-out forwards;
+  /* Apply close animation */
+}
 
-  /* CSS for the overlay */
+/* CSS for the overlay */
 .overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5); /* Light transparent black */
-    z-index: 999; /* Make sure the overlay stays behind the modal */
-  }
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  /* Light transparent black */
+  z-index: 999;
+  /* Make sure the overlay stays behind the modal */
+}
 
-  .close-btn {
-    background: none;
-    border: none;
-    cursor: pointer;
-  }
-  
+.close-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+}

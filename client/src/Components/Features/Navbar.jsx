@@ -7,6 +7,7 @@ import "../../style/navbar.css";
 
 import Cart from "../../Pages/Cart";
 import Menus from "./Menus";
+import SideNavbar from "./SideNavbar";
 
 
 const menuData = [
@@ -74,22 +75,26 @@ export const Navbar = ({ totalItems }) => {
   const { getUserData } = useContext(AuthContext)
   const [cartModal, setCartModal] = useState(false);
   const [menuItems, setMenuItems] = useState([]);
-
-  const handleMenuItem = (id) => {
-    console.log(id)
-    const filterItems = menuData.filter((e)=>{
-      return e.id==id;
-    })
-
-    console.log(filterItems)
-    setMenuItems(filterItems)
+  const [sideNav, setSideNav] = useState(false);
+  
+  const handleSideNavBar = () => {
+    setSideNav(!sideNav)
+  }
+  const crossNav = ()=>{
+    setSideNav(false)
   }
 
-  console.log(menuItems)
 
 
 
 
+
+  const handleMenuItem = (id) => {
+    const filterItems = menuData.filter((e) => {
+      return e.id == id;
+    })
+    setMenuItems(filterItems)
+  }
 
 
   const sideCart = () => {
@@ -103,8 +108,8 @@ export const Navbar = ({ totalItems }) => {
 
   // sm (640px ya usse above): Small devices, such as phones in portrait mode. (hamburger)
   // md (768px): Tablets and small devices in landscape mode.  (hamburger)
-  // lg (1024px): Laptops and medium-sized devices. 
 
+  // lg (1024px): Laptops and medium-sized devices. 
   // xl (1280px): Desktops and larger screens. 
   // 2xl (1536px): Extra-large desktop screens or wide monitors. 
 
@@ -134,11 +139,11 @@ export const Navbar = ({ totalItems }) => {
             <ul className="lg:flex lg:text-sm font-medium lg:gap-6">
               {
                 menuData.map((e) => {
-                  console.log(e.id)
+                  // console.log(e.id)
                   return (
                     <Fragment key={e.id}>
                       <NavLink onMouseEnter={() => setMenus(true)}>
-                        <li onMouseEnter={()=>handleMenuItem(e.id)}>{e.mainCategory}</li>
+                        <li onMouseEnter={() => handleMenuItem(e.id)}>{e.mainCategory}</li>
                       </NavLink>
                     </Fragment>
                   )
@@ -156,11 +161,15 @@ export const Navbar = ({ totalItems }) => {
         flex md:gap-6 md:ml-10 ml-5 gap-5
         sm:ml-10 sm:gap-4 
         lg:hidden">
-            <div className="hamburger">
+
+
+            <div className="hamburger" onClick={handleSideNavBar}>
               <img src="../../../public/image/hamburger.png" className="w-5 h-5
         sm:w-7 sm:h-7
         md:w-7 md:h-7"/>
             </div>
+            <SideNavbar sideNav = {sideNav} 
+            crossNav = {crossNav}/>
 
             <div className="search">
               <img
@@ -169,6 +178,7 @@ export const Navbar = ({ totalItems }) => {
                 className="md:w-7 md:h-7 w-6 h-5 -ml-1
         sm:w-7 sm:h-7"/>
             </div>
+          
           </div>
 
 
@@ -199,8 +209,7 @@ export const Navbar = ({ totalItems }) => {
                     <img
                       src="../../../public/image/people.png"
                       alt="User"
-                      className="lg:w-7 lg:h-7 md:w-7 md:h-7 md:block
-            hidden"
+                      className="lg:w-7 lg:h-7 md:w-7 md:h-7 md:block hidden"
                     />
                   </NavLink> :
                   <Logout />
@@ -216,8 +225,6 @@ export const Navbar = ({ totalItems }) => {
                   </Fragment> : ""
 
               }
-
-
 
               <NavLink to="">
                 <button onClick={sideCart}>
@@ -244,28 +251,27 @@ export const Navbar = ({ totalItems }) => {
               />
 
 
-
-
-
+              
 
             </div>
 
           </div>
 
+         
 
-
+         
 
 
         </div>
 
-
-
+       
+        
 
       </nav>
 
 
-
-
+      
+     
 
     </Fragment>
   )
