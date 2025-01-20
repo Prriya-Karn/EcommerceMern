@@ -85,7 +85,12 @@ const Home = () => {
 
 
             <GetAlImg />
-            <UniqueClothe />
+            <UniqueClothe/>
+
+            <div className="w-full md:h-full sm:h-96 h-64 bg-orange-600 -mt-80 md:-mt-72 mb-80 rounded-lg">
+            <img className="h-full w-full" src="../../public/image/img13.jpg"/>
+            </div>
+            
         </Fragment>
     )
 }
