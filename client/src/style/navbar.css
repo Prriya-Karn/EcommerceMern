@@ -46,7 +46,7 @@
   @apply text-sm ;
 }
 .more-side-items{
-  @apply h-10 mb-2 ;
+  @apply h-10 mb-2;
 }
 
 .side-inner-items{

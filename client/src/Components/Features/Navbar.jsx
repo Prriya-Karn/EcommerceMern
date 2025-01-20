@@ -167,8 +167,10 @@ export const Navbar = ({ totalItems }) => {
         sm:w-7 sm:h-7
         md:w-7 md:h-7"/>
             </div>
+
             <SideNavbar sideNav = {sideNav} setSideNav = {setSideNav}
-            crossNav = {crossNav}/>
+            crossNav = {crossNav}
+            />
 
             <div className="search">
               <img
@@ -275,3 +277,5 @@ export const Navbar = ({ totalItems }) => {
     </Fragment>
   )
 }
+
+export {menuData};

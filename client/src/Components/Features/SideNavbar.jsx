@@ -1,142 +1,134 @@
 import { Fragment, useState } from "react";
-import '../../style/navbar.css';
+import "../../style/navbar.css";
 import { NavLink } from "react-router-dom";
+import { menuData } from "./Navbar";
 
 const SideNavbar = ({ sideNav, crossNav, setSideNav }) => {
-    const [moreItems, setMoreItems] = useState(false);
-    const [moreInner, setMoreInner] = useState(false);
+    const [moreItems, setMoreItems] = useState({});
+    const [moreInner, setMoreInner] = useState({});
 
+    const toggleMoreLinks = (id) => {
+        setMoreItems((prev) => ({
+            ...prev,
+            [id]: !prev[id],
+        }));
+    };
 
-    const moreLinksItems = () => {
-        setMoreItems(!moreItems)
-    }
+    const toggleMoreInnerLinks = (categoryName) => {
+        setMoreInner((prev) => ({
+            ...prev,
+            [categoryName]: !prev[categoryName],
+        }));
+    };
 
-    const moreInnerItems = () => {
-        setMoreInner(!moreInner)
-    }
+    const clickLogin = () => {
+        setSideNav(false);
+    };
 
-    const clickLogin = ()=>{
-        setSideNav(false)
-    }
-
-    if(sideNav==true){
-        document.body.style.overflow = 'hidden';
-        document.body.style.background = "rgba(0, 0, 0, 0.2)"
+    // Prevent scrolling when the side navigation is open
+    if (sideNav) {
+        document.body.style.overflow = "hidden";
+        document.body.style.background = "rgba(0, 0, 0, 0.2)";
     } else {
-        document.body.style.overflow = 'auto';
-        document.body.style.background = "initial"
+        document.body.style.overflow = "auto";
+        document.body.style.background = "initial";
     }
-
 
     return (
         <Fragment>
-            {
-                sideNav == true ?
-                    <Fragment>
-                        <div className="side-navbar">
-                            <div className="side-nav-head">
-                                <img src="../../../public/image/close.png" className="nav-cross" onClick={crossNav} />
-                            </div>
-                            <div className="side-nav-menus">
-
-                                <div className={moreItems ? " side-plus-nav nav-bottom-hidden" : "side-plus-nav nav-bottom"}>
-                                    <h2 className="side-nav-links">Shop by category</h2>
-                                    <div className="nav-plus">
-                                        <img src={moreItems ? "../../../public/image/minus.png" : "../../../public/image/plus.png"} onClick={moreLinksItems} />
+            {sideNav && (
+                <div className="side-navbar">
+                    <div className="side-nav-head">
+                        <img
+                            src="../../../public/image/close.png"
+                            className="nav-cross"
+                            onClick={crossNav}
+                        />
+                    </div>
+                    <div className="side-nav-menus">
+                        {menuData.map((menu) => (
+                            <Fragment key={menu.id}>
+                                <div
+                                    className={
+                                        moreItems[menu.id]
+                                            ? "side-plus-nav nav-bottom-hidden"
+                                            : "side-plus-nav nav-bottom"
+                                    }
+                                >
+                                    <h2 className="side-nav-links">{menu.mainCategory}</h2>
+                                    <div
+                                        className="nav-plus"
+                                        onClick={() => toggleMoreLinks(menu.id)}
+                                    >
+                                        <img
+                                            src={
+                                                moreItems[menu.id]
+                                                    ? "../../../public/image/minus.png"
+                                                    : "../../../public/image/plus.png"
+                                            }
+                                        />
                                     </div>
                                 </div>
+                                {moreItems[menu.id] && (
+                                    <div>
+                                        {menu.categories.map((category) => (
+                                            <Fragment key={category.id}>
+                                                <div className="more-side-items side-plus-nav">
+                                                    <h2 className="side-nav-links inner-navlink">
+                                                        {category.categoryName}
+                                                    </h2>
+                                                    {
+                                                        menu.id == 0?<div
+                                                        className="nav-plus"
+                                                        onClick={() =>
+                                                            toggleMoreInnerLinks(category.categoryName)
+                                                        }>
+                                                        
+                                                        <img
+                                                            src={
+                                                                moreInner[category.categoryName]
+                                                                    ? "../../../public/image/minus.png"
+                                                                    : "../../../public/image/plus.png"
+                                                            }
+                                                        />
+                                                    </div>:""
+                                                    }
+                                                    
 
-                                {
-                                    moreItems ? <Fragment>
-                                        <div className="more-side-items side-plus-nav">
 
-                                            <h2 className="side-nav-links inner-navlink">t-shirts</h2>
-                                            <div className="nav-plus">
-                                                <img src={moreInner ? "../../../public/image/minus.png" : "../../../public/image/plus.png"}
-                                                    onClick={moreInnerItems} />
-                                            </div>
-                                        </div>
-
-                                        {
-                                            moreInner ?
-                                                <Fragment>
+                                                </div>
+                                                {moreInner[category.categoryName] && (
                                                     <div className="nav-inner-all-items">
-
-                                                        <h2 className="side-inner-items">tshirt items</h2>
-                                                        <h2 className="side-inner-items">tshirt items</h2>
-                                                        <h2 className="side-inner-items">tshirt items</h2>
-                                                        <h2 className="side-inner-items">tshirt items</h2>
-                                                        <h2 className="side-inner-items">tshirt items</h2>
-
+                                                        {category.items.map((item, index) => (
+                                                            <h2
+                                                                key={index}
+                                                                className="side-inner-items"
+                                                            >
+                                                                {item}
+                                                            </h2>
+                                                        ))}
                                                     </div>
-                                                </Fragment> : ""
-                                        }
-
-
-                                        <div className="side-plus-nav more-side-items">
-
-                                            <h2 className="side-nav-links inner-navlink">t-shirts</h2>
-                                            <div className="nav-plus">
-                                                <img src="../../../public/image/plus.png" />
-                                            </div>
-                                        </div>
-
-                                        <div className="side-plus-nav more-side-items">
-
-                                            <h2 className="side-nav-links inner-navlink">t-shirts</h2>
-                                            <div className="nav-plus">
-                                                <img src="../../../public/image/plus.png" />
-                                            </div>
-                                        </div>
-
-                                        <div className="side-plus-nav more-side-items">
-
-                                            <h2 className="side-nav-links inner-navlink">t-shirts</h2>
-                                            <div className="nav-plus">
-                                                <img src="../../../public/image/plus.png" />
-                                            </div>
-                                        </div>
-
-                                        <div className="side-plus-nav more-side-items">
-
-                                            <h2 className="side-nav-links inner-navlink">t-shirts</h2>
-                                            <div className="nav-plus">
-                                                <img src="../../../public/image/plus.png" />
-                                            </div>
-                                        </div>
-
-                                    </Fragment> : ""
-                                }
-
-                                <div className="side-plus-nav nav-bottom">
-                                    <h2 className="side-nav-links">Shop by category</h2>
-                                    <div className="nav-plus">
-                                        <img src="../../../public/image/plus.png" />
+                                                )}
+                                            </Fragment>
+                                        ))}
                                     </div>
-
-                                </div>
-                                <h2 className="side-nav-links">our story</h2>
-
-
+                                )}
+                            </Fragment>
+                        ))}
+                        <h2 className="side-nav-links">our story</h2>
+                    </div>
+                    <NavLink to="/login" onClick={clickLogin}>
+                        <div className="side-nav-footer">
+                            <div className="nav-plus nav-acc">
+                                <img src="../../../public/image/people.png" />
                             </div>
-                            <NavLink to="/login" onClick={clickLogin}>
-                            <div className="side-nav-footer">
-                                <div className="nav-plus nav-acc">
-                                    <img src="../../../public/image/people.png" />
-                                </div>
-                                <h2>Account</h2>
-                            </div>
-                            </NavLink>
-
+                            <h2>Account</h2>
                         </div>
-
-                    </Fragment>
-
-
-                    : ""
-            }
+                    </NavLink>
+                </div>
+            )}
         </Fragment>
-    )
-}
+    );
+};
 
 export default SideNavbar;
