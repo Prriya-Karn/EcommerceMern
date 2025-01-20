@@ -84,11 +84,6 @@ export const Navbar = ({ totalItems }) => {
     setSideNav(false)
   }
 
-
-
-
-
-
   const handleMenuItem = (id) => {
     const filterItems = menuData.filter((e) => {
       return e.id == id;
@@ -107,6 +102,7 @@ export const Navbar = ({ totalItems }) => {
 
 
   // sm (640px ya usse above): Small devices, such as phones in portrait mode. (hamburger)
+  
   // md (768px): Tablets and small devices in landscape mode.  (hamburger)
   // lg (1024px): Laptops and medium-sized devices. 
   // xl (1280px): Desktops and larger screens. 
@@ -114,10 +110,7 @@ export const Navbar = ({ totalItems }) => {
 
   // And if no prefix then they are  for mobile  (hamburger)
 
-
-
-
-  return (
+ return (
     <Fragment>
       <nav className="main-nav font-sans text-center h-24 
          sm:h-28 sm:mb-14 sm:w-full">

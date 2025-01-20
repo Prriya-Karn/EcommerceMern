@@ -25,8 +25,8 @@ export default {
         colors: {
         bg : "#FF735C",
         footerBg:"#F2F2F2",
-        bodyColor : "#F3F4F6"
-        
+        bodyColor : "#F3F4F6",
+        revbg : "#FF9900",
       },
       fontFamily: {
         roboto: ['"Roboto"', 'sans-serif'],

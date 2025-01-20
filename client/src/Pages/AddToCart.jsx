@@ -3,6 +3,8 @@ import { useParams } from 'react-router-dom';
 import { AuthContext } from '../tokenStore/Auth';
 import Button from '../Components/UI/Button';
 import '../style/home.css';
+import Video from '../Components/UI/Video';
+import Reviews from '../Components/UI/Reviews';
 
 const AddToCart = ({ setCartQuant, cartQuants }) => {
 
@@ -10,10 +12,19 @@ const AddToCart = ({ setCartQuant, cartQuants }) => {
 
     const { fileName, price, productName } = useParams();
     const numericPrice = Number(price);
-
-
     const [quantity, setQuantity] = useState(1);
-    // const [getId, setGetId] = useState();
+    const [despro,setdespro] = useState(false);
+    const [pro,setPro] = useState(false);
+
+    const desProShow = ()=>{
+        setdespro(!despro);
+    }
+    const ProShow = ()=>{
+        setPro(!pro)
+    }
+
+
+
 
     const quantInc = () => {
         setQuantity((pre) => {
@@ -71,7 +82,7 @@ const AddToCart = ({ setCartQuant, cartQuants }) => {
 
         <Fragment>
             <div className='mb-96 w-full'>
-                <div className='flex mt-7 lg:mt-10 flex-col lg:flex-row'>
+                <div className='flex mt-7 lg:mt-20  flex-col lg:flex-row'>
 
 
                     {/*------images--------*/}
@@ -248,7 +259,7 @@ const AddToCart = ({ setCartQuant, cartQuants }) => {
 
                     <p>Quantity:</p>
 
-                    <div className='mt-4 flex rounded-md border-gray-400 border-2 
+                    <div className='mt-4 mb-5 flex rounded-md border-gray-400 border-2 
                         lg:w-44 md:w-44 sm:w-32 w-28'>
                         <button onClick={quantDec} className='rounded-l-md  items-center justify-center flex
                             w-full
@@ -271,8 +282,54 @@ const AddToCart = ({ setCartQuant, cartQuants }) => {
                         className="addtocart"
                     />
 
+                    <div className='ml-5 flex mt-5 w-40 uppercase text-base justify-between'>
+                    <img className='w-5 h-5 mt-1 ml-1 cursor-pointer' src='/image/heart.png'/>
+                    <h2 className='flex items-center'>add to wishlist</h2>
+                    </div>
+
+                    <div className='desc-prod xl:mt-10 mt-5 xl:text-lg font-semibold'>
+
+                    <div onClick={desProShow} className='flex justify-between w-full md:w-5/6 descProd py-3 cursor-pointer'>
+                    <h2>Description</h2>
+                    <img className='w-5 h-5 mt-1' src={despro? '/image/arrow-up.png':'/image/arrows.png'}/>
+
+                    </div>
+                    {
+                        despro?<Fragment>
+                        <div className='text-sm mt-5  w-5/6'>
+                    <h2 className='font-bold text-base'>Shipping within 3 weeks</h2>
+                    <p className='text-blue-500 mt-2'>Please note that this is a Made-to-Order product. 
+                    Once an order is placed, it <b>cannot be canceled or returned.</b></p>
+                    <p className='text-blue-500 mt-2'>(Return policy is not applicable to this product.)</p>
+                    <p className='text-blue-500 mt-2'>If you have any questions, feel free to reach out to our customer support.</p>
+                    <p className='mt-5'>Embrace the sacred traditions of the Rabari tribe with
+                     the Rabari Suit, a divine creation that celebrates their timeless 
+                     rituals and craftsmanship. Each stitch and motif carries the essence of 
+                     ancestral wisdom, telling stories of devotion, resilience, and connection
+                      to the land. The intricate embroidery reflects sacred symbols, while the 
+                      vibrant hues honor the tribe deep-rooted spiritual bond with nature. 
+                      Wearing the Rabari Suit is more than adornment its a ritual of heritage, 
+                      a tribute to cultural legacy, and a celebration of the soul connection to tradition. 
+                      Let its sacred charm elevate your journey</p>
+                    </div>
+                        </Fragment>:""
+                    }
+                    
+                    
+                    
+                    <div onClick={ProShow} className='flex xl:mt-8 mt-2 justify-between w-full md:w-5/6 py-3 descProd cursor-pointer'>
+                    <h2>Product Care</h2>
+                    <img className='w-5 h-5 mt-1' src={pro? '/image/arrow-up.png':'/image/arrows.png'}/>
+                    </div>
+
+                    {
+                        pro?<h2 className='text-sm xl:text-sm mt-5 w-5/6'>Dry Clean Only. Please take care of me so we can spend a long time together.</h2>:""
+                    }
+                    
+                    </div>
+
                     {/** ------------ social media --------------- */}
-                    <div className='flex justify-between items-center lg:w-40 md:w-40 sm:w-40 w-40'>
+                    <div className='flex justify-between mt-5 cursor-pointer xl:mt-10 items-center lg:w-40 md:w-40 sm:w-40 w-40'>
                         <h1>Share</h1>
 
 
@@ -284,16 +341,13 @@ const AddToCart = ({ setCartQuant, cartQuants }) => {
                             className='lg:w-4 lg:h-4 md:w-4 md:h-4 w-4 h-4' />
                         <img src='/image/pinterest.png'
                             className='lg:w-4 lg:h-4 md:w-4 md:h-4 w-4 h-4' />
-
-
-
                     </div>
                 </div>
-
-
             </div>
+            <Video/>
+            <Reviews/>
         </div>
-        </Fragment >
+        </Fragment>
 
     )
 }

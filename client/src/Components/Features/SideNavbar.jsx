@@ -25,13 +25,12 @@ const SideNavbar = ({ sideNav, crossNav, setSideNav }) => {
         setSideNav(false);
     };
 
-    // Prevent scrolling when the side navigation is open
     if (sideNav) {
-        document.body.style.overflow = "hidden";
-        document.body.style.background = "rgba(0, 0, 0, 0.2)";
+        document.body.style.overflow = 'hidden';
+        document.body.style.background = "rgba(0, 0, 0, 0.2)"
     } else {
-        document.body.style.overflow = "auto";
-        document.body.style.background = "initial";
+        document.body.style.overflow = 'auto';
+        document.body.style.background = "initial"
     }
 
     return (
@@ -83,7 +82,7 @@ const SideNavbar = ({ sideNav, crossNav, setSideNav }) => {
                                                         onClick={() =>
                                                             toggleMoreInnerLinks(category.categoryName)
                                                         }>
-                                                        
+
                                                         <img
                                                             src={
                                                                 moreInner[category.categoryName]
@@ -93,9 +92,7 @@ const SideNavbar = ({ sideNav, crossNav, setSideNav }) => {
                                                         />
                                                     </div>:""
                                                     }
-                                                    
-
-
+                                                   
                                                 </div>
                                                 {moreInner[category.categoryName] && (
                                                     <div className="nav-inner-all-items">

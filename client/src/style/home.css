@@ -2,7 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
-
+.descProd{
+  border-bottom: 1px solid gray;
+}
 
 @layer utilities {
     .animate-carousel {
