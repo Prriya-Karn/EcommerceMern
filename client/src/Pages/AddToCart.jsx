@@ -344,7 +344,9 @@ const AddToCart = ({ setCartQuant, cartQuants }) => {
                     </div>
                 </div>
             </div>
-            <Video/>
+            <Video
+            src = "/image/video2.mp4"
+            />
             <Reviews/>
         </div>
         </Fragment>
