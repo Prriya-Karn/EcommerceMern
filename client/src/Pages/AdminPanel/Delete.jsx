@@ -33,7 +33,9 @@ const Delete = ({ getAllData, setData, id, data }) => {
     }
     return (
         <Fragment>
-            <button onClick={() => delUser(id)}>Delete</button>
+            <button onClick={() => delUser(id)}>
+            <img className="w-5 h-5" src="../../../public/image/delete.png"/>
+            </button>
 
         </Fragment>
     )

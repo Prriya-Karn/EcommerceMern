@@ -1,11 +1,11 @@
-import { Fragment } from "react";
+// import { Fragment } from "react";
 
-const AllServiceData = () => {
-    return (
-        <Fragment>
-            <h1>all service data</h1>
-        </Fragment>
+// const AllServiceData = () => {
+//     return (
+//         <Fragment>
+//             <h1>all service data</h1>
+//         </Fragment>
 
-    )
-}
-export default AllServiceData;
+//     )
+// }
+// export default AllServiceData;

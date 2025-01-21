@@ -1,87 +1,122 @@
-import { Fragment, useContext, useState } from "react"
+import { Fragment, useContext, useState } from "react";
 import { AuthContext } from "../../tokenStore/Auth";
 import AllImages from "./AllImages";
 
+const UploadClothingImage = () => {
+    const { token, API } = useContext(AuthContext);
+    const [img, setImg] = useState();
+    const [productInfo, setProInfo] = useState({
+        productName: "",
+        price: "",
+    });
+    const [newImage, setNewImage] = useState(false);
 
-const UploadClothingImage = ()=>{
-    const {token,API} = useContext(AuthContext);
-    const [img,setImg] = useState();
-    const [productInfo,setProInfo] = useState({
-        productName : "",
-        price : ""
-    })
+    const selectImg = (event) => {
+        setImg(event.target.files[0]);
+    };
 
-
-    const [newImage,setNewImage] = useState(false);
-    const selectImg = (event)=>{
-        setImg(event.target.files[0])
-        
-    }
-    const pro = (event)=>{
+    const pro = (event) => {
         const name = event.target.name;
         const value = event.target.value;
-        setProInfo((pre)=>{
-            return{
-                ...pre,
-                [name] : value
-            }
-        })
-    }
-    
-    const submitImage = async()=>{
-        try{
+        setProInfo((prev) => {
+            return {
+                ...prev,
+                [name]: value,
+            };
+        });
+    };
+
+    const submitImage = async () => {
+        try {
             const formData = new FormData();
-            formData.append("image",img);
-            formData.append('proname',productInfo.productName);
-            formData.append('price',productInfo.price);
-            
-            const imgSave = await fetch(`${API}/api/admin/upload`,{
-                method : "POST",
-                headers : {
-                    // You explicitly set the Content-Type header to "multipart/form-data".
-                    //  However, when using FormData, the browser automatically sets the Content-Type header
-                    //  (with the appropriate boundary). Setting it manually overrides this and breaks the 
-                    // request.
+            formData.append("image", img);
+            formData.append("proname", productInfo.productName);
+            formData.append("price", productInfo.price);
 
-                    // "Content-Type" : "multipart/form-data",
-                    "Authorization" : `Bearer ${token}`
+            const imgSave = await fetch(`${API}/api/admin/upload`, {
+                method: "POST",
+                headers: {
+                    "Authorization": `Bearer ${token}`,
                 },
-                body: formData
-            })
+                body: formData,
+            });
 
-            
             const imageData = await imgSave.json();
-            console.log("imgSave",imageData)
-            setNewImage(imageData)
-            if(imgSave.status == 400) return alert("your file is not image file")
-                else return alert("successfully uploaded image")
-        }catch(error){
-            console.log(error)
+            console.log("imgSave", imageData);
+
+            setNewImage(imageData);
+            if (imgSave.status === 400) return alert("Your file is not an image file");
+            else return alert("Successfully uploaded image");
+        } catch (error) {
+            console.log(error);
         }
-    }
-    return(
+    };
+    console.log(newImage);
+
+    return (
         <Fragment>
-        <h1>All images</h1>
-        <input className="mt-5" onChange={selectImg} type="file"/>
-        <br></br><br></br>
+            <div className="p-6 max-w-4xl mx-auto">
+                <h1 className="text-2xl font-semibold text-gray-800 mb-6">Upload Clothing Image</h1>
 
-        <input type="text"
-        onChange={pro}
-         name = "productName" 
-         placeholder="product name"/>
-         <br></br><br></br>
+                {/* Product Image Input */}
+                <div className="mb-4">
+                    <label htmlFor="file-upload" className="block text-lg font-medium text-gray-700">
+                        Choose Image
+                    </label>
+                    <input
+                        className="mt-2 p-2 border border-gray-300 rounded-md w-full"
+                        type="file"
+                        onChange={selectImg}
+                        id="file-upload"
+                    />
+                </div>
 
-         <input type="number"
-         onChange={pro}
-         name = "price" 
-         placeholder="price"/>
-         <br></br><br></br>
+                {/* Product Name Input */}
+                <div className="mb-4">
+                    <label htmlFor="product-name" className="block text-lg font-medium text-gray-700">
+                        Product Name
+                    </label>
+                    <input
+                        className="mt-2 p-2 border border-gray-300 rounded-md w-full"
+                        type="text"
+                        name="productName"
+                        onChange={pro}
+                        id="product-name"
+                        placeholder="Enter product name"
+                    />
+                </div>
 
-        <button onClick={submitImage} className="bg-bg">upload</button>
+                {/* Price Input */}
+                <div className="mb-6">
+                    <label htmlFor="price" className="block text-lg font-medium text-gray-700">
+                        Price
+                    </label>
+                    <input
+                        className="mt-2 p-2 border border-gray-300 rounded-md w-full"
+                        type="number"
+                        name="price"
+                        onChange={pro}
+                        id="price"
+                        placeholder="Enter product price"
+                    />
+                </div>
 
-        <AllImages
-        NewImgData = {newImage}/>
+                {/* Upload Button */}
+                <button
+                    onClick={submitImage}
+                    className="bg-blue-500 text-white px-6 py-3 rounded-md shadow-md hover:bg-blue-600 transition duration-300 mb-6"
+                >
+                    Upload Image
+                </button>
+
+               
+                <AllImages
+                NewImgData={newImage}
+                />
+            </div>
+            
         </Fragment>
-    )
-}
+    );
+};
+
 export default UploadClothingImage;

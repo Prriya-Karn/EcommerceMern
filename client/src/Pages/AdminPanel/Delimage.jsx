@@ -29,7 +29,9 @@ const Delimage = ({id,setAllImg,allImg})=>{
 
     return(
         <Fragment>
-        <button onClick={delImage}>delete</button>
+        <button onClick={delImage}>
+        <img className="w-4 h-4" src="../../../public/image/delete.png"/>
+        </button>
         </Fragment>
     )
 }

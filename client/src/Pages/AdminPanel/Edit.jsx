@@ -19,7 +19,7 @@ const Edit = ({id,route})=>{
             })
             
             const ediRes = await getUserById.json();
-           
+           console.log(ediRes)
             
             if(route == "conbyid"){
                 // console.log(ediRes.msg[0]._id)
@@ -48,7 +48,9 @@ const Edit = ({id,route})=>{
     }
     return(
         <Fragment>
-        <button className="bg-bg" onClick={editData}>Edit</button>
+        <button className="" onClick={editData}>
+        <img className="w-5 h-5" src="../../../public/image/edit.png"/>
+        </button>
         </Fragment>
     )
 }

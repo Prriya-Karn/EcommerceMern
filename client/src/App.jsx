@@ -1,4 +1,4 @@
-import { Fragment, useState } from "react";
+import { Fragment, useContext, useState } from "react";
 import Home from "./Pages/Home";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { Navbar } from "./Components/Features/Navbar";
@@ -9,15 +9,16 @@ import AdminLayout from "./Components/layouts/AdminLayout";
 import Error from "./Pages/Error";
 import AllUserData from "./Pages/AdminPanel/AllUserData";
 import AllContactData from "./Pages/AdminPanel/AllContactData";
-import AllServiceData from "./Pages/AdminPanel/AllServiceData";
 import Update from "./Pages/AdminPanel/Update";
 import UploadClothingImage from "./Pages/AdminPanel/UploadClothingImage";
 import AddToCart from "./Pages/AddToCart";
 import Cart from "./Pages/Cart";
 import { Footer } from "./Components/Features/Footer";
+import { AuthContext } from "./tokenStore/Auth";
 
 
 const App = () => {
+  const {isAdmin} = useContext(AuthContext);
   const [cartQuants, setCartQuant] = useState(0);
   const [totalItems, setTotalItem] = useState(0);
 
@@ -52,20 +53,23 @@ const App = () => {
               cartQuants={cartQuants} />}
           />
 
+
           {/*-------------------route access by admin only----------------------*/}
           <Route path="/admin" element={<AdminLayout />}>
             <Route path="/admin/usersdata" element={<AllUserData />} />
             <Route path="/admin/contactdata" element={<AllContactData />} />
-            <Route path="/admin/servicedata" element={<AllServiceData />} />
             <Route path="/admin/usersdata/updatedata" element={<Update />} />
             <Route path="/admin/uploadimages" element={<UploadClothingImage />} />
           </Route>
 
-
-
+          {/**--------------error route--------------- */}
           <Route path="*" element={<Error />} />
+
         </Routes>
-        <Footer />
+        {
+          isAdmin == "false"?<Footer />:""
+        }
+        
       </BrowserRouter>
     </Fragment>
   )
