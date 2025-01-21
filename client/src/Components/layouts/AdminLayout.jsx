@@ -1,6 +1,7 @@
 import { Fragment, useContext } from "react";
 import { Outlet, NavLink, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../tokenStore/Auth";
+import Logout from "../../Pages/Logout";
 
 const AdminLayout = () => {
   const { isAdmin } = useContext(AuthContext);
@@ -11,7 +12,7 @@ const AdminLayout = () => {
       {isAdmin === "true" ? (
         <Fragment>
           {/* Sidebar Layout */}
-          <div className="flex h-full flex-col lg:flex-row">
+          <div className="flex h-full flex-col lg:flex-row mb-32">
             {/* Sidebar */}
             <div className="bg-gradient-to-b from-gray-900 to-gray-800 
             w-full lg:w-1/4 p-6 flex flex-col gap-8 text-white shadow-lg">
@@ -70,12 +71,11 @@ const AdminLayout = () => {
               </NavLink>
 
               {/* Logout Option */}
-              <button
-                onClick={() => navigate("/")}
-                className="mt-auto bg-red-600 hover:bg-red-700 p-3 rounded-lg text-center text-white font-semibold transition-all duration-300"
-              >
-                Logout
-              </button>
+              
+              <div className="text-center">
+             <Logout logut="admin"/>
+             </div>
+
             </div>
 
             {/* Main Content */}

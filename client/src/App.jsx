@@ -1,4 +1,4 @@
-import { Fragment, useContext, useState } from "react";
+import { Fragment, useState } from "react";
 import Home from "./Pages/Home";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { Navbar } from "./Components/Features/Navbar";
@@ -14,11 +14,8 @@ import UploadClothingImage from "./Pages/AdminPanel/UploadClothingImage";
 import AddToCart from "./Pages/AddToCart";
 import Cart from "./Pages/Cart";
 import { Footer } from "./Components/Features/Footer";
-import { AuthContext } from "./tokenStore/Auth";
-
 
 const App = () => {
-  const {isAdmin} = useContext(AuthContext);
   const [cartQuants, setCartQuant] = useState(0);
   const [totalItems, setTotalItem] = useState(0);
 
@@ -66,9 +63,8 @@ const App = () => {
           <Route path="*" element={<Error />} />
 
         </Routes>
-        {
-          isAdmin == "false"?<Footer />:""
-        }
+       
+        <Footer/>
         
       </BrowserRouter>
     </Fragment>
