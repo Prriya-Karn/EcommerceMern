@@ -21,8 +21,8 @@ export const GetAlImg = () => {
             console.log(error)
         }
     }
-    console.log(imgData);
 
+   
  
     useEffect(() => {
         getallimg()

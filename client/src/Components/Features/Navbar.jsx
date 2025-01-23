@@ -27,11 +27,11 @@ const menuData = [
       },
       {
         categoryName: "shirts",
-        items: ["half sleeves shirt", "full sleeves shirt", "shaket shirt"],
+        items: ["half sleeves shirt", "shaket shirt"],
       },
       {
         categoryName: "polo",
-        items: ["polo shirts"],
+        items: "",
       },
       {
         categoryName: "bottoms",
@@ -43,25 +43,25 @@ const menuData = [
       },
       {
         categoryName: "women",
-        items: ["crop tops", "sleeve crop tops", "cargo pants"],
+        items: ["crop tops", "cargo pants"],
       },
     ],
   },
 
   {
     id: 1,
-    mainCategory: "Shop by Collection",
+    mainCategory: "shop by Collection",
     categories: [
       {
-        categoryName: "Ember steel winter '24",
+        categoryName: "ember steel winter '24",
         items: ""
       },
       {
-        categoryName: "Majestic pre fall 2023",
+        categoryName: "majestic pre fall 2025",
         items: ""
       },
       {
-        categoryName: "Summer spring 2024",
+        categoryName: "summer spring 2025",
         items: ""
       },
     ]
@@ -104,7 +104,6 @@ export const Navbar = ({ totalItems }) => {
   // sm (640px ya usse above): Small devices, such as phones in portrait mode. (hamburger)
   
   // md (768px): Tablets and small devices in landscape mode.  (hamburger)
-  
   // lg (1024px): Laptops and medium-sized devices. 
   // xl (1280px): Desktops and larger screens. 
   // 2xl (1536px): Extra-large desktop screens or wide monitors. 
@@ -132,7 +131,7 @@ export const Navbar = ({ totalItems }) => {
             <ul className="lg:flex lg:text-sm font-medium lg:gap-6">
               {
                 menuData.map((e) => {
-                  // console.log(e.id)
+                  console.log(e)
                   return (
                     <Fragment key={e.id}>
                       <NavLink onMouseEnter={() => setMenus(true)}>
