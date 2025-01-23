@@ -1,6 +1,7 @@
 import { Fragment, useContext, useState } from "react";
 import { AuthContext } from "../../tokenStore/Auth";
 import AllImages from "./AllImages";
+import Category from "../Category";
 
 const UploadClothingImage = () => {
     const { token, API } = useContext(AuthContext);
@@ -8,8 +9,11 @@ const UploadClothingImage = () => {
     const [productInfo, setProInfo] = useState({
         productName: "",
         price: "",
+        categoryImage: ""
     });
+
     const [newImage, setNewImage] = useState(false);
+
 
     const selectImg = (event) => {
         setImg(event.target.files[0]);
@@ -33,7 +37,7 @@ const UploadClothingImage = () => {
             formData.append("proname", productInfo.productName);
             formData.append("price", productInfo.price);
 
-            const imgSave = await fetch(`${API}/api/admin/upload`, {
+            const imgSave = await fetch(`${API}/api/admin/upload/${productInfo.categoryImage}`, {
                 method: "POST",
                 headers: {
                     "Authorization": `Bearer ${token}`,
@@ -42,7 +46,7 @@ const UploadClothingImage = () => {
             });
 
             const imageData = await imgSave.json();
-            console.log("imgSave", imageData);
+
 
             setNewImage(imageData);
             if (imgSave.status === 400) return alert("Your file is not an image file");
@@ -51,7 +55,7 @@ const UploadClothingImage = () => {
             console.log(error);
         }
     };
-    console.log(newImage);
+
 
     return (
         <Fragment>
@@ -101,22 +105,50 @@ const UploadClothingImage = () => {
                     />
                 </div>
 
+                {/* Category Input */}
+                <div className="mb-6">
+                    <label htmlFor="price" className="block text-lg font-medium text-gray-700">
+                        Category Name
+                    </label>
+
+
+
+                    <select
+                        value={productInfo.categoryImage}
+                        name="categoryImage"
+                        onChange={pro}>
+
+                        <option value="">Select category</option>
+                        {
+                            Category.map((e) => {
+                                return (
+                                    <Fragment key={e.id}>
+                                        <option value={e}>{e}</option>
+                                    </Fragment>
+
+                                )
+                            })
+                        }
+                    </select>
+
+                </div>
+
                 {/* Upload Button */}
                 <button
                     onClick={submitImage}
-                    className="bg-blue-500 text-white px-6 py-3 rounded-md shadow-md hover:bg-blue-600 transition duration-300 mb-6"
-                >
+                    className="bg-gray-800 text-white px-6 py-3 rounded-md shadow-md hover:bg-gray-800 transition duration-300 mb-6">
                     Upload Image
                 </button>
 
-               
+
                 <AllImages
-                NewImgData={newImage}
+                    NewImgData={newImage}
                 />
             </div>
-            
+
         </Fragment>
     );
 };
 
 export default UploadClothingImage;
+

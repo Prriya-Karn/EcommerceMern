@@ -24,6 +24,8 @@ const AllImages = ({ NewImgData }) => {
             console.log(error);
         }
     };
+    
+
 
     // Add newly uploaded image to the list
     useEffect(() => {
@@ -36,7 +38,6 @@ const AllImages = ({ NewImgData }) => {
     useEffect(() => {
         getImage();
     }, []);
-
 
     // Edit image handler
     const editImg = async (id) => {

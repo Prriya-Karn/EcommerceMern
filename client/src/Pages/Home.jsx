@@ -12,7 +12,8 @@ import { NavLink } from "react-router-dom";
 import Video from "../Components/UI/Video";
 
 
-const Home = () => {
+const Home = ({newImage}) => {
+    console.log(newImage)
     const { getUserData } = useContext(AuthContext);
     useEffect(() => {
         console.log("userdata", getUserData);
@@ -87,7 +88,8 @@ const Home = () => {
 
 
 
-            <GetAlImg />
+            <GetAlImg
+             />
             <UniqueClothe/>
 
             <div className="w-full md:h-full sm:h-96 h-64 -mt-80 md:-mt-72 mb-20 rounded-lg">

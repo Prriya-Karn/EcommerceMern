@@ -6,7 +6,8 @@ const ImageSchema = new mongoose.Schema({
     mimetype:{type:String},
     uploadedAt: { type: Date, default: Date.now }, // Optional: timestamp
     productName : {type:String,require:true},
-    price : {type:Number,require:true}
+    price : {type:Number,require:true},
+    categoryImage : {type:String,require:true}
 });
 
 const ImageModel = mongoose.model("imagefile", ImageSchema);

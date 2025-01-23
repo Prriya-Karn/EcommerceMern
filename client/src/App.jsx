@@ -18,7 +18,7 @@ import { Footer } from "./Components/Features/Footer";
 const App = () => {
   const [cartQuants, setCartQuant] = useState(0);
   const [totalItems, setTotalItem] = useState(0);
-
+  
   return (
     <Fragment>
       <BrowserRouter>
