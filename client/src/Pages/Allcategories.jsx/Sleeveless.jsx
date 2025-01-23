@@ -10,7 +10,7 @@ const Sleeveless = () => {
                 head="sleeveless t-shirts"
             />
             <CommonGetAllImage
-                catName="sleeveless t-shirts" />
+                catName="sleeveless t-shirt" />
         </Fragment>
     )
 }

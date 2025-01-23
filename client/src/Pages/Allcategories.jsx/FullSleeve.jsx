@@ -10,7 +10,7 @@ const FullSleeve = () => {
     head = "Full Sleeves shirt"
     />
 <CommonGetAllImage
-catName = "full sleeves t-shirts"
+catName = "full sleeves t-shirt"
 />
     </Fragment>
   )

@@ -89,31 +89,32 @@ const Menus = ({ menus, menuItems }) => {
 */}
                         {
                             menuItems.map((e) => {
-                                console.log(e)
+                                
                                 return (
                                     <Fragment key={e.id}>
-
-
                                         {
                                             e.categories.map((e) => {
+                                                
                                                 return (
                                                     <Fragment key="">
                                                         <div className=''>
                                                             <NavLink to={`/${e.categoryName}`}>
                                                             <h2 className='menus-head'>{e.categoryName}</h2>
                                                             </NavLink>
-
                                                              {
                                                             
                                                                 e.items.length != 0 ? <div className="menu-items block">
                                                                 {
-                                                                    e.items.map((item, idx) => (
-                                                                        <Fragment key={idx}>
-                                                                       <NavLink to={item}>
-                                                                       <h2 key={idx}>{item}</h2>
-                                                                       </NavLink>
-                                                                       </Fragment>
-                                                                  ))
+                                                                    e.items.map((item, idx) => {
+                                                                        console.log(item)
+                                                                        return(
+                                                                            <Fragment key={idx}>
+                                                                            <NavLink to={item}>
+                                                                            <h2 key={idx}>{item}</h2>
+                                                                            </NavLink>
+                                                                            </Fragment>
+                                                                        )
+                                                                    })
                                                                 }
                                                                 </div>:""
                                                              }

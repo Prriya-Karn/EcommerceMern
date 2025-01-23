@@ -88,8 +88,10 @@ const App = () => {
           <Route path="/relaxed fit" element={<Relaxedfit/>}/>
           <Route path="/oversized fit" element={<OversizedFit/>}/>
           <Route path="/regular fit" element={<Regular/>}/>
-          <Route path="/sleeveless t-shirts" element={<Sleeveless/>}/>
-          <Route path="/full sleeves t-shirts" element={<FullSleeve/>}/>
+
+          <Route path="/sleeveless t-shirt" element={<Sleeveless/>}/>
+
+          <Route path="/full sleeves t-shirt" element={<FullSleeve/>}/>
           <Route path="/half sleeves shirt" element={<HalfSleeve/>}/>
           <Route path="/shaket shirt" element={<Shaket/>}/>
           <Route path="/cargo pants" element={<Cargo/>}/>

@@ -21,8 +21,8 @@ const menuData = [
           "relaxed fit",
           "oversized fit",
           "regular fit",
-          "sleeveless t-shirts",
-          "full sleeves t-shirts",
+          "sleeveless t-shirt",
+          "full sleeves t-shirt",
         ],
       },
       {
