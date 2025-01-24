@@ -35,9 +35,13 @@ console.log(id)
     }
 
     const quantDec = () => {
-        setQuantity((pre) => {
-            return pre - 1
-        });
+        if(quantity==1){
+            setQuantity(1)
+        }else{
+            setQuantity((pre) => {
+                return pre - 1;
+            });
+        }
     }
 
     const addtocart = async () => {

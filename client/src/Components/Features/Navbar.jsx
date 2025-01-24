@@ -8,6 +8,7 @@ import "../../style/navbar.css";
 import Cart from "../../Pages/Cart";
 import Menus from "./Menus";
 import SideNavbar from "./SideNavbar";
+import { CartTotal } from "../../Pages/CartProvider";
 
 
 const menuData = [
@@ -68,10 +69,11 @@ const menuData = [
   },
 ];
 
-export const Navbar = ({ totalItems }) => {
+export const Navbar = () => {
   const location = useLocation();
-  console.log(location);
 
+  const {totalItems} = useContext(CartTotal);
+console.log(totalItems)
   const { isAdmin } = useContext(AuthContext);
   const [menus, setMenus] = useState(false);
 

@@ -1,20 +1,13 @@
 import { Fragment, useContext, useEffect, useState } from "react";
-import { AuthContext } from "../tokenStore/Auth";
 import '../style/navbar.css';
-import { useParams } from "react-router-dom";
-
+import { CartTotal } from "./CartProvider";
 
 const Cart = ({ cartModal, closeButt }) => {
-    const {name} = useParams()
-    console.log(name);
+    const {totalItems,getAllCartData,cartData} = useContext(CartTotal);
 
     const [isClosing, setIsClosing] = useState(false);
 
-    const { API } = useContext(AuthContext);
-    const [cartData, setCartData] = useState([]);
-    const [totalItems, setTotalItem] = useState(0);
-
-
+console.log(totalItems)
     const handleClose = () => {
         setIsClosing(true);
         setTimeout(() => {
@@ -23,26 +16,7 @@ const Cart = ({ cartModal, closeButt }) => {
         }, 500);
       };
 
-
-    // Fetch cart data logic here
-    const getAllCartData = async () => {
-        try {
-            const response = await fetch(`${API}/api/allcartdata`, {
-                method: "GET",
-            });
-
-            const data = await response.json();
-            if (response.ok) {
-                setCartData(data.msg);
-            } else{
-                console.error("Error fetching cart data:", data.message);
-            }
-        } catch (error) {
-            console.error("Error fetching cart data:", error);
-        }
-    };
-
-    // Fetch data when modal opens
+ // Fetch data when modal opens
     useEffect(() => {
         if (cartModal) {
             // Change background color and disable scroll
@@ -63,13 +37,10 @@ const Cart = ({ cartModal, closeButt }) => {
         };
     }, [cartModal]);
 
+   
     // Update totalItems whenever cartData changes
-    useEffect(() => {
-        if (cartData.length > 0) {
-            const total = cartData.reduce((acc, item) => acc + item.quantity, 0);
-            setTotalItem(total); // Update totalItems
-        }
-    }, [cartData]);
+   
+
 
     return (
         <Fragment>

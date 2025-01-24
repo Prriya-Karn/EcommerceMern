@@ -37,17 +37,15 @@ import Hoodie from "./Pages/Allcategories.jsx/Hoodie";
 import Sweat from "./Pages/Allcategories.jsx/Sweat";
 import Crop from "./Pages/Allcategories.jsx/Crop";
 import Joggers from "./Pages/Allcategories.jsx/Joggers";
-import CartById from "./Pages/CartById";
+import CartProvider from "./Pages/CartProvider";
 
 const App = () => {
   const [cartQuants, setCartQuant] = useState(0);
-  const [totalItems, setTotalItem] = useState(0);
-  
   return (
     <Fragment>
       <BrowserRouter>
-        <Navbar
-          totalItems={totalItems} />
+      <CartProvider>
+        <Navbar/>
         <Routes>
 
 
@@ -63,14 +61,11 @@ const App = () => {
               <Cart
                 setCartQuant={setCartQuant}
                 cartQuants={cartQuants}
-                setTotalItem={setTotalItem}
-                totalItems={totalItems}
               />
             }
           />
 
-          
-          <Route
+           <Route
             path="/addtocart/:id/:fileName/:price/:productName"
             element={
               <AddToCart
@@ -122,7 +117,8 @@ const App = () => {
           <Route path="*" element={<Error />} />
 
         </Routes>
-       
+        </CartProvider>
+        
         <Footer/>
         
       </BrowserRouter>
