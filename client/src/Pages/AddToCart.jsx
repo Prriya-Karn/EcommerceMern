@@ -1,4 +1,4 @@
-import { Fragment, useContext, useEffect, useState } from 'react'
+import { Fragment, useContext, useState } from 'react'
 import { useParams } from 'react-router-dom';
 import { AuthContext } from '../tokenStore/Auth';
 import Button from '../Components/UI/Button';
@@ -10,7 +10,9 @@ const AddToCart = ({ setCartQuant, cartQuants }) => {
 
     const { API } = useContext(AuthContext);
 
-    const { fileName, price, productName } = useParams();
+    const { fileName, price, productName,id } = useParams();
+console.log(id)
+
     const numericPrice = Number(price);
     const [quantity, setQuantity] = useState(1);
     const [despro,setdespro] = useState(false);
@@ -38,8 +40,6 @@ const AddToCart = ({ setCartQuant, cartQuants }) => {
         });
     }
 
-    // console.log("price", typeof(Number(price*3)));
-
     const addtocart = async () => {
         console.log(productName)
         try {
@@ -57,24 +57,20 @@ const AddToCart = ({ setCartQuant, cartQuants }) => {
                 })
             })
 
-            const resCartData = await cartData.json();
-            console.log("resCartData", resCartData)
+        
+            if (cartData.status==200) {
+                alert("Product added to cart successfully!");
+                setCartQuant(cartQuants + quantity);
+            } else {
+                alert("Failed to add product to cart.");
+            }
 
-            // setGetId(resCartData.msg._id)
-
-            setCartQuant(cartQuants + quantity)
-
-
-        } catch (error) {
+        } catch (error){
             console.log(error)
         }
     }
 
-    useEffect(() => {
-        addtocart()
-    }, [])
-
-
+ 
 
 
 
@@ -92,96 +88,11 @@ const AddToCart = ({ setCartQuant, cartQuants }) => {
                              w-full
                              sm:flex block'>
 
-
-                        <div className="mt-0 mr-3 hidden sm:flex sm:flex-col h-[100vh]
-                             sm:h-[105vh] md:h-[118vh] lg:h-[90vh] gap-2 overflow-x-auto no-scrollbar">
-
-                            <div className="cursor-pointer rounded-md">
-                                <img
-                                    src="/image/1L9A7447.webp" className='h-24 w-20 rounded-md'
-                                    alt="" />
-                            </div>
-                            <div className="cursor-pointer rounded-md">
-                                <img
-                                    src="/image/1L9A7447.webp" className='h-24 w-20 rounded-md'
-                                    alt="" />
-                            </div>
-
-                            <div className="cursor-pointer rounded-md">
-                                <img
-                                    src="/image/1L9A7447.webp" className='h-24 w-20 rounded-md'
-                                    alt="" />
-                            </div>
-
-                            <div className="cursor-pointer rounded-md">
-                                <img
-                                    src="/image/1L9A7447.webp" className='h-24 w-20 rounded-md'
-                                    alt="" />
-                            </div>
-
-                            <div className="cursor-pointer rounded-md">
-                                <img
-                                    src="/image/1L9A7447.webp" className='h-24 w-20 rounded-md'
-                                    alt="" />
-                            </div>
-
-                            <div className="cursor-pointer rounded-md">
-                                <img
-                                    src="/image/1L9A7447.webp" className='h-24 w-20 rounded-md'
-                                    alt="" />
-                            </div>
-
-
-                            <div className="cursor-pointer rounded-md">
-                                <img
-                                    src="/image/1L9A7447.webp" className='h-24 w-20 rounded-md'
-                                    alt="" />
-                            </div>
-
-                            <div className="cursor-pointer rounded-md">
-                                <img
-                                    src="/image/1L9A7447.webp" className='h-24 w-20 rounded-md'
-                                    alt="" />
-                            </div>
-
-                            <div className="cursor-pointer rounded-md">
-                                <img
-                                    src="/image/1L9A7447.webp" className='h-24 w-20 rounded-md'
-                                    alt="" />
-                            </div>
-
-                            <div className="cursor-pointer rounded-md">
-                                <img
-                                    src="/image/1L9A7447.webp" className='h-24 w-20 rounded-md'
-                                    alt="" />
-                            </div>
-
-
-                            <div className="cursor-pointer rounded-md">
-                                <img
-                                    src="/image/1L9A7447.webp" className='h-24 w-20 rounded-md'
-                                    alt="" />
-                            </div>
-                            <div className="cursor-pointer rounded-md">
-                                <img
-                                    src="/image/1L9A7447.webp" className='h-24 w-20 rounded-md'
-                                    alt="" />
-                            </div>
-
-                            <div className="cursor-pointer rounded-md">
-                                <img
-                                    src="/image/1L9A7447.webp" className='h-24 w-20 rounded-md'
-                                    alt="" />
-                            </div> <div className="cursor-pointer rounded-md">
-                                <img
-                                    src="/image/1L9A7447.webp" className='h-24 w-20 rounded-md'
-                                    alt="" />
-                            </div>
-
-
-                        </div>
+{/**--------------------------add small images-------------------------- */}
 
                         <img src={`/images/${fileName}`} className='rounded-xl sm:p-0  p-5 w-full h-full block' />
+
+
 
                         <div className="sm:hidden carousel mt-0 mb-8 ml-5 flex gap-2">
 
@@ -356,4 +267,98 @@ const AddToCart = ({ setCartQuant, cartQuants }) => {
 
 
 export default AddToCart;
+
+
+
+
+
+
+// <div className="mt-0 mr-3 hidden sm:flex sm:flex-col h-[100vh]
+// sm:h-[105vh] md:h-[118vh] lg:h-[90vh] gap-2 overflow-x-auto no-scrollbar">
+
+// <div className="cursor-pointer rounded-md">
+//    <img
+//        src={`/images/${fileName}`} className='h-24 w-20 rounded-md'
+//        alt="" />
+// </div>
+// <div className="cursor-pointer rounded-md">
+//    <img
+//        src="/image/1L9A7447.webp" className='h-24 w-20 rounded-md'
+//        alt="" />
+// </div>
+
+// <div className="cursor-pointer rounded-md">
+//    <img
+//        src="/image/1L9A7447.webp" className='h-24 w-20 rounded-md'
+//        alt="" />
+// </div>
+
+// <div className="cursor-pointer rounded-md">
+//    <img
+//        src="/image/1L9A7447.webp" className='h-24 w-20 rounded-md'
+//        alt="" />
+// </div>
+
+// <div className="cursor-pointer rounded-md">
+//    <img
+//        src="/image/1L9A7447.webp" className='h-24 w-20 rounded-md'
+//        alt="" />
+// </div>
+
+// <div className="cursor-pointer rounded-md">
+//    <img
+//        src="/image/1L9A7447.webp" className='h-24 w-20 rounded-md'
+//        alt="" />
+// </div>
+
+
+// <div className="cursor-pointer rounded-md">
+//    <img
+//        src="/image/1L9A7447.webp" className='h-24 w-20 rounded-md'
+//        alt="" />
+// </div>
+
+// <div className="cursor-pointer rounded-md">
+//    <img
+//        src="/image/1L9A7447.webp" className='h-24 w-20 rounded-md'
+//        alt="" />
+// </div>
+
+// <div className="cursor-pointer rounded-md">
+//    <img
+//        src="/image/1L9A7447.webp" className='h-24 w-20 rounded-md'
+//        alt="" />
+// </div>
+
+// <div className="cursor-pointer rounded-md">
+//    <img
+//        src="/image/1L9A7447.webp" className='h-24 w-20 rounded-md'
+//        alt="" />
+// </div>
+
+
+// <div className="cursor-pointer rounded-md">
+//    <img
+//        src="/image/1L9A7447.webp" className='h-24 w-20 rounded-md'
+//        alt="" />
+// </div>
+// <div className="cursor-pointer rounded-md">
+//    <img
+//        src="/image/1L9A7447.webp" className='h-24 w-20 rounded-md'
+//        alt="" />
+// </div>
+
+// <div className="cursor-pointer rounded-md">
+//    <img
+//        src="/image/1L9A7447.webp" className='h-24 w-20 rounded-md'
+//        alt="" />
+// </div> 
+// <div className="cursor-pointer rounded-md">
+//    <img
+//        src="/image/1L9A7447.webp" className='h-24 w-20 rounded-md'
+//        alt="" />
+// </div>
+
+
+// </div>
 

@@ -1,6 +1,6 @@
 import { Fragment, useContext, useState } from "react"
 import "../../style/navbar.css";
-import { NavLink } from 'react-router-dom';
+import { NavLink, useLocation } from 'react-router-dom';
 import { AuthContext } from "../../tokenStore/Auth";
 import Logout from "../../Pages/Logout";
 import "../../style/navbar.css";
@@ -69,6 +69,9 @@ const menuData = [
 ];
 
 export const Navbar = ({ totalItems }) => {
+  const location = useLocation();
+  console.log(location);
+
   const { isAdmin } = useContext(AuthContext);
   const [menus, setMenus] = useState(false);
 
@@ -188,7 +191,7 @@ export const Navbar = ({ totalItems }) => {
             </NavLink>
           </div>
 
-          {/*---------------- Cart Section */}
+          {/*---------------- Cart Section------------------ */}
           <div className="cart flex lg:flex lg:gap-5 lg:items-center lg:mr-10">
             <img
               src="../../../public/image/magnifying-glass.png"
@@ -220,7 +223,7 @@ export const Navbar = ({ totalItems }) => {
 
               }
 
-              <NavLink to="">
+              <NavLink to={location.pathname}>
                 <button onClick={sideCart}>
                   <div className="flex">
                     <img

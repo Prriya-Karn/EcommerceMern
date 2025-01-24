@@ -1,10 +1,13 @@
 import { Fragment, useContext, useEffect, useState } from "react";
 import { AuthContext } from "../tokenStore/Auth";
 import '../style/navbar.css';
+import { useParams } from "react-router-dom";
 
 
 const Cart = ({ cartModal, closeButt }) => {
-    
+    const {name} = useParams()
+    console.log(name);
+
     const [isClosing, setIsClosing] = useState(false);
 
     const { API } = useContext(AuthContext);
@@ -31,7 +34,7 @@ const Cart = ({ cartModal, closeButt }) => {
             const data = await response.json();
             if (response.ok) {
                 setCartData(data.msg);
-            } else {
+            } else{
                 console.error("Error fetching cart data:", data.message);
             }
         } catch (error) {
@@ -87,7 +90,7 @@ const Cart = ({ cartModal, closeButt }) => {
                         <div className="flex justify-between md:w-5/6 lg:w-[42vw] xl:w-[34vw]  sm:w-72 w-72 lg:ml-5">
                             <div className="flex justify-between items-center sm:w-28 w-24">
                                 <img
-                                    src="../../../public/image/shopping-bag.png"
+                                    src="/image/shopping-bag.png"
                                     className="sm:h-6 sm:w-6 h-5 w-5"
                                     alt="Shopping Bag"/>
 
@@ -97,7 +100,7 @@ const Cart = ({ cartModal, closeButt }) => {
                             <button
                                 className="close-btn sm:h-12 sm:w-6 h-10 w-5 items-center"
                                 onClick={handleClose}>
-                                <img src="../../../public/image/close.png" alt="Close" />
+                                <img src="/image/close.png" alt="Close" />
                             </button>
                         </div>
                         {/**------------------- close button (end)------------------- */}

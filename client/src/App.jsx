@@ -37,6 +37,7 @@ import Hoodie from "./Pages/Allcategories.jsx/Hoodie";
 import Sweat from "./Pages/Allcategories.jsx/Sweat";
 import Crop from "./Pages/Allcategories.jsx/Crop";
 import Joggers from "./Pages/Allcategories.jsx/Joggers";
+import CartById from "./Pages/CartById";
 
 const App = () => {
   const [cartQuants, setCartQuant] = useState(0);
@@ -55,20 +56,24 @@ const App = () => {
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="/contact" element={<Contact />}/>
+
           <Route
             path="/cart/:fileName/:price/:productName/:id"
             element={
               <Cart
                 setCartQuant={setCartQuant}
                 cartQuants={cartQuants}
-                setTotalItem={setTotalItem}  // Ensure this is passed correctly
+                setTotalItem={setTotalItem}
                 totalItems={totalItems}
               />
             }
           />
+
+          
           <Route
-            path="/products/:fileName/:price/:productName"
-            element={<AddToCart
+            path="/addtocart/:id/:fileName/:price/:productName"
+            element={
+              <AddToCart
               setCartQuant={setCartQuant}
               cartQuants={cartQuants} />}
           />
