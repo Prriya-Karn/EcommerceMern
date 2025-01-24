@@ -36,7 +36,7 @@ const CartProvider = ({children}) => {
     }, [cartData]);
   return (
     <Fragment>
-    <CartTotal.Provider value={{totalItems,getAllCartData,cartData}}>
+    <CartTotal.Provider value={{totalItems,getAllCartData,cartData,setCartData}}>
     {children}
     </CartTotal.Provider>
     </Fragment>

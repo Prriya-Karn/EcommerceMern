@@ -1,6 +1,7 @@
 import { Fragment, useContext, useEffect, useState } from "react";
 import '../style/navbar.css';
 import { CartTotal } from "./CartProvider";
+import RemoveCartItem from "./RemoveCartItem";
 
 const Cart = ({ cartModal, closeButt }) => {
     const {totalItems,getAllCartData,cartData} = useContext(CartTotal);
@@ -38,7 +39,6 @@ console.log(totalItems)
     }, [cartModal]);
 
    
-    // Update totalItems whenever cartData changes
    
 
 
@@ -82,7 +82,8 @@ console.log(totalItems)
 
                         {/**----------Alll images and their price with quantity (start)--------------------- */}
                         <div className="cart-items  mt-8  xl:w-[37vw]">
-                            {cartData.length > 0 ? (
+                            {
+                                cartData.length > 0 ? (
                                 cartData.map((item) => (        
                                     <div key={item._id} className="cart-item lg:gap-8 md:gap-5 flex lg:mb-8
                                      md:mb-4 mb-7">
@@ -106,7 +107,8 @@ console.log(totalItems)
                                             <p className="text-xs sm:text-base">{item.quantity}</p>
                                             <button className="w-full h-full">+</button>
                                             </div>
-                                            <p className="underline text-xs">Remove</p>
+                                           <RemoveCartItem
+                                           id = {item._id}/>
                                             </div>
                                         </div>
                                     </div>

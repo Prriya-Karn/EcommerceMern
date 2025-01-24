@@ -29,6 +29,7 @@ const getAlImgRouter = require("./router/getAlImage-router");
 const addToCartRouter = require("./router/addToCart-router");
 const allCartDataRouter = require("./router/allCartData-router");
 const cartDataByIdRouter = require("./router/cartDataById-router");
+const delCartByIdRouter = require("./router/delCartByIdRouter");
 
 // CORS POLICY :-
 
@@ -65,6 +66,7 @@ app.use("/api",getAlImgRouter);
 app.use("/api",addToCartRouter);
 app.use("/api",allCartDataRouter);
 app.use("/api",cartDataByIdRouter);
+app.use("/api",delCartByIdRouter);
 
 // Static folder to serve uploaded images
 app.use('/uploads', express.static(path.join(__dirname, "../../client/public/images")));
