@@ -4,6 +4,7 @@ const addToCartController = async(req,res)=>{
        
 
         const findProductName = await cartDb.findOne({productName:req.body.productName});
+        console.log(cartDb)
 
         if(!findProductName){
             const priceRes = req.body.quantity * req.body.price;
@@ -11,7 +12,8 @@ const addToCartController = async(req,res)=>{
                 quantity:req.body.quantity,
                 price:priceRes,
                 productName:req.body.productName,
-                productImage : req.body.productImage || "https://example.com/default-image.jpg",
+                productImage : req.body.productImage,
+                
             })
             await saveInDb.save();
         res.status(200).json({
@@ -20,7 +22,6 @@ const addToCartController = async(req,res)=>{
            console.log(saveInDb)
         }else{
 
-            // updating existing data due to unique productName not throw error and updation on existing data
            findProductName.quantity+=req.body.quantity;
             findProductName.price+=(req.body.price * req.body.quantity);
             await findProductName.save()

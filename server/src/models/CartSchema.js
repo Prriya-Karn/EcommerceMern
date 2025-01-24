@@ -15,6 +15,9 @@ const CartSchema = new mongoose.Schema({
         productImage:{
             type : String,
             default: "https://example.com/default-image.jpg",
+        },
+        totalItem : {
+            type : Number,
         }
     
 })

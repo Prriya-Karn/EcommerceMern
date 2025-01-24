@@ -21,7 +21,7 @@ const Logout = ({logut})=>{
         logut == "admin" ? <button onClick={logout} className="mt-auto w-full bg-red-600
         hover:bg-red-700 p-3 rounded-lg text-center text-white 
         font-semibold transition-all duration-300">Logout</button>:
-        <button onClick={logout}><img src='../../public/image/logout.png'
+        <button onClick={logout}><img src='/image/logout.png'
         className="lg:w-6 lg:h-6 
         md:w-7 md:h-7 md:block
         hidden"/>

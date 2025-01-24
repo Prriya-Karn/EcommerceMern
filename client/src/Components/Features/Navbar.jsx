@@ -161,7 +161,7 @@ console.log(totalItems)
 
 
             <div className="hamburger" onClick={handleSideNavBar}>
-              <img src="../../../public/image/hamburger.png" className="w-5 h-5
+              <img src="/image/hamburger.png" className="w-5 h-5
         sm:w-7 sm:h-7
         md:w-7 md:h-7"/>
             </div>
@@ -172,7 +172,7 @@ console.log(totalItems)
 
             <div className="search">
               <img
-                src="../../../public/image/magnifying-glass.png"
+                src="/image/magnifying-glass.png"
                 alt="Search"
                 className="md:w-7 md:h-7 w-6 h-5 -ml-1
         sm:w-7 sm:h-7"/>
@@ -185,7 +185,7 @@ console.log(totalItems)
           <div className="logo  lg:-ml-52 lg:flex lg:justify-center">
             <NavLink to="/">
               <img
-                src="../../../public/image/logo.png"
+                src="/image/logo.png"
                 alt="Logo"
                 className="lg:w-20 lg:h-auto md:h-16 w-16 h-auto
             sm:w-16 sm:h-auto"
@@ -196,7 +196,7 @@ console.log(totalItems)
           {/*---------------- Cart Section------------------ */}
           <div className="cart flex lg:flex lg:gap-5 lg:items-center lg:mr-10">
             <img
-              src="../../../public/image/magnifying-glass.png"
+              src="/image/magnifying-glass.png"
               alt="Search"
               className="search lg:w-7 lg:h-7 hidden lg:block w-7 h-7"
             />
@@ -206,7 +206,7 @@ console.log(totalItems)
                 getUserData == undefined ?
                   <NavLink to="/login">
                     <img
-                      src="../../../public/image/people.png"
+                      src="/image/people.png"
                       alt="User"
                       className="lg:w-7 lg:h-7 md:w-7 md:h-7 md:block hidden"
                     />
@@ -219,7 +219,7 @@ console.log(totalItems)
                     <ul className="ml-5"><NavLink to="/admin">
                       <img className="lg:w-7 lg:h-7 md:w-7 md:h-7 md:block
           hidden"
-                        src="../../../public/image/administrator.png" />
+                        src="/image/administrator.png" />
                     </NavLink></ul>
                   </Fragment> : ""
 

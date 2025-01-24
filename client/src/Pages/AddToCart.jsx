@@ -1,14 +1,16 @@
-import { Fragment, useContext, useState } from 'react'
+import { Fragment, useContext, useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom';
 import { AuthContext } from '../tokenStore/Auth';
 import Button from '../Components/UI/Button';
 import '../style/home.css';
 import Video from '../Components/UI/Video';
 import Reviews from '../Components/UI/Reviews';
+import { CartTotal } from './CartProvider';
 
 const AddToCart = ({ setCartQuant, cartQuants }) => {
 
     const { API } = useContext(AuthContext);
+    const {getAllCartData} = useContext(CartTotal);
 
     const { fileName, price, productName,id } = useParams();
 console.log(id)
@@ -69,12 +71,16 @@ console.log(id)
                 alert("Failed to add product to cart.");
             }
 
+        
         } catch (error){
             console.log(error)
         }
     }
 
  
+    useEffect(()=>{
+        getAllCartData()
+    },[getAllCartData])
 
 
 

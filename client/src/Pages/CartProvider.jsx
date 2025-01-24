@@ -1,4 +1,4 @@
-import { createContext, Fragment, useContext, useEffect, useState } from "react";
+import { createContext, Fragment, useContext,  useEffect,  useState } from "react";
 import { AuthContext } from "../tokenStore/Auth";
 
 const CartTotal = createContext();
@@ -6,7 +6,7 @@ const CartProvider = ({children}) => {
     const { API } = useContext(AuthContext);
    
     const [cartData, setCartData] = useState([]);
-    const [totalItems, setTotalItem] = useState(0);
+    const [totalItems, setTotalItem] = useState();
 
     console.log(totalItems)
      // Fetch cart data logic here
@@ -17,6 +17,8 @@ const CartProvider = ({children}) => {
             });
 
             const data = await response.json();
+            setTotalItem(data.totalItem);
+
             if (response.ok) {
                 setCartData(data.msg);
             } else{
@@ -28,12 +30,19 @@ const CartProvider = ({children}) => {
     };
 
    
+    // useEffect(() => {
+    //     if (cartData.length > 0) {
+    //         const total = cartData.reduce((acc, item) => acc + item.quantity, 0);
+    //         setTotalItem(total); // Update totalItems
+    //     }
+    // }, [cartData]);
+
+    
     useEffect(() => {
-        if (cartData.length > 0) {
-            const total = cartData.reduce((acc, item) => acc + item.quantity, 0);
-            setTotalItem(total); // Update totalItems
-        }
-    }, [cartData]);
+        getAllCartData();
+    }, []);
+
+
   return (
     <Fragment>
     <CartTotal.Provider value={{totalItems,getAllCartData,cartData,setCartData}}>
