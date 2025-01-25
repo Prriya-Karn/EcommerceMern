@@ -13,10 +13,7 @@ export const GetAlImg = () => {
                 method: "GET"
             })
             const resImg = await getimg.json();
-            console.log(resImg)
             setImgData(resImg.msg)
-
-            console.log(resImg.msg.length)
         } catch (error) {
             console.log(error)
         }

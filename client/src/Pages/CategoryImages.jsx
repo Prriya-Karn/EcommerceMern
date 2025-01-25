@@ -16,7 +16,6 @@ const CategoryImages = ({imgData,catName,headCatName,subHeadCatName}) => {
      <div className="carousel flex mb-10 mt-2 h-auto p-5">
      {
          imgData.map((e)=>{
-            console.log(e)
              return(
                  <Fragment key={e.id}>
                  {
@@ -37,16 +36,16 @@ const CategoryImages = ({imgData,catName,headCatName,subHeadCatName}) => {
                      lg:h-96">
      
                      <NavLink to={`/addtocart/${e._id}/${e.filename}/${e.price}/${e.productName}`}>
-                         <img className="h-full w-full" src={`../../public/images/${e.filename}`} />
+                         <img className="h-full w-full" src={`/images/${e.filename}`} />
                      </NavLink>
                  </figure>
-                 
+
                  {/* Added background color and padding to card-body */}
                  <div className="bg-white rounded-b-lg 
                      p-1
                      lg:p-4a
                       md:p-2">
-                     <h2 className="text-center md:text-base text-sm font-medium">{e.productName}</h2>
+                     <h2 className="text-center md:text-base text-sm font-medium truncate">{e.productName}</h2>
                      <p className='text-center mt-1'>{e.price}</p>
      
                  </div>

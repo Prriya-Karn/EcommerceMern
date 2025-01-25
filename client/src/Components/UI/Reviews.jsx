@@ -11,11 +11,11 @@ const Reviews = () => {
     <h1 className="font-bold text-center text-2xl">Customer Reviews</h1>
     <div className="flex justify-between ml-5 mr-5 md:mr-0 md:w-2/3 md:ml-52 lg:w-1/2 lg:ml-72 xl:ml-0  xl:w-full lg:justify-center mt-10">
     <div className="flex w-64 justify-center items-center">
-    <img className="w-5 h-5" src="../../../public/image/rating.png"/>
-    <img className="w-5 h-5" src="../../../public/image/rating.png"/>
-    <img className="w-5 h-5" src="../../../public/image/rating.png"/>
-    <img className="w-5 h-5" src="../../../public/image/rating.png"/>
-    <img className="w-5 h-5" src="../../../public/image/rating.png"/>
+    <img className="w-5 h-5" src="/image/rating.png"/>
+    <img className="w-5 h-5" src="/image/rating.png"/>
+    <img className="w-5 h-5" src="/image/rating.png"/>
+    <img className="w-5 h-5" src="/image/rating.png"/>
+    <img className="w-5 h-5" src="/image/rating.png"/>
     </div>
     <div className="flex justify-start w-1/2 md:w-64">
     <button onClick={writeReview}
