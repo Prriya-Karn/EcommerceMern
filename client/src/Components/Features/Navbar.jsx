@@ -73,7 +73,7 @@ export const Navbar = () => {
   const location = useLocation();
 
   const {totalItems} = useContext(CartTotal);
-console.log(totalItems)
+
   const { isAdmin } = useContext(AuthContext);
   const [menus, setMenus] = useState(false);
 
@@ -136,7 +136,7 @@ console.log(totalItems)
             <ul className="lg:flex lg:text-sm font-medium lg:gap-6">
               {
                 menuData.map((e) => {
-                  console.log(e)
+            
                   return (
                     <Fragment key={e.id}>
                       <NavLink onMouseEnter={() => setMenus(true)}>

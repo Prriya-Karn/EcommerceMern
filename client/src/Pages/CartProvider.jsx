@@ -1,4 +1,4 @@
-import { createContext, Fragment, useContext,  useEffect,  useState } from "react";
+import { createContext, Fragment, useCallback, useContext,  useEffect,  useState } from "react";
 import { AuthContext } from "../tokenStore/Auth";
 
 const CartTotal = createContext();
@@ -7,10 +7,9 @@ const CartProvider = ({children}) => {
    
     const [cartData, setCartData] = useState([]);
     const [totalItems, setTotalItem] = useState();
-
-    console.log(totalItems)
+ 
      // Fetch cart data logic here
-     const getAllCartData = async () => {
+     const getAllCartData = useCallback(async () => {
         try {
             const response = await fetch(`${API}/api/allcartdata`, {
                 method: "GET",
@@ -18,7 +17,7 @@ const CartProvider = ({children}) => {
 
             const data = await response.json();
             setTotalItem(data.totalItem);
-
+            console.log(data.totalItem)
             if (response.ok) {
                 setCartData(data.msg);
             } else{
@@ -27,25 +26,17 @@ const CartProvider = ({children}) => {
         } catch (error) {
             console.error("Error fetching cart data:", error);
         }
-    };
+    },[API])
 
-   
-    // useEffect(() => {
-    //     if (cartData.length > 0) {
-    //         const total = cartData.reduce((acc, item) => acc + item.quantity, 0);
-    //         setTotalItem(total); // Update totalItems
-    //     }
-    // }, [cartData]);
 
-    
     useEffect(() => {
         getAllCartData();
-    }, []);
+      }, []);
 
 
   return (
     <Fragment>
-    <CartTotal.Provider value={{totalItems,getAllCartData,cartData,setCartData}}>
+    <CartTotal.Provider value={{totalItems,getAllCartData,cartData,setCartData,setTotalItem}}>
     {children}
     </CartTotal.Provider>
     </Fragment>

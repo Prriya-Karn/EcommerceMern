@@ -18,7 +18,7 @@ const Auth = ({ children }) => {
 
     // you can add a useEffect that listens to changes in the token state:
     useEffect(() => {
-        console.log("Updated token:", token);
+        // console.log("Updated token:", token);
     }, [token]);
 
 
@@ -33,19 +33,18 @@ const Auth = ({ children }) => {
             })
 
             const resToken = await tokenVerify.json();
-            console.log("resToken",resToken)
+        
 
             setUserData(resToken.msg.username)
             setCon(resToken.msg);
             setIsAdmin(resToken.msg.isAdmin)
-            console.log(resToken.msg.isAdmin)
+           
             
         } catch (error) {
             console.log(error)
         }
     }
 
-    console.log(getUserData)
 
     const removeToken = () => {
         setToken(null);
@@ -65,8 +64,7 @@ const Auth = ({ children }) => {
 
 
 
-    console.log("check",isAdmin)
- 
+  
     
 
     return (

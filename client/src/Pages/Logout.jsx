@@ -12,7 +12,7 @@ const Logout = ({logut})=>{
        return rem.removeToken()   
     }
 
-    console.log(getUserData)
+ 
     return(
         <Fragment>
     {

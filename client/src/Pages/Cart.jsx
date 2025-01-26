@@ -8,7 +8,6 @@ const Cart = ({ cartModal, closeButt }) => {
 
     const [isClosing, setIsClosing] = useState(false);
 
-console.log(totalItems)
     const handleClose = () => {
         setIsClosing(true);
         setTimeout(() => {

@@ -62,8 +62,27 @@ const ContactSchema = z.object({
         .min(5,{message : "Message must be at least of 5 character"})
         .max(255,{message:"Message must not be more 255 character"}),
     })
+
+    const reviewZodSchema = z.object({
+        reviewMessage : z
+        .string({required_error : "message is required"})
+        .trim(),
+
+        name : z
+        .string({required_error : "Name is required"})
+        .trim()
+        .min(3,{message : "Name must be at least of 3 character"})
+        .max(255,{message:"Name must not be more 255 character"}),
+
+        email : z
+        .string({required_error:"email is required"})
+        .trim()
+        .email({message : "invalid email address"})
+        .min(3,{message : "email must be at least of 3 character"})
+        .max(255,{message:"email must not be more 255 character"}),
+    })
    
 
-module.exports = {regisSchema,loginSchema,ContactSchema};
+module.exports = {regisSchema,loginSchema,ContactSchema,reviewZodSchema};
 
 

@@ -1,10 +1,70 @@
-import { Fragment, useState } from "react";
+import { Fragment, useCallback, useContext, useEffect, useState } from "react";
+import { AuthContext } from "../../tokenStore/Auth";
 
 const Reviews = () => {
+    const {API} = useContext(AuthContext);
+
     const [review,setReview] = useState(false);
+
+    const [reviewdata,setReviewData] = useState({
+        reviewMessage : "",
+        name : "",
+        email : ""
+    })
+
+    const reviewData = (event)=>{
+        const name = event.target.name;
+        const value = event.target.value;
+        setReviewData((pre)=>{
+            return{
+                ...pre,
+                [name] : value
+            }
+        })
+    }
+    
+    
+    const cancelReview = ()=>{
+        setReviewData({
+            reviewMessage : "",
+            name : "",
+            email : ""
+        })
+        
+    }
+
+   
    const writeReview = ()=>{
     setReview(!review)
    }
+
+
+   useEffect(()=>{
+    
+   })
+   const submitReview = useCallback(async()=>{
+    try{
+        const saveData = await fetch(`${API}/api/review`,{
+            method : "POST",
+            headers : {
+                "Content-Type" : "application/json"
+            },
+            body : JSON.stringify(reviewdata)
+        })
+
+   
+       if(saveData.status==200){
+        alert("data save success")
+       }else{
+        alert("not save");
+       }
+
+    }catch(error){
+        console.log(error)
+    }
+   },[API,reviewdata])
+
+   
   return (
     <Fragment>
     <div className="mt-16 xl:ml-96 xl:mr-96">
@@ -34,7 +94,8 @@ const Reviews = () => {
 
     <div className="flex justify-center">
     <div className="mt-10 w-80 ml-2 mr-2 md:mr-0 md:ml-0 md:w-1/2 lg:w-1/2 xl:w-full">
-    <textarea className="placeholder-slate-400 border-2
+    <textarea value={reviewdata.reviewMessage} onChange={reviewData} name="reviewMessage"
+     className="placeholder-slate-400 border-2
      border-revbg rounded w-full h-52 p-5 text-lg" 
      placeholder="Write your reviews here"/>
     </div>
@@ -43,20 +104,30 @@ const Reviews = () => {
     <div className="mt-6">
     <h2 className="text-center">Name</h2>
     <div className="flex justify-center">
-    <input className="placeholder-slate-400 border-2
+    <input value={reviewdata.name} onChange={reviewData} name="name"
+    className="placeholder-slate-400 border-2
      border-revbg p-1 px-3 rounded mt-2 mb-2 w-64" type="text" placeholder="Enter your name (public)"/>
     </div>
     
     <h2 className="text-center">Email</h2>
     <div className="flex justify-center">
-    <input className="placeholder-slate-400 border-2
+    <input value={reviewdata.email} onChange={reviewData} name="email" 
+    className="placeholder-slate-400 border-2
      border-revbg p-1 px-3 rounded mt-2 mb-2 w-64" type="email" placeholder="Enter your email (private)"/>
     </div>
     </div>
     
     <div className="flex justify-center gap-10 mt-7">
-    <button className="border-2 border-revbg hover:text-black text-xs py-2 px-2 md:text-base md:px-6 md:py-2 rounded-sm font-bold ">Cancel Review</button>
-    <button className="bg-revbg rounded-sm text-white text-xs px-2 py-2 md:text-base md:px-6 md:py-2 font-bold">Submit Review</button>
+    <button onClick={cancelReview}
+    className="border-2 border-revbg hover:text-black text-xs py-2 px-2 md:text-base md:px-6 md:py-2 rounded-sm font-bold ">
+    Cancel Review
+    </button>
+    
+    <button onClick={submitReview}
+    className="bg-revbg rounded-sm text-white text-xs px-2 py-2 md:text-base md:px-6 md:py-2 font-bold">
+    Submit Review
+    </button>
+    
     </div>
     
     </Fragment>:""

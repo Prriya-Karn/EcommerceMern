@@ -2,7 +2,7 @@ import { Fragment, useEffect, useRef } from "react";
 
 const Video = ({src}) => {
   const videoRef = useRef(null);
-  console.log(videoRef)
+
   useEffect(() => {
     if (videoRef.current) {
       videoRef.current.muted = true; 

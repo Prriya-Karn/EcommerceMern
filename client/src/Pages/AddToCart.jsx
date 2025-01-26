@@ -1,4 +1,4 @@
-import { Fragment, useContext, useEffect, useState } from 'react'
+import { Fragment, useCallback, useContext, useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom';
 import { AuthContext } from '../tokenStore/Auth';
 import Button from '../Components/UI/Button';
@@ -12,13 +12,14 @@ const AddToCart = ({ setCartQuant, cartQuants }) => {
     const { API } = useContext(AuthContext);
     const {getAllCartData} = useContext(CartTotal);
 
-    const { fileName, price, productName,id } = useParams();
-console.log(id)
+    const { fileName, price, productName} = useParams();
+
 
     const numericPrice = Number(price);
     const [quantity, setQuantity] = useState(1);
     const [despro,setdespro] = useState(false);
     const [pro,setPro] = useState(false);
+    const [getdata,setGetdata] = useState(false);
 
     const desProShow = ()=>{
         setdespro(!despro);
@@ -46,8 +47,8 @@ console.log(id)
         }
     }
 
-    const addtocart = async () => {
-        console.log(productName)
+    const addtocart =  useCallback(async () => {
+
         try {
             const cartData = await fetch(`${API}/api/addtocart`, {
                 method: "POST",
@@ -67,6 +68,7 @@ console.log(id)
             if (cartData.status==200) {
                 alert("Product added to cart successfully!");
                 setCartQuant(cartQuants + quantity);
+                setGetdata(true)
             } else {
                 alert("Failed to add product to cart.");
             }
@@ -75,15 +77,15 @@ console.log(id)
         } catch (error){
             console.log(error)
         }
+    },[API, quantity, numericPrice, productName, fileName, cartQuants, setCartQuant])
+
+    
+    if(getdata){
+        getAllCartData();
+        setGetdata(false)
     }
-
  
-    useEffect(()=>{
-        getAllCartData()
-    },[getAllCartData])
-
-
-
+ 
     return (
 
         <Fragment>
