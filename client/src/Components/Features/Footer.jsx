@@ -17,13 +17,13 @@ export const Footer = () => {
             <div className='mt-3'>
             <img className='lg:w-3/4 md:w-2/3 md:ml-10 sm:w-2/3 sm:ml-10 w-44
              rounded-lg md:mb-8 mb-2'
-            src='../../../public/image/box1.png'/>
+            src='/image/box1.png'/>
             </div>
 
             <div>
             <img className='lg:w-3/4 lg:ml-20 md:w-2/3 md:ml-20 sm:w-2/3 sm:ml-20 w-44
               rounded-lg'
-            src='../../../public/image/box2.png'/>
+            src='/image/box2.png'/>
             </div>
             </div>
 
@@ -32,7 +32,7 @@ export const Footer = () => {
              sm:-mt-10  sm:h-56
              h-40'>
             <img  className='h-full'
-            src='../../../public/image/image-removebg-preview.png'/>
+            src='/image/image-removebg-preview.png'/>
             </div>
             </div>
             </div>

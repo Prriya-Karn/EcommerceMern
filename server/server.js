@@ -31,6 +31,7 @@ const allCartDataRouter = require("./router/allCartData-router");
 const cartDataByIdRouter = require("./router/cartDataById-router");
 const delCartByIdRouter = require("./router/delCartByIdRouter");
 const reviewRouter = require("./router/review-router");
+const reviewGetDataRouter = require("./router/reviewGetData-router");
 
 // CORS POLICY :-
 
@@ -69,6 +70,8 @@ app.use("/api",allCartDataRouter);
 app.use("/api",cartDataByIdRouter);
 app.use("/api",delCartByIdRouter);
 app.use("/api",reviewRouter);
+app.use("/api",reviewGetDataRouter);
+
 
 // Static folder to serve uploaded images
 app.use('/uploads', express.static(path.join(__dirname, "../../client/public/images")));
