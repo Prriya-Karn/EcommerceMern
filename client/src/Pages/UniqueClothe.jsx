@@ -2,16 +2,16 @@ import { Fragment, useState } from 'react'
 import Button from '../Components/UI/Button'
 
 const imgArr = [
-    { img: "../../public/image/1L9A7447.webp", id: 1 },
-    { img: "../../public/image/1L9A7450.webp", id: 2 },
-    { img: "../../public/image/1L9A7447.webp", id: 3 },
-    { img: "../../public/image/1L9A7450.webp", id: 4 },
-    { img: "../../public/image/1L9A7467.webp", id: 5 },
-    { img: "../../public/image/1L9A7457.webp", id: 6 },
-    { img: "../../public/image/1L9A7472.webp", id: 7 },
-    { img: "../../public/image/1L9A7447.webp", id: 8 },
-    { img: "../../public/image/1L9A7450.webp", id: 9 },
-    { img: "../../public/image/1L9A7467.webp", id: 10 },
+    { img: "/image/1L9A7447.webp", id: 1 },
+    { img: "/image/1L9A7450.webp", id: 2 },
+    { img: "/image/1L9A7447.webp", id: 3 },
+    { img: "/image/1L9A7450.webp", id: 4 },
+    { img: "/image/1L9A7467.webp", id: 5 },
+    { img: "/image/1L9A7457.webp", id: 6 },
+    { img: "/image/1L9A7472.webp", id: 7 },
+    { img: "/image/1L9A7447.webp", id: 8 },
+    { img: "/image/1L9A7450.webp", id: 9 },
+    { img: "/image/1L9A7467.webp", id: 10 },
 ]
 export const UniqueClothe = () => {
 
@@ -39,7 +39,7 @@ export const UniqueClothe = () => {
                     <div className=' lg:h-1/2 lg:w-2/3 lg:ml-20 
                     md:ml-32 md:mr-ml-32 md:w-2/3 sm:ml-20 sm:mr-20 ml-8 mr-8'>
                     {
-                        chanImg.length==0?<img src='../../public/image/1L9A7447.webp' className='rounded-xl'/>:
+                        chanImg.length==0?<img src='/image/1L9A7447.webp' className='rounded-xl'/>:
                         chanImg.map((e)=>{
                             return(
                                 <Fragment key={e.id}>
@@ -97,14 +97,14 @@ export const UniqueClothe = () => {
                             <button className='rounded-l-md  items-center justify-center flex
                             w-full
                             lg:h-14 md:h-14 sm:h-12 h-10'>
-                                <img src='../../public/image/minus.png'
+                                <img src='/image/minus.png'
                                     className='w-5 h-full' />
                             </button>
                             <span className='w-full flex justify-center items-center text-xl font-medium'>1</span>
                             <button className='rounded-r-md items-center justify-center flex
                              w-full 
                              lg:h-14 md:h-14'>
-                                <img src='../../public/image/plus.png'
+                                <img src='/image/plus.png'
                                     className='w-5 h-10' />
                             </button>
                         </div>
@@ -119,13 +119,13 @@ export const UniqueClothe = () => {
                             <h1>Share</h1>
 
 
-                            <img src='../../public/image/whatsapp.png'
+                            <img src='/image/whatsapp.png'
                                 className='lg:w-4 lg:h-4 md:w-4 md:h-4 w-4 h-4' />
-                            <img src='../../public/image/instagram.png'
+                            <img src='/image/instagram.png'
                                 className='lg:w-4 lg:h-4 md:w-4 md:h-4 w-4 h-4' />
-                            <img src='../../public/image/twitter.png'
+                            <img src='/image/twitter.png'
                                 className='lg:w-4 lg:h-4 md:w-4 md:h-4 w-4 h-4' />
-                            <img src='../../public/image/pinterest.png'
+                            <img src='/image/pinterest.png'
                                 className='lg:w-4 lg:h-4 md:w-4 md:h-4 w-4 h-4' />
 
 

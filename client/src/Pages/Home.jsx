@@ -38,7 +38,7 @@ const Home = () => {
         <Fragment>
             {/**-----------image for below or equal tablet--------------------- */}
             <div className="sm:-mt-14 md:-mt-14 lg:hidden block bg-orange-400">
-                <img src="../../public/image/WhatsApp Image 2025-01-14 at 2.17.54 AM.jpeg"
+                <img src="/image/WhatsApp Image 2025-01-14 at 2.17.54 AM.jpeg"
                     className="w-full" />
             </div>
 
@@ -50,35 +50,35 @@ const Home = () => {
                 <Slider {...settings}>
                     <div className="">
                         <img
-                            src="../../public/image/Feel_the_Luxury_of_Rabari_Desktop.webp"
+                            src="/image/Feel_the_Luxury_of_Rabari_Desktop.webp"
                             className="w-full h-auto object-cover"
                             alt="Slide 1"
                         />
                     </div>
                     <div>
                         <img
-                            src="../../public/image/The_Urban_Fade_Desktop_Banner__2.webp"
+                            src="/image/The_Urban_Fade_Desktop_Banner__2.webp"
                             className="w-full h-auto object-cover"
                             alt="Slide 2"
                         />
                     </div>
                     <div>
                         <img
-                            src="../../public/image/Feel_the_Luxury_of_Rabari_Desktop.webp"
+                            src="/image/Feel_the_Luxury_of_Rabari_Desktop.webp"
                             className="w-full h-auto object-cover"
                             alt="Slide 3"
                         />
                     </div>
                     <div>
                         <img
-                            src="../../public/image/img14.webp"
+                            src="/image/img14.webp"
                             className="w-full h-auto object-cover"
                             alt="Slide 4"
                         />
                     </div>
                     <div>
                         <img
-                            src="../../public/image/The_Urban_Fade_Desktop_Banner__2.webp"
+                            src="/image/The_Urban_Fade_Desktop_Banner__2.webp"
                             className="w-full h-auto object-cover"
                             alt="Slide 5"
                         />
@@ -124,7 +124,7 @@ const Home = () => {
 
             <div className="-mt-52">
                 <Video
-                    src="../../public/image/video1.mp4"
+                    src="/image/video1.mp4"
                 />
                 <div className="flex justify-center">
                     <div className="text-center lg:w-2/3 xl:w-1/2 sm:w-3/4 w-3/4 mt-10 mb-52 text-xs lg:text-sm">
