@@ -79,6 +79,9 @@ app.use('/uploads', express.static(path.join(__dirname, "../../client/public/ima
 
 app.use(errorMiddleware)
 
+app.get("/",(req,res)=>{
+    res.json("hello");
+})
 
 connection().then(()=>{
     const PORT = process.env.port || 3001;
