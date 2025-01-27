@@ -75,13 +75,9 @@ app.use("/api",reviewGetDataRouter);
 
 
 // Static folder to serve uploaded images
-app.use('/uploads', express.static(path.join(__dirname, "../../client/public/images")));
+app.use('/images', express.static(path.join(__dirname, "images")));
 
 app.use(errorMiddleware)
-
-app.get("/",(req,res)=>{
-    res.json("hello");
-})
 
 connection().then(()=>{
     const PORT = process.env.port || 3001;
