@@ -15,14 +15,18 @@ const loginController = async (req, res, next) => {
 
        const pass = await userExist.comparePass(password);
        
-
+       
         if(!pass){
             return res.status(400).json({
                 msg: "login not successfull"
             }) 
         }
+
+        const username = await regisData.findOne({email:email});
+
         return res.status(200).json({
             msg: "login successfull",
+            loginnedUser :  username.username,
             token: await userExist.generateToken(),
             userId : userExist._id.toString()
         })

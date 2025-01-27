@@ -1,21 +1,23 @@
-import { Fragment, useContext, useState } from "react";
+import { Fragment, useContext, useEffect, useState } from "react";
 
-import { NavLink, useNavigate } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { AuthContext } from "../tokenStore/Auth";
 import Input from "../Components/UI/Input";
 import Button from "../Components/UI/Button";
 import { Heading } from "../Components/UI/Heading";
-
+import { toast } from "react-toastify";
+import Modal from "../Components/Features/Modal";
 
 const Login = () => {
-    const navigate = useNavigate();
-    const { API } = useContext(AuthContext);
+    const { API, token } = useContext(AuthContext);
     const { serverToken } = useContext(AuthContext)
     const [log, setLog] = useState({
         Email: "",
         Password: ""
     });
     const [hidePass, setHide] = useState(true)
+    const [loginnerUsername, setLoginnedUsername] = useState();
+
 
     const logData = (event) => {
         const name = event.target.name;
@@ -27,6 +29,7 @@ const Login = () => {
             }
         })
     }
+
 
     const subLog = async (e) => {
         try {
@@ -41,11 +44,12 @@ const Login = () => {
             const resLogin = await login.json();
             console.log(resLogin)
             if (login.status == 200) {
-                alert("login successfull");
+                toast.success("login success")
                 serverToken(resLogin.token);
-                navigate("/");
+                setLoginnedUsername(resLogin.loginnedUser)
+              
             } else {
-                alert("login not successfull")
+                toast.error("login not successfull")
             }
 
 
@@ -58,9 +62,22 @@ const Login = () => {
         setHide(!hidePass)
     }
 
+    if(token!=null){
+         document.body.style.overflow = 'hidden';
+        document.body.style.background = "rgba(0, 0, 0, 0.2)"
+    }else{
+        document.body.style.overflow = 'auto';
+        document.body.style.background = "initial"
+    }
+
+
 
     return (
         <Fragment>
+        {
+            token?<Modal loginnerUsername = {loginnerUsername}/>:""
+        }
+        
             <div className="flex justify-center items-center">
                 <div className="md:w-full w-full lg:w-3/4 xl:w-1/2  rounded-lg p-8">
 
@@ -117,9 +134,12 @@ const Login = () => {
                             </NavLink></h4>
                     </div>
 
-
+                    
                 </div>
+            
             </div>
+
+            
         </Fragment>
     )
 }

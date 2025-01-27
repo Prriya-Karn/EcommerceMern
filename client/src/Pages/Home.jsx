@@ -10,10 +10,10 @@ import "../style/home.css";
 import { Heading } from "../Components/UI/Heading";
 import Video from "../Components/UI/Video";
 import FeaturedInData from "./FeaturedInData";
+import { NavLink } from "react-router-dom";
 
 
 const Home = () => {
-
     const { getUserData } = useContext(AuthContext);
     useEffect(() => {
         console.log("userdata", getUserData);
@@ -36,13 +36,14 @@ const Home = () => {
 
     return (
         <Fragment>
-
-
             {/**-----------image for below or equal tablet--------------------- */}
             <div className="sm:-mt-14 md:-mt-14 lg:hidden block bg-orange-400">
                 <img src="../../public/image/WhatsApp Image 2025-01-14 at 2.17.54 AM.jpeg"
                     className="w-full" />
             </div>
+
+            
+
 
             {/* React Slick Carousel */}
             <div className="-mt-10 overflow-hidden lg:block hidden hero-carousel">
@@ -90,7 +91,7 @@ const Home = () => {
 
             <GetAlImg />
             <UniqueClothe />
-
+           
             <div className="w-full md:h-full sm:h-96 h-64 -mt-80 md:-mt-72 mb-20 rounded-lg">
                 <img className="h-full w-full" src="/image/img13.jpg" />
             </div>
@@ -116,9 +117,10 @@ const Home = () => {
                     </div>
 
 
-
                 </div>
             </div>
+
+          
 
             <div className="-mt-52">
                 <Video
@@ -142,6 +144,10 @@ const Home = () => {
                     </div>
                 </div>
             </div>
+            <NavLink to="https://wa.me/918368744279" target="_blank" 
+            className="fixed bottom-5 right-5 z-50 w-12 h-12 hover:scale-110 transition-transform bg-whatsapp p-2">
+            <img className=""  src="/image/whatsapp.png"/>
+            </NavLink>
         </Fragment>
     )
 }

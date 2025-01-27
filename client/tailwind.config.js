@@ -27,6 +27,7 @@ export default {
         footerBg:"#F2F2F2",
         bodyColor : "#F3F4F6",
         revbg : "#FF9900",
+        whatsapp : "#0FC145"
       },
       fontFamily: {
         roboto: ['"Roboto"', 'sans-serif'],

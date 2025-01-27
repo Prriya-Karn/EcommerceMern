@@ -70,6 +70,22 @@ const AdminLayout = () => {
                 <h2 className="capitalize font-semibold">Upload</h2>
               </NavLink>
 
+              <NavLink
+              to="/admin/"
+              className={({ isActive }) =>
+                `flex items-center gap-3 p-4 rounded-lg transition-all duration-300 ${
+                  isActive ? "bg-gray-700" : "hover:bg-gray-700"
+                }`
+              }
+            >
+              <img
+                className="w-6 h-6 filter invert"
+                src="/image/cloud-computing.png"
+                alt="Upload"
+              />
+              <h2 className="capitalize font-semibold">Reviews</h2>
+            </NavLink>
+
               {/* Logout Option */}
               
               <div className="text-center">
