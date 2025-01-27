@@ -33,15 +33,16 @@ const delCartByIdRouter = require("./router/delCartByIdRouter");
 const reviewRouter = require("./router/review-router");
 const reviewGetDataRouter = require("./router/reviewGetData-router");
 
-// CORS POLICY :-
-
 const corsOption = {
-    origin : "http://localhost:5173",
+    origin: [
+        "http://localhost:5173",              // Localhost for development
+        "https://ecommerce-frontend.vercel.app", // Vercel frontend for production
+    ],
     methods: "GET,PUT,PATCH,DELETE,POST,HEAD",
-    credentials : true
-}
-app.use(cors(corsOption))
+    credentials: true,
+};
 
+app.use(cors(corsOption));
 
 
 
