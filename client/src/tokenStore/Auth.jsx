@@ -54,15 +54,7 @@ const Auth = ({ children }) => {
 
     useEffect(() => {
         verifyToken();
-    }, [token])     // Run whenever the token changes
-
-
-     // useEffect to fetch all user data when `isAdmin` is true
-    // useEffect(()=>{
-    //     getAllUser();
-    // },[isAdmin])          // getAllUser call when isAdmin change
-
-
+    }, [token])    
 
   
     
