@@ -13,6 +13,7 @@ export const GetAlImg = () => {
                 method: "GET"
             })
             const resImg = await getimg.json();
+            console.log(resImg)
             setImgData(resImg.msg)
         } catch (error) {
             console.log(error)
@@ -27,7 +28,6 @@ export const GetAlImg = () => {
     return (
         <Fragment>
            
-
 
            <CategoryImages
            headCatName = "HEAVY WEIGHT JACKETS"

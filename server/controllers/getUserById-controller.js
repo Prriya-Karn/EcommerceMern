@@ -7,7 +7,7 @@ const getUserByIdController = async (req, res, next) => {
         res.status(200).json({
             msg: getDataUser
         })
-        console.log(getDataUser);
+        // console.log(getDataUser);
         
     } catch (error) {
         res.status(400).json({

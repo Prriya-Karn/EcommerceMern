@@ -4,7 +4,7 @@ const contactController = async (req,res,next) => {
     try {
        const {username,email,message} = req.body;
        const id = req.params.id
-       console.log("id",id)
+    //    console.log("id",id)
        const conEmail = await ContactData.findOne({email:email});
        if(conEmail){
         return res.status(400).json({

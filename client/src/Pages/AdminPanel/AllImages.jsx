@@ -74,7 +74,7 @@ const AllImages = ({ NewImgData }) => {
                         <Fragment key={e._id}>
                             <div className="border border-gray-300 rounded-lg p-4 shadow-lg bg-white hover:shadow-xl transition duration-300">
                                 <img
-                                    src={`../../../public/images/${e.filename}`}
+                                    src={`https://ecommercemern-1-bj94.onrender.com/images/${e.filename}`}
                                     alt={e.productName}
                                     className="w-full h-48  rounded-md mb-4"
                                 />

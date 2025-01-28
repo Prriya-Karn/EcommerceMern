@@ -6,9 +6,10 @@ const multerMiddleware = () => {
 
     const storage = multer.diskStorage({
         destination: (req, file, cb) => {
-            console.log(path.join(__dirname, "images"))
-            cb(null, path.join(__dirname, "images"))
+            console.log("path",path.join(__dirname, "../../images"))
+            cb(null, path.join(__dirname, "../../images"))
         },
+        
         filename: (req, file, cb) => {
             cb(null, Date.now() + "-" + file.originalname)
         }

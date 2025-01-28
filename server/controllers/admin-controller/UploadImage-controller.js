@@ -1,42 +1,51 @@
 const dbImage = require("../../src/models/ImageSchema");
+const path = require("path");
+
 const uploadImageController = async (req, res, next) => {
     try {
         const categoryImage = req.params.category;
-        // console.log(categoryImage);
 
+        const imgData = req.file; // Contains the file metadata
+        if (!imgData) {
+            return res.status(400).json({ message: "No file uploaded" });
+        }
 
-        const imgData = req.file;
-        
         const productName = req.body.proname;
         const price = req.body.price;
-        console.log("imgdata", imgData)
 
+        // Construct filePath manually (accessible from the static `/images` route)
+        // const filePath = path.join("/images", imgData.filename);
+
+        // Create a new document
         const imgSaveInDb = new dbImage({
             filename: imgData.filename,
-            filePath: imgData.filePath,
+            // filePath: filePath, 
             mimetype: imgData.mimetype,
-            uploadedAt: imgData.uploadedAt,
+            uploadedAt: new Date(), // Add a timestamp
             productName: productName,
             price: price,
-            categoryImage : categoryImage
-        })
+            categoryImage: categoryImage,
+        });
 
+        // Save to the database
+        await imgSaveInDb.save();
 
-        imgSaveInDb.save()
-        console.log("data", imgSaveInDb)
-
+        // Respond with success
         res.status(200).json({
+            message: "Image uploaded successfully",
             filename: imgSaveInDb.filename,
             _id: imgSaveInDb.id,
             productName: imgSaveInDb.productName,
             price: imgSaveInDb.price,
-            categoryImage : imgSaveInDb.categoryImage
-        })
-        
-        console.log(imgSaveInDb)
+            categoryImage: imgSaveInDb.categoryImage,
+            filePath: imgSaveInDb.filePath,
+        });
+
+        console.log("Image saved:", imgSaveInDb);
     } catch (error) {
-        res.status(400).json(error)
+        console.error("Error uploading image:", error);
+        res.status(500).json({ message: "Image upload failed", error: error.message });
     }
-}
+};
 
 module.exports = uploadImageController;

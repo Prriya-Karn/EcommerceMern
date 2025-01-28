@@ -50,7 +50,7 @@ const CommonGetAllImage = ({catName}) => {
                         md:h-full lg:h-full">
         
                         <NavLink to={`/addtocart/${e._id}/${e.filename}/${e.price}/${e.productName}`}>
-                            <img className="h-full w-full" src={`../../public/images/${e.filename}`} />
+                            <img className="h-full w-full" src={`https://ecommercemern-1-bj94.onrender.com/images/${e.filename}`} />
                             <div className="flex justify-center">
                             <button className="capitalize bg-slate-300 text-black font-semibold w-full h-10">Add to cart</button>
                             </div>

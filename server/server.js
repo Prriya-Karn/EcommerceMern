@@ -36,7 +36,7 @@ const reviewGetDataRouter = require("./router/reviewGetData-router");
 const corsOption = {
     origin: [
         "http://localhost:5173",              // Localhost for development
-        "https://ecommerce-frontend.vercel.app", // Vercel frontend for production
+        "https://ecommerce-mern-ashy.vercel.app/", // Vercel frontend for production
     ],
     methods: "GET,PUT,PATCH,DELETE,POST,HEAD",
     credentials: true,
@@ -75,7 +75,7 @@ app.use("/api",reviewGetDataRouter);
 
 
 // Static folder to serve uploaded images
-app.use('/images', express.static(path.join(__dirname, "images")));
+app.use('/images', express.static(path.join(__dirname, "../../images")));
 
 app.use(errorMiddleware)
 

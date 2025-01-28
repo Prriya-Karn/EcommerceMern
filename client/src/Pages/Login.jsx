@@ -111,7 +111,7 @@ const Login = () => {
                             <Button
                             buttName=<img className="lg:w-7 lg:h-7 md:w-7 md:h-7
                             w-7 h-7
-                             sm:w-7 sm:h-7" src={hidePass == true ? "../../public/image/eye.png" : "../../public/image/hidden.png"} />
+                             sm:w-7 sm:h-7" src={hidePass == true ? "/image/eye.png" : "/image/hidden.png"} />
                             onClickFun={showHidePass}
                             className="bg-bg"/>
                             </div>

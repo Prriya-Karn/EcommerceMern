@@ -24,7 +24,7 @@ const RegisController = async (req, res, next) => {
         const userData = new regisData({ username, email, phone, password });
 
         await userData.save();
-        console.log("data stored")
+        // console.log("data stored")
 
         // generate user token :-
         // this token store in localStorage or cookie not in db :-

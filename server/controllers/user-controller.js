@@ -5,7 +5,7 @@ const userController = async(req,res)=>{
         res.status(200).json({
             msg : data
         })
-        console.log(data)
+        // console.log(data)
     }catch(error){
         res.status(400).send(error)
     }
