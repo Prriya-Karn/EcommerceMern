@@ -2,7 +2,7 @@ import { Fragment } from 'react'
 import { NavLink } from 'react-router-dom';
 
 const CategoryImages = ({imgData,catName,headCatName,subHeadCatName}) => {
-    console.log(imgData)
+    // console.log(imgData)
   return (
     <Fragment>
     <div className='text-center mt-12 uppercase'>
@@ -17,7 +17,7 @@ const CategoryImages = ({imgData,catName,headCatName,subHeadCatName}) => {
      <div className="carousel flex mb-10 mt-2 h-auto p-5">
      {
          imgData.map((e)=>{
-         console.log(e)
+        //  console.log(e)
              return(
                  <Fragment key={e.id}>
                  {
@@ -38,8 +38,8 @@ const CategoryImages = ({imgData,catName,headCatName,subHeadCatName}) => {
                      lg:h-96">
      
                      <NavLink to={`/addtocart/${e._id}/${e.filename}/${e.price}/${e.productName}`}>
-                     <img src={`https://ecommercemern-1-bj94.onrender.com/images/${e.filename}`} alt={e.productName} />
-
+                     <img src={`/images/${e.filename}`} alt={e.productName} />
+                     
                      </NavLink>
                  </figure>
 

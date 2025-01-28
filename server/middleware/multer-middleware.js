@@ -1,20 +1,24 @@
 const multer = require('multer');
 const path = require('path');
 
+// require("../../client/public/images")
 const multerMiddleware = () => {
     // where to file save and unique file name:-
 
     const storage = multer.diskStorage({
+        
         destination: (req, file, cb) => {
-            console.log("path",path.join(__dirname, "../../images"))
-            cb(null, path.join(__dirname, "../../images"))
+           
+            cb(null, path.join(__dirname, "../../public/images"))
         },
         
         filename: (req, file, cb) => {
+            // console.log(path.join(__dirname, "../../images")); 
             cb(null, Date.now() + "-" + file.originalname)
         }
+        
     })
-
+    
     const fileFilter = (req, file, cb) => {
         if (file.mimetype.startsWith("image/")) {
             cb(null, true);

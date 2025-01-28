@@ -102,7 +102,7 @@ const AddToCart = ({ setCartQuant, cartQuants }) => {
 
 {/**--------------------------add small images-------------------------- */}
 
-                        <img src={`https://ecommercemern-1-bj94.onrender.com/images/${fileName}`} className='rounded-xl sm:p-0  p-5 w-full h-full block' />
+                        <img src={`/images/${fileName}`} className='rounded-xl sm:p-0  p-5 w-full h-full block' />
 
 
 

@@ -39,6 +39,7 @@ const corsOption = {
         "https://ecommerce-mern-ashy.vercel.app",  // Vercel frontend for production
     ],
     methods: "GET,PUT,PATCH,DELETE,POST,HEAD",
+    allowedHeaders: ["Content-Type", "Authorization", "Access-Control-Allow-Origin"],
     credentials: true,
 };
 
@@ -72,10 +73,10 @@ app.use("/api",cartDataByIdRouter);
 app.use("/api",delCartByIdRouter);
 app.use("/api",reviewRouter);
 app.use("/api",reviewGetDataRouter);
-
+// require("../client/public/images")
 
 // Static folder to serve uploaded images
-app.use('/images', express.static(path.join(__dirname, "../../images")));
+app.use('/images', express.static(path.join(__dirname, "../client/public/images")));
 
 app.use(errorMiddleware)
 

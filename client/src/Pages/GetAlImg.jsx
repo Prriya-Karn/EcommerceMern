@@ -10,16 +10,19 @@ export const GetAlImg = () => {
     const getallimg = async() => {
         try {
             const getimg = await fetch(`${API}/api/getallimg`, {
-                method: "GET"
+                method: "GET",
+                headers:{
+                    "Content-Type" : "application/json"
+                }
             })
             const resImg = await getimg.json();
-            console.log(resImg)
+            console.log(resImg.msg)
             setImgData(resImg.msg)
         } catch (error) {
             console.log(error)
         }
     }
-
+// require("../../../images")
    
  
     useEffect(() => {

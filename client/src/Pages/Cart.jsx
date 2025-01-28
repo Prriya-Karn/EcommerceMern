@@ -87,7 +87,7 @@ const Cart = ({ cartModal, closeButt }) => {
                                     <div key={item._id} className="cart-item lg:gap-8 md:gap-5 flex lg:mb-8
                                      md:mb-4 mb-7">
                                         <img
-                                            src={`https://ecommercemern-1-bj94.onrender.com/images/${item.productImage}`}
+                                            src={`/images/${item.productImage}`}
                                 
                                             alt={item.productName}
                                             className="md:h-36 md:w-36 w-20 rounded-lg border-2"
