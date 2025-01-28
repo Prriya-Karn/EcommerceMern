@@ -42,7 +42,7 @@ const Login = () => {
                 body: JSON.stringify(log)
             })
             const resLogin = await login.json();
-            console.log(resLogin)
+            // console.log(resLogin)
             if (login.status == 200) {
                 toast.success("login success")
                 serverToken(resLogin.token);

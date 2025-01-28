@@ -17,8 +17,10 @@ const RemoveCartItem = ({ id }) => {
       });
 
       const delRes = await deleteItem.json();
-      if (delRes.msg.deletedCount > 0) {
+      if (token && delRes.msg.deletedCount > 0) {
         alert("Deleted successfully");
+      }else{
+        alert("please login")
       }
 
       // Remove item from cartData state
@@ -45,6 +47,7 @@ const RemoveCartItem = ({ id }) => {
 
   return (
     <Fragment>
+   
       <button onClick={removeItems}>
         <p className="underline text-xs">Remove</p>
       </button>
