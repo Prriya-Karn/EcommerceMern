@@ -7,7 +7,7 @@ export const GetAlImg = () => {
     const [imgData, setImgData] = useState([]);
 
 
-    const getallimg = async () => {
+    const getallimg = async() => {
         try {
             const getimg = await fetch(`${API}/api/getallimg`, {
                 method: "GET"

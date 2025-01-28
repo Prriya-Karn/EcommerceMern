@@ -35,7 +35,8 @@ const reviewGetDataRouter = require("./router/reviewGetData-router");
 
 const corsOption = {
     origin: [
-         "https://ecommerce-mern-ashy.vercel.app", // Vercel frontend for production
+        "http://localhost:5173",                  // Localhost for development
+        "https://ecommerce-mern-ashy.vercel.app",  // Vercel frontend for production
     ],
     methods: "GET,PUT,PATCH,DELETE,POST,HEAD",
     credentials: true,
