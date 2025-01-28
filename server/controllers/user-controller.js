@@ -1,11 +1,12 @@
 const regisSchema = require("../src/models/RegisSchema");
 const userController = async(req,res)=>{
     try{
-        const data = req.user
+        const data = req.user;
+        console.log(data)
         res.status(200).json({
             msg : data
         })
-        // console.log(data)
+    
     }catch(error){
         res.status(400).send(error)
     }
