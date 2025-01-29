@@ -146,7 +146,7 @@ export const Navbar = () => {
                   )
                 })
               }
-              <NavLink><li>Our Story</li></NavLink>
+             {/* <NavLink><li>Our Story</li></NavLink>*/}
               <Menus
                 menus={menus}
                 menuItems={menuItems} />
