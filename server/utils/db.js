@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 
 const url = process.env.MONGODB_URL
 
-// for shell = "mongosh mongodb+srv://ecom:ecom@cluster0.dhhes.mongodb.net/ecommerce"
+mongoose.set("bufferCommands", false);
 
 const connection = async()=>{
     try{
