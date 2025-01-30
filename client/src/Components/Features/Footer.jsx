@@ -25,6 +25,10 @@ export const Footer = () => {
               rounded-lg'
             src='/image/box2.png'/>
             </div>
+            <a href="/privacyPolicy">Privacy Policy</a> |  
+            <a href="/terms">Terms & Conditions</a> |  
+            <a href="/refundPolicy">Refund & Cancellation</a> |  
+            <a href="/shippingPolicy">Shipping & Delivery</a>
             </div>
 
             <div className=' lg:-mt-20 lg:-ml-24 lg:h-1/2
@@ -35,6 +39,7 @@ export const Footer = () => {
             src='/image/image-removebg-preview.png'/>
             </div>
             </div>
+           
             </div>
         </Fragment>
 
