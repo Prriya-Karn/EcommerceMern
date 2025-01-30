@@ -22,8 +22,7 @@ export const GetAlImg = () => {
             console.log(error)
         }
     }
-// require("../../../images")
-   
+
  
     useEffect(() => {
         getallimg()

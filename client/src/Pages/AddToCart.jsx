@@ -104,7 +104,7 @@ const AddToCart = ({ setCartQuant, cartQuants }) => {
             if (razorpaydata.status==200) {
                 console.log(true)
                 const options = {
-                    key: "rzp_test_GhF20V2TsmWKlL",
+                    key: "RAZORPAY_KEY_ID",
                     amount: res.order.amount,
                     currency: res.order.currency,
                     name: "Priya karn",

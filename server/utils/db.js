@@ -4,6 +4,8 @@ const url = process.env.MONGODB_URL
 
 mongoose.set("bufferCommands", false);
 
+
+
 const connection = async()=>{
     try{
         await mongoose.connect(url);
