@@ -9,7 +9,7 @@ import { CartTotal } from './CartProvider';
 
 const AddToCart = ({ setCartQuant, cartQuants }) => {
 
-    const { API } = useContext(AuthContext);
+    const { API,token } = useContext(AuthContext);
     const {getAllCartData} = useContext(CartTotal);
 
     const { fileName, price, productName} = useParams();
@@ -85,6 +85,52 @@ const AddToCart = ({ setCartQuant, cartQuants }) => {
         setGetdata(false)
     }
  
+    const buy = async (amount)=>{
+        try{
+            const razorpaydata = await fetch("http://localhost:3001/api/payment",{
+                method : "POST",
+                headers:{
+                    "Content-Type" : "application/json",
+                    "Authorization" : `Bearer ${token}`
+                },
+                body : JSON.stringify({
+                    amount : amount,
+                    currency : "INR",
+                })
+            })
+            const res = await razorpaydata.json();
+            // console.log(res)
+
+            if (razorpaydata.status==200) {
+                console.log(true)
+                const options = {
+                    key: "rzp_test_GhF20V2TsmWKlL",
+                    amount: res.order.amount,
+                    currency: res.order.currency,
+                    name: "Priya karn",
+                    description: "Product Description",
+                    order_id: res.order.id,
+                    callback_url : "http://localhost:3001/api/verifypayment",
+
+                    prefill: {
+                        name: "Customer Name",
+                        email: "customer@example.com",
+                    },
+                    theme: {
+                        color: "#F37254",
+                    },
+                };
+                console.log(options)
+
+                if (window && window.Razorpay) {
+                    const rzp = new window.Razorpay(options);
+                    rzp.open();
+                }
+            }
+        }catch(error){
+            console.log(error)
+        }
+    }
  
     return (
 
@@ -204,6 +250,13 @@ const AddToCart = ({ setCartQuant, cartQuants }) => {
                         buttName="Add to cart"
                         className="addtocart"
                     />
+
+                    <br></br>
+
+                   
+                    <button onClick={()=>buy(200)}>buy now</button>
+                    
+
 
                     <div className='ml-5 flex mt-5 w-40 uppercase text-base justify-between'>
                     <img className='w-5 h-5 mt-1 ml-1 cursor-pointer' src='/image/heart.png'/>

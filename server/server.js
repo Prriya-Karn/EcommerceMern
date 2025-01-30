@@ -32,6 +32,7 @@ const cartDataByIdRouter = require("./router/cartDataById-router");
 const delCartByIdRouter = require("./router/delCartByIdRouter");
 const reviewRouter = require("./router/review-router");
 const reviewGetDataRouter = require("./router/reviewGetData-router");
+const paymentRouter = require("./router/payment-router");
 
 const corsOption = {
     origin: [
@@ -48,7 +49,9 @@ app.use(cors(corsOption));
 
 
 
-app.use(express.json())
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
 app.use('/api',regisRouter);
 app.use('/api',loginRouter);
 app.use('/api',contactRouter);
@@ -73,8 +76,7 @@ app.use("/api",cartDataByIdRouter);
 app.use("/api",delCartByIdRouter);
 app.use("/api",reviewRouter);
 app.use("/api",reviewGetDataRouter);
-// require("../client/public/images")
-
+app.use("/api",paymentRouter)
 // Static folder to serve uploaded images
 app.use('/images', express.static(path.join(__dirname, "../client/public/images")));
 

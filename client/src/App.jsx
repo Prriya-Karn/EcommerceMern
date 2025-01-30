@@ -42,6 +42,7 @@ import PrivacyPolicy from "./Pages/Allcategories.jsx/PrivacyPolicy";
 import TermsConditions from "./Pages/Allcategories.jsx/TermsConditions";
 import RefundPolicy from "./Pages/Allcategories.jsx/RefundPolicy";
 import ShippingPolicy from "./Pages/Allcategories.jsx/ShippingPolicy";
+import Payment from "./Pages/Payment";
 
 const App = () => {
   const [cartQuants, setCartQuant] = useState(0);
@@ -55,7 +56,7 @@ const App = () => {
 
 
     {/*-----------------------Razorpay---------------------------------*/}
-
+    <Route path="/payment" element={<Payment/>}/>
     <Route path="/privacyPolicy" element={<PrivacyPolicy/>}/>
     <Route path="/terms" element={<TermsConditions/>}/>
     <Route path="/refundPolicy" element={<RefundPolicy/>}/>

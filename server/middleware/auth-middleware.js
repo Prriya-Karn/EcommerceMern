@@ -3,7 +3,7 @@ const regisSchema = require("../src/models/RegisSchema");
 const authMiddleware = async(req,res,next)=>{
     try{
         const StoredToken = req.header('Authorization');
-        console.log(StoredToken)
+        // console.log(StoredToken)
         if(!StoredToken){
             return res.status(400).json({msg:"not login"})
         }
@@ -24,9 +24,9 @@ const authMiddleware = async(req,res,next)=>{
         req.token = userToken;
         req.isAdmin = verifyToken.isAdmin
 
-       console.log("req.user",req.user)
-        console.log("req.token",req.token)
-        console.log("req.isAdmin",req.isAdmin)
+    //    console.log("req.user",req.user)
+    //     console.log("req.token",req.token)
+        // console.log("req.isAdmin",req.isAdmin)
         next();
     }catch(error){
         res.status(400).json({
