@@ -39,6 +39,7 @@ const corsOption = {
     origin: [
         "http://localhost:5173",                  // Localhost for development
         "https://ecommerce-mern-ashy.vercel.app",  // Vercel frontend for production
+        "https://ecommercemern-1-bj94.onrender.com"
     ],
     methods: "GET,PUT,PATCH,DELETE,POST,HEAD",
     allowedHeaders: ["Content-Type", "Authorization", "Access-Control-Allow-Origin"],
@@ -93,7 +94,7 @@ app.use('/images', express.static(path.join(__dirname, "../client/public/images"
 app.use(errorMiddleware)
 
 connection().then(()=>{
-    const PORT = process.env.port || 3001;
+    const PORT = process.env.PORT || 3001;
     app.listen(PORT,()=>{
         console.log(`server is running at ${PORT}`)
     })
