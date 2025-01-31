@@ -17,7 +17,7 @@ const CartProvider = ({children}) => {
 
             const data = await response.json();
             setTotalItem(data.totalItem);
-            console.log(data)
+            // console.log(data)
             if (response.ok) {
                 setCartData(data.msg);
             } else{

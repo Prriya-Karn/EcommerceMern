@@ -29,7 +29,7 @@ const Testimonial = ({newreview}) => {
 
     const viewmore = ()=>{
         if(length==2){
-            setLength(setLength(getReview.length))
+            setLength(getReview.length)
         }else{
             setLength(2)
         }
@@ -37,7 +37,7 @@ const Testimonial = ({newreview}) => {
 
 const newgetReview = getReview.slice(0,length);
 
-console.log(getReview)
+// console.log(newgetReview);
 
     useEffect(() => {
         getReviewData();
@@ -79,7 +79,11 @@ console.log(getReview)
                 </div>
                 
                 <div className="mt-5 flex justify-center uppercase">
-                <button onClick={viewmore} className="text-center w-52 h-8 text-base-100 text-lg rounded-lg bg-revbg">view more</button>
+                <button onClick={viewmore} className="text-center w-52 h-8 text-base-100 text-lg rounded-lg bg-revbg">
+                {
+                    length==2?"view more":"view less"
+                }
+                </button>
                 </div>
             </div>
          

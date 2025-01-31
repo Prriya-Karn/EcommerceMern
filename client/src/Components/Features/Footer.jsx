@@ -25,10 +25,13 @@ export const Footer = () => {
               rounded-lg'
             src='/image/box2.png'/>
             </div>
-            <NavLink to="/privacyPolicy">Privacy Policy</NavLink> |  
+
+           {/* <NavLink to="/privacyPolicy">Privacy Policy</NavLink> |  
             <NavLink to="/terms">Terms & Conditions</NavLink> |  
             <NavLink to="/refundPolicy">Refund & Cancellation</NavLink> |  
-            <NavLink to="/shippingPolicy">Shipping & Delivery</NavLink>
+            <NavLink to="/shippingPolicy">Shipping & Delivery</NavLink>*/}
+
+            
             </div>
 
             <div className=' lg:-mt-20 lg:-ml-24 lg:h-1/2

@@ -87,7 +87,7 @@ const AddToCart = ({ setCartQuant, cartQuants }) => {
  
     const buy = async (amount)=>{
         try{
-            const razorpaydata = await fetch("http://localhost:3001/api/payment",{
+            const razorpaydata = await fetch(`${API}/api/payment`,{
                 method : "POST",
                 headers:{
                     "Content-Type" : "application/json",
@@ -99,7 +99,12 @@ const AddToCart = ({ setCartQuant, cartQuants }) => {
                 })
             })
             const res = await razorpaydata.json();
-            // console.log(res)
+            
+            const getid = await fetch(`${API}/api/razorkeyid`,{
+                method : "GET"
+            })
+
+            console.log(getid)
 
             if (razorpaydata.status==200) {
                 console.log(true)
@@ -110,7 +115,7 @@ const AddToCart = ({ setCartQuant, cartQuants }) => {
                     name: "Priya karn",
                     description: "Product Description",
                     order_id: res.order.id,
-                    callback_url : "http://localhost:3001/api/verifypayment",
+                    callback_url : `${API}/api/verifypayment`,
 
                     prefill: {
                         name: "Customer Name",
@@ -254,7 +259,8 @@ const AddToCart = ({ setCartQuant, cartQuants }) => {
                     <br></br>
 
                    
-                    <button onClick={()=>buy(200)}>buy now</button>
+                    <button className="bg-black text-white md:text-sm uppercase w-full mt-5 h-11 sm:mt-3 sm:w-4/5 sm:h-14 text-xs lg:w-5/6 lg:h-14 md:w-4/5 md:h-14  mb-3 rounded"
+                     onClick={()=>buy(200)}>buy now</button>
                     
 
 
@@ -309,7 +315,7 @@ const AddToCart = ({ setCartQuant, cartQuants }) => {
                         <h1>Share</h1>
 
 
-                        <img src='/image/instagram.png'
+                        <img src='/image/whatsapp.png'
                             className='lg:w-4 lg:h-4 md:w-4 md:h-4 w-4 h-4' />
                         <img src='/image/instagram.png'
                             className='lg:w-4 lg:h-4 md:w-4 md:h-4 w-4 h-4' />

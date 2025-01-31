@@ -3,12 +3,11 @@ const crypto = require('crypto');
 const paymentdb = require('../src/models/PaymentSchema'); // Assuming you're using MongoDB for the orders
 const nodemailer = require('nodemailer');
 
-// Initialize Razorpay instance with your key details
-const razorpay = new Razorpay({
-  key_id: process.env.RAZORPAY_KEY_ID,  // Make sure to load your Razorpay key from the environment variables
+// Initialize Razorpay instance with your key details:-
+const razorpayInstance = new Razorpay({
+  key_id: process.env.RAZORPAY_KEY_ID, 
   key_secret: process.env.RAZORPAY_KEY_SECRET,
 });
-
 
 const paymentController = async (req, res) => {
     try{
@@ -16,8 +15,8 @@ const paymentController = async (req, res) => {
             amount : Number(req.body.amount * 100),
             currency : "INR",
         }
-        const order = await razorpay.orders.create(options);
-        // console.log(order);
+        const order = await razorpayInstance.orders.create(options);
+        console.log(order);
         res.status(200).json({
             msg : "success",
             order
@@ -27,15 +26,22 @@ const paymentController = async (req, res) => {
     }
 };
 
+
+
+
+
 const verifyPaymentController = async (req, res) => {
         try {
             const { razorpay_payment_id, razorpay_order_id, razorpay_signature } = req.body;
     
-            // Generate expected signature using Razorpay's secret key
+            // Generate expected my hash signature using Razorpay's secret key
             const generatedSignature = crypto.createHmac("sha256", process.env.RAZORPAY_KEY_SECRET)
                 .update(razorpay_order_id + "|" + razorpay_payment_id)
                 .digest("hex");
     
+                console.log("razorpay_signature",razorpay_signature);
+                console.log("generatedSignature",generatedSignature)
+
             if (generatedSignature === razorpay_signature) {
                 const saveDb = new paymentdb(req.body);
                 await saveDb.save()

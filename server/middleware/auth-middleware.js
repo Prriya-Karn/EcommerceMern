@@ -11,12 +11,12 @@ const authMiddleware = async(req,res,next)=>{
         const userToken = StoredToken.replace("Bearer","").trim()
         const verifyToken = jwt.verify(userToken,process.env.secretKey)
         
-        console.log("Decoded Token:", verifyToken);
+        // console.log("Decoded Token:", verifyToken);
         const userData = await regisSchema.findOne({email : verifyToken.email}).
         select({password:0,_id:0}) 
 
         // console.log("verifytoken",verifyToken)
-        console.log("userdata",userData)
+        // console.log("userdata",userData)
 
 
 

@@ -71,7 +71,7 @@ const ContactSchema = z.object({
         name : z
         .string({required_error : "Name is required"})
         .trim()
-        .min(3,{message : "Name must be at least of 3 character"})
+        .min(3,{amessage : "Name must be at least of 3 character"})
         .max(255,{message:"Name must not be more 255 character"}),
 
         email : z

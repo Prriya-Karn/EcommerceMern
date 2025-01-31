@@ -33,6 +33,7 @@ const delCartByIdRouter = require("./router/delCartByIdRouter");
 const reviewRouter = require("./router/review-router");
 const reviewGetDataRouter = require("./router/reviewGetData-router");
 const paymentRouter = require("./router/payment-router");
+const getRazorKeyIdRouter = require("./router/getRazorKeyId-router");
 
 const corsOption = {
     origin: [
@@ -76,7 +77,16 @@ app.use("/api",cartDataByIdRouter);
 app.use("/api",delCartByIdRouter);
 app.use("/api",reviewRouter);
 app.use("/api",reviewGetDataRouter);
-app.use("/api",paymentRouter)
+app.use("/api",paymentRouter);
+app.use("/api",getRazorKeyIdRouter);
+
+
+
+
+
+
+
+
 // Static folder to serve uploaded images
 app.use('/images', express.static(path.join(__dirname, "../client/public/images")));
 
