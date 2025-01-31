@@ -106,7 +106,7 @@ const Menus = ({ menus, menuItems }) => {
                                                                 e.items.length != 0 ? <div className="menu-items block">
                                                                 {
                                                                     e.items.map((item, idx) => {
-                                                                        console.log(item)
+                                                                     
                                                                         return(
                                                                             <Fragment key={idx}>
                                                                             <NavLink to={item}>

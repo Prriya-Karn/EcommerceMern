@@ -32,7 +32,7 @@ const menuData = [
       },
       {
         categoryName: "polo",
-        items: "",
+        items: ["polo"],
       },
       {
         categoryName: "bottoms",
@@ -54,7 +54,7 @@ const menuData = [
     mainCategory: "shop by Collection",
     categories: [
       {
-        categoryName: "ember steel winter '24",
+        categoryName: "ember steel winter '25",
         items: ""
       },
       {
@@ -136,7 +136,7 @@ export const Navbar = () => {
             <ul className="lg:flex lg:text-sm font-medium lg:gap-6">
               {
                 menuData.map((e) => {
-            
+            // console.log(e.mainCategory)
                   return (
                     <Fragment key={e.id}>
                       <NavLink onMouseEnter={() => setMenus(true)}>
@@ -168,6 +168,7 @@ export const Navbar = () => {
 
             <SideNavbar sideNav = {sideNav} setSideNav = {setSideNav}
             crossNav = {crossNav}
+
             />
 
             <div className="search">

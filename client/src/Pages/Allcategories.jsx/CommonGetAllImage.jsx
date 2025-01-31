@@ -13,16 +13,16 @@ const CommonGetAllImage = ({catName}) => {
                     method: "GET"
                 })
                 const resImg = await getimg.json();
-                console.log(resImg)
+               
                 setImgData(resImg.msg)
     
-                console.log(resImg.msg.length)
+               
             } catch (error) {
                 console.log(error)
             }
         }
     
-       console.log(imgDatas)
+    
      
         useEffect(() => {
             getallimg()
@@ -33,7 +33,6 @@ const CommonGetAllImage = ({catName}) => {
     grid-cols-2 w-full xl:gap-y-2 md:gap-x-2 lg:gap-y-5 gap-y-10  mb-10 mt-2 h-auto p-5">
     {
         imgDatas.map((e,index)=>{
-            console.log(e)
             return(
                 <Fragment key={index}>
                 {
