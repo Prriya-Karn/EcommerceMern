@@ -104,12 +104,13 @@ const AddToCart = ({ setCartQuant, cartQuants }) => {
                 method : "GET"
             })
 
-            console.log(getid)
-
+            const getresid = await getid.json();
+   
+         
             if (razorpaydata.status==200) {
                 console.log(true)
                 const options = {
-                    key: "RAZORPAY_KEY_ID",
+                    key: getresid.msg,
                     amount: res.order.amount,
                     currency: res.order.currency,
                     name: "Priya karn",
