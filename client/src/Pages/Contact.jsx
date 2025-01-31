@@ -4,6 +4,7 @@ import { Heading } from "../Components/UI/Heading";
 import Input from "../Components/UI/Input";
 import Button from "../Components/UI/Button";
 import { Textarea } from "../Components/UI/Textarea";
+import { toast } from "react-toastify";
 
 const Contact = () => {
     const { API, con } = useContext(AuthContext);
@@ -46,10 +47,10 @@ const Contact = () => {
             })
             const conRes = await response.json();
             if (response.status == 400) {
-                alert(conRes.msg);
+                toast.error(conRes.msg);
                 console.log(conRes.msg)
             } else {
-                alert(conRes.msg)
+                toast.success(conRes.msg)
                 console.log(conRes.msg)
             }
 

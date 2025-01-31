@@ -1,6 +1,7 @@
 import { Fragment, useContext, useState } from "react";
 import { AuthContext } from "../../tokenStore/Auth";
 import { useLocation } from "react-router-dom";
+import { toast } from "react-toastify";
 
 const Update = () => {
     const location = useLocation();
@@ -87,9 +88,9 @@ console.log(ediRes);
             const upres = await update.json();
             console.log(upres)
             if(update.status==200){
-                alert("update successfull")
+               toast.success("update successfull")
             }else{
-                alert("not update")
+                toast.error("not update")
             }
 
             
@@ -108,9 +109,9 @@ console.log(ediRes);
             const upRes = await update.json()
 
             if (upRes.msg.modifiedCount == 0) {
-                alert("not change anything")
+                toast.error("not change anything")
             } else if (upRes.msg.modifiedCount > 0) {
-                alert("updated Successfull")
+                toast.success("updated Successfull")
             }
         }else if(ediRes.url == "update"){
             const updateUser = await fetch(`${API}/api/admin/update/${ediRes.id}`,{
@@ -124,9 +125,9 @@ console.log(ediRes);
 
             const updateUserRes = updateUser.json();
            if(updateUserRes.modifiedCount == 0){
-            alert("not updated")
+            toast.error("not updated")
            }else{
-            alert("updated")
+            toast.success("updated")
            }
         }
 

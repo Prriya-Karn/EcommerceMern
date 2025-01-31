@@ -1,6 +1,7 @@
 import { Fragment, useContext,} from "react";
 import { AuthContext } from "../tokenStore/Auth";
 import { CartTotal } from "./CartProvider";
+import { toast } from "react-toastify";
 
 const RemoveCartItem = ({ id }) => {
   const { API, token } = useContext(AuthContext);
@@ -18,9 +19,9 @@ const RemoveCartItem = ({ id }) => {
 
       const delRes = await deleteItem.json();
       if (token && delRes.msg.deletedCount > 0) {
-        alert("Deleted successfully");
+        toast.success("Deleted successfully");
       }else{
-        alert("please login")
+        toast.error("please login")
       }
 
       // Remove item from cartData state

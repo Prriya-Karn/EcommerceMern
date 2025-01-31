@@ -2,6 +2,7 @@ import { Fragment, useContext, useState } from "react";
 import { AuthContext } from "../../tokenStore/Auth";
 import AllImages from "./AllImages";
 import Category from "../Category";
+import { toast } from "react-toastify";
 
 const UploadClothingImage = () => {
     const { token, API } = useContext(AuthContext);
@@ -49,8 +50,8 @@ const UploadClothingImage = () => {
 
 
             setNewImage(imageData);
-            if (imgSave.status === 400) return alert("Your file is not an image file");
-            else return alert("Successfully uploaded image");
+            if (imgSave.status === 400) return toast.error("Your file is not an image file");
+            else return toast.success("Successfully uploaded image");
         } catch (error) {
             console.log(error);
         }

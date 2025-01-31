@@ -1,6 +1,7 @@
 import { Fragment, useCallback, useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../tokenStore/Auth";
 import Testimonial from "../../Pages/Testimonial";
+import { toast } from "react-toastify";
 
 const Reviews = () => {
     const { API } = useContext(AuthContext);
@@ -61,9 +62,9 @@ const Reviews = () => {
 
 
             if (saveData.status == 200) {
-                alert("data save success")
+                toast.success("data save success")
             } else{
-                alert("not save");
+                toast.error("not save");
             }
 
         } catch (error) {

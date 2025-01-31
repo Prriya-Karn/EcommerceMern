@@ -6,6 +6,7 @@ import '../style/home.css';
 import Video from '../Components/UI/Video';
 import Reviews from '../Components/UI/Reviews';
 import { CartTotal } from './CartProvider';
+import { toast } from 'react-toastify';
 
 const AddToCart = ({ setCartQuant, cartQuants }) => {
 
@@ -66,11 +67,11 @@ const AddToCart = ({ setCartQuant, cartQuants }) => {
 
         
             if (cartData.status==200) {
-                alert("Product added to cart successfully!");
+                toast.success("Product added to cart successfully!");
                 setCartQuant(cartQuants + quantity);
                 setGetdata(true)
             } else {
-                alert("Failed to add product to cart.");
+                toast.error("Failed to add product to cart.");
             }
 
         
@@ -126,7 +127,7 @@ const AddToCart = ({ setCartQuant, cartQuants }) => {
                         color: "#F37254",
                     },
                 };
-                console.log(options)
+                // console.log(options)
 
                 if (window && window.Razorpay) {
                     const rzp = new window.Razorpay(options);

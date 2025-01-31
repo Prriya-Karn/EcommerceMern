@@ -5,6 +5,7 @@ import { NavLink } from "react-router-dom";
 import { AuthContext } from "../tokenStore/Auth";
 import { Heading } from "../Components/UI/Heading";
 import Input from "../Components/UI/Input";
+import { toast } from "react-toastify";
 
 const Register = () => {
   const { API, serverToken } = useContext(AuthContext);
@@ -44,9 +45,9 @@ const Register = () => {
 
       const res = await submitData.json();
       if (submitData.status === 400) {
-        alert(res.msg);
+        // toast.success(res.msg);
       } else {
-        alert("Registration successful");
+        toast.success("Registration successful");
         serverToken(res.token);
         console.log(res);
       }
