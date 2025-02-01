@@ -10,7 +10,6 @@ import "../style/home.css";
 import { Heading } from "../Components/UI/Heading";
 import Video from "../Components/UI/Video";
 import FeaturedInData from "./FeaturedInData";
-import { NavLink } from "react-router-dom";
 
 
 const Home = () => {
@@ -144,10 +143,10 @@ const Home = () => {
                     </div>
                 </div>
             </div>
-            <NavLink to="https://wa.me/918368744279" target="_blank" 
+            {/*<NavLink to="https://wa.me/918368744279" target="_blank" 
             className="fixed bottom-5 right-5 z-50 w-12 h-12 hover:scale-110 transition-transform bg-whatsapp p-2">
             <img className=""  src="/image/whatsapp.png"/>
-            </NavLink>
+            </NavLink>*/}
         </Fragment>
     )
 }
