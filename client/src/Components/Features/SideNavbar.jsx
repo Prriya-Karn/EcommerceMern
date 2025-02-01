@@ -1,13 +1,36 @@
-import { Fragment, useState } from "react";
+import { Fragment, useContext, useEffect, useState } from "react";
 import "../../style/navbar.css";
 import { NavLink } from "react-router-dom";
 import { menuData } from "./Navbar";
+import { AuthContext } from "../../tokenStore/Auth";
+
+import { toast } from "react-toastify";
 
 const SideNavbar = ({ sideNav, crossNav, setSideNav }) => {
     const [moreItems, setMoreItems] = useState({});
     const [moreInner, setMoreInner] = useState({});
-   
-  
+    const [islogout,setIslogout] = useState(false);
+    const {token,removeToken} = useContext(AuthContext)
+
+    const logout = () => {
+      
+        setTimeout(() => {
+            setSideNav(false);
+            setIslogout(true);
+            toast.success("Logout Successful 😀");
+            removeToken();
+        }, 100); 
+    };
+
+
+    useEffect(() => {
+        if (islogout) {
+            toast.success("Logout Successful 😀");
+        }
+    }, []);
+
+
+
     const toggleMoreLinks = (id) => {
         setMoreItems((prev) => ({
             ...prev,
@@ -122,6 +145,15 @@ const SideNavbar = ({ sideNav, crossNav, setSideNav }) => {
                         ))}
                         <h2 className="side-nav-links">our story</h2>
                     </div>
+                    {
+                        token?<NavLink onClick={logout}>
+                        <div className="side-nav-footer">
+                            <div className="nav-plus nav-acc">
+                                <img src="/image/logout.png" />
+                            </div>
+                            <h2>Logout</h2>
+                        </div>
+                    </NavLink>:
                     <NavLink to="/login" onClick={clickLogin}>
                         <div className="side-nav-footer">
                             <div className="nav-plus nav-acc">
@@ -130,6 +162,10 @@ const SideNavbar = ({ sideNav, crossNav, setSideNav }) => {
                             <h2>Account</h2>
                         </div>
                     </NavLink>
+                    }
+
+                    
+                    
                 </div>
                 :""
             }

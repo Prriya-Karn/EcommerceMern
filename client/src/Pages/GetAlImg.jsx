@@ -16,7 +16,7 @@ export const GetAlImg = () => {
                 }
             })
             const resImg = await getimg.json();
-            console.log(resImg.msg)
+            // console.log(resImg.msg)
             setImgData(resImg.msg)
         } catch (error) {
             console.log(error)
