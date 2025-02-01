@@ -1,4 +1,4 @@
-import { Fragment, useContext, useEffect } from "react";
+import { Fragment, useContext, useEffect, useState } from "react";
 import '../style/home.css';
 import { AuthContext } from "../tokenStore/Auth";
 import { GetAlImg } from "./GetAlImg";
@@ -10,10 +10,25 @@ import "../style/home.css";
 import { Heading } from "../Components/UI/Heading";
 import Video from "../Components/UI/Video";
 import FeaturedInData from "./FeaturedInData";
+import { CartTotal } from "./CartProvider";
 
 
 const Home = () => {
     const { getUserData } = useContext(AuthContext);
+    const {totalItems} = useContext(CartTotal);
+
+    console.log(totalItems);
+
+    const [isLoading,setIsLoading] = useState(true);
+
+    useEffect(() => {
+        if (totalItems >= 0) {
+            setIsLoading(false);
+        }
+    }, [totalItems]);
+
+
+
     useEffect(() => {
         console.log("userdata", getUserData);
     }, [getUserData]);
@@ -36,14 +51,18 @@ const Home = () => {
     return (
         <Fragment>
             {/**-----------image for below or equal tablet--------------------- */}
+
+            {
+                isLoading?<div className="flex justify-center items-center h-screen">
+                <div className="border-4 border-gray-300 border-t-blue-500 rounded-full w-12 h-12 animate-spin"></div>
+              </div>
+                :
+                <Fragment>
             <div className="sm:-mt-14 md:-mt-14 lg:hidden block bg-orange-400">
                 <img src="/image/WhatsApp Image 2025-01-14 at 2.17.54 AM.jpeg"
                     className="w-full" />
             </div>
-
-            
-
-
+           
             {/* React Slick Carousel */}
             <div className="-mt-10 overflow-hidden lg:block hidden hero-carousel">
                 <Slider {...settings}>
@@ -143,10 +162,13 @@ const Home = () => {
                     </div>
                 </div>
             </div>
+</Fragment>
+                    }
             {/*<NavLink to="https://wa.me/918368744279" target="_blank" 
             className="fixed bottom-5 right-5 z-50 w-12 h-12 hover:scale-110 transition-transform bg-whatsapp p-2">
             <img className=""  src="/image/whatsapp.png"/>
             </NavLink>*/}
+           
         </Fragment>
     )
 }

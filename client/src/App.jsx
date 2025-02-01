@@ -1,4 +1,4 @@
-import { Fragment, useState } from "react";
+import { Fragment, useContext, useEffect, useState } from "react";
 import Home from "./Pages/Home";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { Navbar } from "./Components/Features/Navbar";
@@ -37,7 +37,7 @@ import Hoodie from "./Pages/Allcategories.jsx/Hoodie";
 import Sweat from "./Pages/Allcategories.jsx/Sweat";
 import Crop from "./Pages/Allcategories.jsx/Crop";
 import Joggers from "./Pages/Allcategories.jsx/Joggers";
-import CartProvider from "./Pages/CartProvider";
+import CartProvider, { CartTotal } from "./Pages/CartProvider";
 // import PrivacyPolicy from "./Pages/Allcategories.jsx/PrivacyPolicy";
 // import TermsConditions from "./Pages/Allcategories.jsx/TermsConditions";
 // import RefundPolicy from "./Pages/Allcategories.jsx/RefundPolicy";
@@ -45,11 +45,26 @@ import CartProvider from "./Pages/CartProvider";
 
 const App = () => {
   const [cartQuants, setCartQuant] = useState(0);
+  const {totalItems} = useContext(CartTotal);
+
+    console.log(totalItems);
+
+    const [isLoading,setIsLoading] = useState(true);
+
+    useEffect(() => {
+        if (totalItems>=0) {
+            setIsLoading(false);
+        }
+    }, [totalItems]);
+
+
   return (
     <Fragment>
       <BrowserRouter>
       <CartProvider>
-        <Navbar/>
+
+      {!isLoading && <Navbar />}
+       
         <Routes>
 
 
@@ -131,7 +146,10 @@ const App = () => {
         </Routes>
         </CartProvider>
         
-        <Footer/>
+
+        {!isLoading && <Footer />}
+         
+        
         
       </BrowserRouter>
     </Fragment>

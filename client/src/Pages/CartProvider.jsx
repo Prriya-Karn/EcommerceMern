@@ -2,6 +2,8 @@ import { createContext, Fragment, useCallback, useContext,  useEffect,  useState
 import { AuthContext } from "../tokenStore/Auth";
 
 const CartTotal = createContext();
+
+
 const CartProvider = ({children}) => {
     const { API } = useContext(AuthContext);
    

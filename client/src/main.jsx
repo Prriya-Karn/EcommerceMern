@@ -4,10 +4,12 @@ import './index.css'
 import App from './App.jsx'
 import Auth from './tokenStore/Auth.jsx'
 import { ToastContainer } from 'react-toastify';
+import CartProvider from './Pages/CartProvider.jsx'
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <Auth>
+    <CartProvider>
       <App />
       
     <ToastContainer
@@ -25,7 +27,7 @@ theme="dark"
 // styling the fontsize of toast 
 bodyClassName="toastBody"
     />
-
+    </CartProvider>
     </Auth>
   </StrictMode>,
 )
