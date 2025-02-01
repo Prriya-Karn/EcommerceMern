@@ -34,6 +34,7 @@ const reviewRouter = require("./router/review-router");
 const reviewGetDataRouter = require("./router/reviewGetData-router");
 const paymentRouter = require("./router/payment-router");
 const getRazorKeyIdRouter = require("./router/getRazorKeyId-router");
+const chatRouter = require("./router/chat-router");
 
 const corsOption = {
     origin: [
@@ -80,6 +81,7 @@ app.use("/api",reviewGetDataRouter);
 app.use("/api",paymentRouter);
 app.use("/api",getRazorKeyIdRouter);
 
+app.use('/api', chatRouter);
 
 
 
