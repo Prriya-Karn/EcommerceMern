@@ -88,7 +88,24 @@ app.use("/api",getRazorKeyIdRouter);
 
 
 // Static folder to serve uploaded images
-app.use('/images', express.static(path.join(__dirname, "../client/public/images")));
+// app.use('/images', express.static(path.join(__dirname, "../client/public/images")));
+
+// Serve React build files
+if (process.env.NODE_ENV === 'production') {
+    app.use(express.static(path.join(__dirname, '../client/build')));
+    
+    // For all routes, return the React app's index.html
+    app.get('*', (req, res) => {
+        res.sendFile(path.join(__dirname, '../client/build', 'index.html'));
+    });
+}
+
+
+
+
+
+
+
 
 app.use(errorMiddleware)
 
