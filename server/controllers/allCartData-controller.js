@@ -11,7 +11,13 @@ const allCartDataController = async(req,res)=>{
             msg : getCartData,
             totalItem : totalItem
         })
-        console.log(getCartData)
+
+        console.time("API Fetch Time");
+await fetch("https://ecommercemern-1-bj94.onrender.com/api/allcartdata");
+console.timeEnd("API Fetch Time");
+
+
+        // console.log(getCartData)
     }catch(error){
         console.log(error)
     }
