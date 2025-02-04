@@ -64,7 +64,7 @@ const Reviews = () => {
             if (saveData.status == 200) {
                 toast.success("data save success")
             } else{
-                toast.error("not save");
+                toast.error(resReview.msg);
             }
 
         } catch (error) {
@@ -102,7 +102,7 @@ const Reviews = () => {
 
                         <div className="flex justify-center">
                             <div className="mt-10 w-80 ml-2 mr-2 md:mr-0 md:ml-0 md:w-1/2 lg:w-1/2 xl:w-full">
-                                <textarea value={reviewdata.reviewMessage} onChange={reviewData} name="reviewMessage"
+                                <textarea required value={reviewdata.reviewMessage} onChange={reviewData} name="reviewMessage"
                                     className="placeholder-slate-400 border-2
      border-revbg rounded w-full h-52 p-5 text-lg"
                                     placeholder="Write your reviews here" />
@@ -112,14 +112,14 @@ const Reviews = () => {
                         <div className="mt-6">
                             <h2 className="text-center">Name</h2>
                             <div className="flex justify-center">
-                                <input value={reviewdata.name} onChange={reviewData} name="name"
+                                <input required value={reviewdata.name} onChange={reviewData} name="name"
                                     className="placeholder-slate-400 border-2
      border-revbg p-1 px-3 rounded mt-2 mb-2 w-64" type="text" placeholder="Enter your name (public)" />
                             </div>
 
                             <h2 className="text-center">Email</h2>
                             <div className="flex justify-center">
-                                <input value={reviewdata.email} onChange={reviewData} name="email"
+                                <input required value={reviewdata.email} onChange={reviewData} name="email"
                                     className="placeholder-slate-400 border-2
      border-revbg p-1 px-3 rounded mt-2 mb-2 w-64" type="email" placeholder="Enter your email (private)" />
                             </div>
@@ -143,7 +143,6 @@ const Reviews = () => {
 
                 <Testimonial
                 newreview = {newreview}/>
-
             </div>
         </Fragment>
     )
