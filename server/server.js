@@ -36,18 +36,29 @@ const paymentRouter = require("./router/payment-router");
 const getRazorKeyIdRouter = require("./router/getRazorKeyId-router");
 const chatRouter = require("./router/chat-router");
 
+// const corsOption = {
+//     origin: [
+//         "http://localhost:5175",                  // Localhost for development
+//         // "https://ecommerce-mern-ashy.vercel.app",  // Vercel frontend for production
+//     ],
+//     methods: "GET,PUT,PATCH,DELETE,POST,HEAD",
+//     allowedHeaders: ["Content-Type", "Authorization", "Access-Control-Allow-Origin"],
+//     credentials: true,
+// };
+
+// app.use(cors(corsOption));
+
+
+
+
 const corsOption = {
-    origin: [
-        "http://localhost:5173",                  // Localhost for development
-        "https://ecommerce-mern-ashy.vercel.app",  // Vercel frontend for production
-    ],
+    origin: ["*", "https://ecommerce-mern-ashy.vercel.app"],
     methods: "GET,PUT,PATCH,DELETE,POST,HEAD",
-    allowedHeaders: ["Content-Type", "Authorization", "Access-Control-Allow-Origin"],
+    allowedHeaders: ["Content-Type", "Authorization"],
     credentials: true,
 };
 
 app.use(cors(corsOption));
-
 
 
 
