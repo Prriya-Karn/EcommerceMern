@@ -52,8 +52,7 @@ const chatRouter = require("./router/chat-router");
 
 
 const corsOption = {
-    // origin: ["http://localhost:5174","https://ecommerce-mern-ashy.vercel.app"],
-    origin:"*",
+    origin: ["http://localhost:5174","https://ecommerce-mern-ashy.vercel.app"],
     methods: "GET,PUT,PATCH,DELETE,POST,HEAD",
     allowedHeaders: ["Content-Type", "Authorization"],
     credentials: true,
